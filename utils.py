@@ -6,9 +6,8 @@ from scipy.spatial.transform import Rotation as R
 import os
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-
-from robots_kinematics import compute_inverse_kinematics
-
+from robots_kinematics import compute_inverse_kinematics 
+import robots_kinematics as kin
 
 MAX_SHIFT_TRIES = 10
 SHIFT_STEP = 0.01  # 1 cm per iteration
@@ -53,7 +52,7 @@ class RobotTrajectory:
             if self.is_pose_reachable(pos, orientation):        
                 return pos, orientation
             pos[2] += shift_step
-            print("Shifted_step is: " ,shift_step)
+            # print("Shifted_step is: " ,shift_step)
         
         return None, orientation
 
@@ -685,9 +684,9 @@ class RobotTrajectory:
             # trajectory_points_list[:, 0,:] = trajectory_points_list[:, 0,:] / 100
             trajectory_points_list[:, 0:1, :] = trajectory_points_list[:, 0:1, :] / 100  # scale all positions
             # 🔧 Shift the trajectory to be in a reachable region
-            trajectory_points_list[:, 0:1, 0] += 0.25   # X → front
-            trajectory_points_list[:, 0:1, 1] += 0.25   # Y → right
-            trajectory_points_list[:, 0:1, 2] += 0.15   # Z → higher
+            # trajectory_points_list[:, 0:1, 0] += 0.25   # X → front
+            # trajectory_points_list[:, 0:1, 1] += 0.25   # Y → right
+            # trajectory_points_list[:, 0:1, 2] += 0.15   # Z → higher
                         # print(trajectory_points_list[0:10],'post devision')
             min_values = trajectory_points_list[:,0,:].min(axis=0)
             print(min_values)
@@ -698,13 +697,10 @@ class RobotTrajectory:
             print(f"Generated trajectory with {len(trajectory)} points.")
             print(f"Trajectory dtype: {trajectory.dtype}")
             trajectory_output = []
-            # for pos, orientation_vec in trajectory:
-            #                 # Prevent warning from align_vectors when vectors are already aligned
-            #     if np.allclose(orientation_vec, [0, 0, 1], atol=1e-6):
-            #         euler_deg = (0.0, 0.0, 0.0)
-            #     else:
-            #         euler_deg = tuple(R.from_rotvec(rotation.as_rotvec()).as_euler('xyz', degrees=True))
-            for pos, orientation_vec in trajectory:
+            for i in range(len(trajectory_points_list)):
+                pos = trajectory_points_list[i, 0, :]  # already scaled
+                orientation_vec = trajectory[i][1]     # same orientation as before
+
                 adjusted_pos, adjusted_ori = self.adjust_pose_until_reachable(pos, orientation_vec)
                 if adjusted_pos is not None:
                     pos_tuple = tuple(adjusted_pos)
@@ -807,4 +803,5 @@ if __name__ == "__main__":
         print("No trajectory points available.convex")
 
     robot_trajectory.visualize_points(trajectory_points)
+
 
