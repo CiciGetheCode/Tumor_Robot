@@ -1,0 +1,107 @@
+# move_along_trajectory_button_x =6/7; self.move_along_trajectory_button = gbl.menu_button(menu_frame,"Move\nAlong Trajectory",f"Calibri {menu_properties['options_font']} bold", menu_properties['buttons_color'], menu_properties['bg_color'], move_along_trajectory_button_x * menu_properties['width'], move_along_trajectory_button_ord * menu_properties['height'] / (menu_properties['rows'] + 1),self.send_trajectory_path).button
+        
+
+
+
+def send_trajectory_path(self,event = None):
+    #         """
+    #         Moves the robotic arm along a trajectory by:
+    #         - Updating the end-effector position and orientation.
+    #         - Computing inverse kinematics.
+    #         - Updating the joint configuration in the UI.
+    #         """
+    #         dae_path = os.path.expanduser("~/experiment/robotic_manipulators_playground/mesh_mask.dae")
+    #         min_bounds = np.array([-0.32500893, -0.14676859, 0.009])
+    #         max_bounds = np.array([0.66500893, 0.74676859, 0.68019031])
+    #         self.robottrajectory_instance= RobotTrajectory(dae_path,min_bounds,max_bounds)
+                
+    #         # ✅ Load trajectory from external function
+    #         # path_to_dae = "/home/aggelostsitsi/experiment/robotic_manipulators_playground/shifted_object.dae"
+            
+    #         # convex_hull_points = compute_convex_hull_from_dae(path_to_dae)
+
+    #         # if convex_hull_points is not None:
+    #         #     print("🔺 Original Convex Hull Points:")
+    #         #     # transformed_points = project_points_to_workspace(convex_hull_points, max_radius=0.8)
+    #         #     transformed_points = convex_hull_points
+    #         #     points_array = np.array(transformed_points)
+    #         #     initial_position, orientation = calculate_initial_position_3d(points_array, orientation=[0, 0, 0])
+    #         #     # Compute cross trajectory
+    #         #     cross_points = compute_cross_trajectory_3d(initial_position.flatten(), points_array)
+    #         #     points = compute_convex_hull_trajectory_3d(path_to_dae, max_radius=0.8, fixed_orientation=(0, 0, 0), max_point_spacing=0.05)
+
+    #         # # 🔧 FIX: Extract just the positions
+    #         # trajectory_positions = [points[i][0] for i in range(len(points)) if i % 10 == 0]
+        
+    #         # # # Step 3: Get pre-position movement
+    #         # # initial_position,orientation= calculate_initial_position_3d(points, orientation=[0, 0, 0])
+    #         # initial_point = initial_position.reshape(1, 3)
+        
+            
+    #         # convex_hull_points_trajectory = extract_outermost_ring(convex_hull_points,projection='yz')
+    #         # self.trajectory_points_list = compute_total_trajectory_for_robot(
+    #         # convex_hull_points=convex_hull_points_trajectory,
+    #         # cross_points=cross_points,
+    #         # initial_position=initial_position
+            
+    #         # offset = (-120, -120, -60)  # Example offset in mm
+    #         # self.trajectory_points_list = [
+    #         #     ((x + offset[0], y + offset[1], z + offset[2]), orientation)
+    #         #     for (x, y, z), orientation in self.trajectory_points_list
+    #         # ]
+
+
+    #         #  # ✅ Define a test trajectory with waypoints (position, orientation)
+    #         # self.trajectory_points_list = [
+    #         #     ((-0.015, 0.697, 0.203), (-68.5,2.1,53.7)),   # Start position
+    #         #     # ((-0.096,0.335,0.477) , (109.6 , -23.9 , -124.3)),
+    #         #     ((0.015, -0.697, 0.203), (-68.5,2.1,53.7)),
+    #         #     ((-0.015, 0.697, 0.203), (-68.5,2.1,53.7)),
+    #         #     ((-0.015, 0.697, 0.203), (-68.5,2.1,53.7)),
+    #         #    ]   
+
+    #         self.robottrajectory_instance.do_everything()
+    #         if not hasattr(self, 'trajectory_points_list') or self.trajectory_points_list.size == 0:
+    #             print("No trajectory points available.")
+    #             return
+
+    #         print(f"Executing trajectory with {len(self.trajectory_points_list)} points...")
+
+    #         for position, orientation in self.trajectory_points_list:
+    #             print(f"Moving to: {position}, Orientation: {orientation}")
+
+    #             #-------------- Convert orientation from degrees to radians if needed---------------
+    #             # orientation_rad = [np.deg2rad(a) for a in orientation]
+                
+
+    #             # Save values for consistency (optional)
+    #             self.chosen_invkine_3d_position = list(position)
+    #             self.chosen_invkine_orientation = orientation
+
+    #             # ✅ Get transformation matrix
+    #             T = self.get_transformation_matrix(self.chosen_invkine_3d_position, self.chosen_invkine_orientation)
+
+    #             # ✅ Directly solve IK (the missing piece!)
+    #             joint_angles, success = kin.compute_inverse_kinematics(
+    #                 self.built_robotic_manipulator,
+    #                 T,
+    #                 self.invkine_tolerance
+    #             )
+    #             # Save and log
+    #             self.invkine_joints_configuration = joint_angles
+    #             print("💡 Raw IK Joint Angles (rad):", joint_angles)
+    #             if success:
+    #                 print("✅ IK Solver succeeded")
+    #                 # You can optionally re-use the formatting from your indicator here
+    #             else:
+    #                 print("❌ IK Solver failed. No valid solution.")
+                
+    #             if success:
+    #                 self.forward_kinematics_variables = joint_angles
+    #                 self.copy_fkine_to_control_values()
+                    
+    #             else:
+    #                 print("❌ Skipping control update due to failed IK.")
+
+            
+    #             self.send_command_to_all_motors() #go all motors    

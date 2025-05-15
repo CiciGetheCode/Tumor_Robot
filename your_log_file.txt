@@ -1,0 +1,1512 @@
+📍 Attempted Interpolated Step 9.0: Position = [0.16881 0.21951 0.32869]
+    → Interpolated Joints = [-1.84045 -0.71487 -1.21805 -2.19351 -1.56353 -1.13027]
+📍 Interpolated Step 9.0: Position = [0.21651 0.27417 0.34575], Orientation (RPY rad) = [-0.00019  0.99699 -0.01296]
+>>> A-105.45 B-40.96 C-40.96 D-75.93 X125.68 Y154.34 Z-24.82
+📍 Attempted Interpolated Step 10.0: Position = [0.16881 0.23057 0.32869]
+    → Interpolated Joints = [-1.83788 -0.73146 -1.19187 -2.19253 -1.55989 -1.13947]
+📍 Interpolated Step 10.0: Position = [0.2165  0.27691 0.34574], Orientation (RPY rad) = [-0.0002   0.99699 -0.01295]
+>>> A-105.3 B-41.91 C-41.91 D-74.58 X125.62 Y154.67 Z-24.09
+📍 Attempted Interpolated Step 11.0: Position = [0.16881 0.24162 0.32869]
+    → Interpolated Joints = [-1.83535 -0.74829 -1.16516 -2.19156 -1.55606 -1.14888]
+📍 Interpolated Step 11.0: Position = [0.21649 0.27966 0.34573], Orientation (RPY rad) = [-0.0002   0.99699 -0.01294]
+>>> A-105.16 B-42.87 C-42.87 D-73.19 X125.57 Y154.99 Z-23.33
+📍 Attempted Interpolated Step 12.0: Position = [0.16881 0.25267 0.32869]
+    → Interpolated Joints = [-1.83287 -0.76538 -1.13789 -2.19058 -1.55204 -1.15852]
+📍 Interpolated Step 12.0: Position = [0.21647 0.2824  0.34571], Orientation (RPY rad) = [-0.0002   0.99699 -0.01293]
+>>> A-105.02 B-43.85 C-43.85 D-71.78 X125.51 Y155.31 Z-22.55
+📍 Attempted Interpolated Step 13.0: Position = [0.16881 0.26373 0.32869]
+    → Interpolated Joints = [-1.83044 -0.78275 -1.11002 -2.18961 -1.54781 -1.1684 ]
+📍 Interpolated Step 13.0: Position = [0.21646 0.28514 0.3457 ], Orientation (RPY rad) = [-0.00021  0.99698 -0.01292]
+>>> A-104.88 B-44.85 C-44.85 D-70.33 X125.46 Y155.62 Z-21.74
+📍 Attempted Interpolated Step 14.0: Position = [0.13278 0.19188 0.29266]
+    → Interpolated Joints = [-1.81665 -0.65252 -1.32009 -2.18656 -1.60478 -1.11094]
+📍 Interpolated Step 14.0: Position = [0.20716 0.26575 0.3452 ], Orientation (RPY rad) = [-0.00115  0.99493 -0.01321]
+>>> A-104.09 B-37.39 C-37.39 D-81.25 X125.28 Y155.6 Z-28.3
+📍 Attempted Interpolated Step 15.0: Position = [0.14079 0.19188 0.30067]
+    → Interpolated Joints = [-1.82369 -0.65542 -1.31562 -2.18923 -1.59858 -1.10848]
+📍 Interpolated Step 15.0: Position = [0.20916 0.26574 0.3452 ], Orientation (RPY rad) = [-0.00116  0.99493 -0.01323]
+>>> A-104.49 B-37.55 C-37.55 D-81.01 X125.43 Y155.1 Z-28.08
+📍 Attempted Interpolated Step 16.0: Position = [0.1488  0.19188 0.30868]
+    → Interpolated Joints = [-1.83071 -0.6584  -1.31102 -2.1919  -1.59237 -1.10605]
+📍 Interpolated Step 16.0: Position = [0.21116 0.26573 0.3452 ], Orientation (RPY rad) = [-0.00118  0.99493 -0.01324]
+>>> A-104.89 B-37.72 C-37.72 D-80.78 X125.59 Y154.61 Z-27.87
+📍 Attempted Interpolated Step 17.0: Position = [0.1568  0.19188 0.31668]
+    → Interpolated Joints = [-1.8377  -0.66146 -1.30627 -2.19456 -1.58616 -1.10367]
+📍 Interpolated Step 17.0: Position = [0.21317 0.26573 0.3452 ], Orientation (RPY rad) = [-0.00119  0.99494 -0.01326]
+>>> A-105.29 B-37.9 C-37.9 D-80.52 X125.74 Y154.12 Z-27.64
+📍 Attempted Interpolated Step 18.0: Position = [0.16481 0.19188 0.32469]
+    → Interpolated Joints = [-1.84467 -0.66461 -1.30139 -2.19722 -1.57993 -1.10132]
+📍 Interpolated Step 18.0: Position = [0.21517 0.26572 0.3452 ], Orientation (RPY rad) = [-0.00121  0.99494 -0.01328]
+>>> A-105.69 B-38.08 C-38.08 D-80.27 X125.89 Y153.62 Z-27.42
+📍 Attempted Interpolated Step 19.0: Position = [0.17282 0.19188 0.3327 ]
+    → Interpolated Joints = [-1.8516  -0.66785 -1.29636 -2.19987 -1.5737  -1.09901]
+📍 Interpolated Step 19.0: Position = [0.21717 0.26571 0.34519], Orientation (RPY rad) = [-0.00122  0.99494 -0.0133 ]
+>>> A-106.09 B-38.27 C-38.27 D-80.02 X126.04 Y153.14 Z-27.2
+📍 Attempted Interpolated Step 20.0: Position = [0.18082 0.19188 0.3407 ]
+    → Interpolated Joints = [-1.85852 -0.67118 -1.2912  -2.20251 -1.56745 -1.09674]
+📍 Interpolated Step 20.0: Position = [0.21918 0.2657  0.34519], Orientation (RPY rad) = [-0.00124  0.99494 -0.01331]
+>>> A-106.49 B-38.46 C-38.46 D-79.75 X126.19 Y152.65 Z-26.97
+📍 Attempted Interpolated Step 21.0: Position = [0.18883 0.19188 0.34871]
+    → Interpolated Joints = [-1.8654  -0.67459 -1.28589 -2.20515 -1.5612  -1.09452]
+📍 Interpolated Step 21.0: Position = [0.22118 0.26569 0.34519], Orientation (RPY rad) = [-0.00125  0.99494 -0.01333]
+>>> A-106.88 B-38.65 C-38.65 D-79.48 X126.35 Y152.16 Z-26.74
+📍 Attempted Interpolated Step 22.0: Position = [0.19684 0.19188 0.35672]
+    → Interpolated Joints = [-1.87226 -0.6781  -1.28044 -2.20777 -1.55494 -1.09233]
+📍 Interpolated Step 22.0: Position = [0.22318 0.26569 0.34519], Orientation (RPY rad) = [-0.00127  0.99494 -0.01335]
+>>> A-107.27 B-38.85 C-38.85 D-79.19 X126.5 Y151.68 Z-26.5
+🚀 Moving to Initial Pose of Convex Hull with Position: (0.07059686857511605, 0.269449522, 0.3791960063656382), Orientation: (0.0, 45.0, 0.0)
+First point IK: ✅ Success [ 1.77342242  1.39305747 -0.51802458  0.98871193 -1.35411842 -2.24516155]
+💡 Raw IK Joint Angles (rad): [ 1.77342242  1.39305747 -0.51802458  0.98871193 -1.35411842 -2.24516155]
+✅ IK Solver succeeded at initial pose.
+📍 Attempted Interpolated Step 0.0: Position = [0.17128 0.21127 0.36834]
+→ Interpolated Joints = [ 1.79706  1.33069 -0.3897   0.96363 -1.40554 -2.19896]
+📍 Interpolated Step 0.0: Position = [0.0692 0.3023 0.4474], Orientation (RPY rad) = [0.0338 0.986  0.0265]
+>>> A102.96 B76.24 C76.24 D-10.89 X-55.21 Y206.52 Z45.46
+📍 Attempted Interpolated Step 0.1: Position = [0.13772 0.23066 0.37196]
+→ Interpolated Joints = [ 1.8207   1.26832 -0.26137  0.93854 -1.45696 -2.15276]
+📍 Interpolated Step 0.1: Position = [0.0604 0.3047 0.4474], Orientation (RPY rad) = [0.0384 0.9796 0.0308]
+>>> A104.32 B72.67 C72.67 D-4.08 X-53.77 Y206.82 Z39.86
+📍 Attempted Interpolated Step 0.2: Position = [0.10416 0.25006 0.37558]
+→ Interpolated Joints = [ 1.84434  1.20595 -0.13304  0.91345 -1.50838 -2.10656]
+📍 Interpolated Step 0.2: Position = [0.0513 0.3056 0.4472], Orientation (RPY rad) = [0.0459 0.9689 0.0385]
+>>> A105.67 B69.1 C69.1 D2.74 X-52.34 Y207.12 Z34.28
+📍 Attempted Interpolated Step 0.3: Position = [0.0706  0.26945 0.3792 ]
+→ Interpolated Joints = [ 1.86798  1.14358 -0.00471  0.88837 -1.5598  -2.06035]
+📍 Interpolated Step 0.3: Position = [0.0421 0.3051 0.4469], Orientation (RPY rad) = [0.0562 0.9542 0.0496]
+>>> A107.03 B65.52 C65.52 D9.56 X-50.9 Y207.42 Z28.68
+📍 Attempted Interpolated Step 1.0: Position = [0.0716  0.26945 0.3802 ]
+→ Interpolated Joints = [ 1.86724  1.23186 -0.16596  0.8893  -1.51325 -2.11656]
+📍 Interpolated Step 1.0: Position = [0.0425 0.304  0.4466], Orientation (RPY rad) = [0.0567 0.9531 0.0495]
+>>> A106.99 B70.58 C70.58 D1.08 X-50.95 Y207.97 Z34.57
+📍 Attempted Interpolated Step 1.1: Position = [0.0726  0.26945 0.3812 ]
+→ Interpolated Joints = [ 1.8665   1.32015 -0.32722  0.89023 -1.46671 -2.17277]
+📍 Interpolated Step 1.1: Position = [0.0434 0.3006 0.4457], Orientation (RPY rad) = [0.0585 0.9497 0.0491]
+>>> A106.94 B75.64 C75.64 D-7.4 X-51.01 Y208.53 Z40.45
+📍 Attempted Interpolated Step 1.2: Position = [0.0736  0.26945 0.3822 ]
+→ Interpolated Joints = [ 1.86576  1.40844 -0.48847  0.89116 -1.42017 -2.22897]
+📍 Interpolated Step 1.2: Position = [0.0446 0.295  0.4441], Orientation (RPY rad) = [0.0614 0.9442 0.0481]
+>>> A106.9 B80.7 C80.7 D-15.89 X-51.06 Y209.08 Z46.34
+📍 Attempted Interpolated Step 1.3: Position = [0.0746  0.26945 0.3832 ]
+→ Interpolated Joints = [ 1.86501  1.49672 -0.64973  0.89209 -1.37362 -2.28518]
+📍 Interpolated Step 1.3: Position = [0.0462 0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.86 B85.76 C85.76 D-24.37 X-51.11 Y209.63 Z52.23
+📍 Attempted Interpolated Step 2.0: Position = [0.0756  0.26945 0.3842 ]
+→ Interpolated Joints = [ 1.86423  1.49728 -0.65091  0.89263 -1.37278 -2.28529]
+📍 Interpolated Step 2.0: Position = [0.0465 0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.81 B85.79 C85.79 D-24.42 X-51.14 Y209.59 Z52.29
+📍 Attempted Interpolated Step 2.1: Position = [0.0766  0.26945 0.3852 ]
+→ Interpolated Joints = [ 1.86344  1.49784 -0.65208  0.89317 -1.37193 -2.2854 ]
+📍 Interpolated Step 2.1: Position = [0.0467 0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.77 B85.82 C85.82 D-24.49 X-51.17 Y209.55 Z52.33
+📍 Attempted Interpolated Step 2.2: Position = [0.0776  0.26945 0.3862 ]
+→ Interpolated Joints = [ 1.86266  1.4984  -0.65326  0.89371 -1.37109 -2.28551]
+📍 Interpolated Step 2.2: Position = [0.047  0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.72 B85.85 C85.85 D-24.55 X-51.21 Y209.51 Z52.39
+📍 Attempted Interpolated Step 2.3: Position = [0.0786  0.26945 0.3872 ]
+→ Interpolated Joints = [ 1.86187  1.49897 -0.65444  0.89425 -1.37024 -2.28563]
+📍 Interpolated Step 2.3: Position = [0.0472 0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.68 B85.88 C85.88 D-24.62 X-51.24 Y209.47 Z52.45
+📍 Attempted Interpolated Step 3.0: Position = [0.0796  0.26945 0.3882 ]
+→ Interpolated Joints = [ 1.86109  1.49952 -0.65559  0.8948  -1.36941 -2.28573]
+📍 Interpolated Step 3.0: Position = [0.0475 0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.63 B85.92 C85.92 D-24.67 X-51.27 Y209.42 Z52.5
+📍 Attempted Interpolated Step 3.1: Position = [0.0806  0.26945 0.3892 ]
+→ Interpolated Joints = [ 1.8603   1.50007 -0.65675  0.89534 -1.36857 -2.28584]
+📍 Interpolated Step 3.1: Position = [0.0477 0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.59 B85.95 C85.95 D-24.74 X-51.3 Y209.38 Z52.56
+📍 Attempted Interpolated Step 3.2: Position = [0.0816  0.26945 0.3902 ]
+→ Interpolated Joints = [ 1.85952  1.50062 -0.65791  0.89588 -1.36773 -2.28595]
+📍 Interpolated Step 3.2: Position = [0.048  0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.54 B85.98 C85.98 D-24.8 X-51.33 Y209.35 Z52.61
+📍 Attempted Interpolated Step 3.3: Position = [0.0826  0.26945 0.3912 ]
+→ Interpolated Joints = [ 1.85873  1.50117 -0.65906  0.89643 -1.36689 -2.28605]
+📍 Interpolated Step 3.3: Position = [0.0482 0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.5 B86.01 C86.01 D-24.86 X-51.36 Y209.3 Z52.66
+📍 Attempted Interpolated Step 4.0: Position = [0.0836  0.26945 0.3922 ]
+→ Interpolated Joints = [ 1.85794  1.50171 -0.6602   0.89697 -1.36606 -2.28615]
+📍 Interpolated Step 4.0: Position = [0.0485 0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.45 B86.04 C86.04 D-24.92 X-51.39 Y209.26 Z52.72
+📍 Attempted Interpolated Step 4.1: Position = [0.0846  0.26945 0.3932 ]
+→ Interpolated Joints = [ 1.85715  1.50225 -0.66134  0.89752 -1.36523 -2.28626]
+📍 Interpolated Step 4.1: Position = [0.0487 0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.41 B86.07 C86.07 D-24.98 X-51.42 Y209.21 Z52.77
+📍 Attempted Interpolated Step 4.2: Position = [0.0856  0.26945 0.3942 ]
+→ Interpolated Joints = [ 1.85637  1.50279 -0.66247  0.89806 -1.3644  -2.28636]
+📍 Interpolated Step 4.2: Position = [0.049  0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.36 B86.1 C86.1 D-25.04 X-51.46 Y209.17 Z52.83
+📍 Attempted Interpolated Step 4.3: Position = [0.0866  0.26945 0.3952 ]
+→ Interpolated Joints = [ 1.85558  1.50333 -0.66361  0.89861 -1.36357 -2.28646]
+📍 Interpolated Step 4.3: Position = [0.0492 0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.32 B86.13 C86.13 D-25.1 X-51.49 Y209.13 Z52.87
+📍 Attempted Interpolated Step 5.0: Position = [0.0876  0.26945 0.3962 ]
+→ Interpolated Joints = [ 1.85479  1.50386 -0.66473  0.89915 -1.36274 -2.28655]
+📍 Interpolated Step 5.0: Position = [0.0495 0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.27 B86.16 C86.16 D-25.17 X-51.52 Y209.09 Z52.93
+📍 Attempted Interpolated Step 5.1: Position = [0.0886  0.26945 0.3972 ]
+→ Interpolated Joints = [ 1.854    1.50439 -0.66585  0.8997  -1.36192 -2.28665]
+📍 Interpolated Step 5.1: Position = [0.0497 0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.23 B86.2 C86.2 D-25.22 X-51.55 Y209.05 Z52.99
+📍 Attempted Interpolated Step 5.2: Position = [0.0896  0.26945 0.3982 ]
+→ Interpolated Joints = [ 1.85321  1.50492 -0.66696  0.90024 -1.36109 -2.28674]
+📍 Interpolated Step 5.2: Position = [0.05   0.2871 0.442 ], Orientation (RPY rad) = [0.0657 0.9369 0.0464]
+>>> A106.18 B86.23 C86.23 D-25.28 X-51.58 Y209.0 Z53.04
+📍 Attempted Interpolated Step 5.3: Position = [0.0906  0.26945 0.3992 ]
+→ Interpolated Joints = [ 1.85242  1.50545 -0.66808  0.90079 -1.36027 -2.28684]
+📍 Interpolated Step 5.3: Position = [0.0502 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A106.14 B86.26 C86.26 D-25.34 X-51.61 Y208.97 Z53.09
+📍 Attempted Interpolated Step 6.0: Position = [0.0916  0.26945 0.4002 ]
+→ Interpolated Joints = [ 1.85163  1.50597 -0.66918  0.90134 -1.35945 -2.28693]
+📍 Interpolated Step 6.0: Position = [0.0505 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A106.09 B86.29 C86.29 D-25.4 X-51.64 Y208.92 Z53.14
+📍 Attempted Interpolated Step 6.1: Position = [0.0926  0.26945 0.4012 ]
+→ Interpolated Joints = [ 1.85084  1.5065  -0.67027  0.90189 -1.35863 -2.28702]
+📍 Interpolated Step 6.1: Position = [0.0507 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A106.05 B86.32 C86.32 D-25.45 X-51.67 Y208.88 Z53.2
+📍 Attempted Interpolated Step 6.2: Position = [0.0936  0.26945 0.4022 ]
+→ Interpolated Joints = [ 1.85005  1.50702 -0.67137  0.90243 -1.35781 -2.28711]
+📍 Interpolated Step 6.2: Position = [0.051  0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A106.0 B86.35 C86.35 D-25.52 X-51.71 Y208.84 Z53.24
+📍 Attempted Interpolated Step 6.3: Position = [0.0946  0.26945 0.4032 ]
+→ Interpolated Joints = [ 1.84926  1.50754 -0.67247  0.90298 -1.35699 -2.2872 ]
+📍 Interpolated Step 6.3: Position = [0.0512 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.95 B86.38 C86.38 D-25.57 X-51.74 Y208.8 Z53.3
+📍 Attempted Interpolated Step 7.0: Position = [0.0956  0.26945 0.4042 ]
+→ Interpolated Joints = [ 1.84847  1.50805 -0.67355  0.90353 -1.35618 -2.28728]
+📍 Interpolated Step 7.0: Position = [0.0515 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.91 B86.4 C86.4 D-25.63 X-51.77 Y208.75 Z53.35
+📍 Attempted Interpolated Step 7.1: Position = [0.0966  0.26945 0.4052 ]
+→ Interpolated Joints = [ 1.84768  1.50856 -0.67463  0.90408 -1.35537 -2.28736]
+📍 Interpolated Step 7.1: Position = [0.0517 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.86 B86.43 C86.43 D-25.68 X-51.8 Y208.72 Z53.4
+📍 Attempted Interpolated Step 7.2: Position = [0.0976  0.26945 0.4062 ]
+→ Interpolated Joints = [ 1.84688  1.50907 -0.67571  0.90463 -1.35456 -2.28745]
+📍 Interpolated Step 7.2: Position = [0.052  0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.82 B86.46 C86.46 D-25.75 X-51.83 Y208.67 Z53.45
+📍 Attempted Interpolated Step 7.3: Position = [0.0986  0.26945 0.4072 ]
+→ Interpolated Joints = [ 1.84609  1.50958 -0.67678  0.90518 -1.35374 -2.28753]
+📍 Interpolated Step 7.3: Position = [0.0522 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.77 B86.49 C86.49 D-25.81 X-51.86 Y208.63 Z53.51
+📍 Attempted Interpolated Step 8.0: Position = [0.0996  0.26945 0.4082 ]
+→ Interpolated Joints = [ 1.8453   1.51008 -0.67784  0.90573 -1.35294 -2.28761]
+📍 Interpolated Step 8.0: Position = [0.0524 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.73 B86.52 C86.52 D-25.86 X-51.89 Y208.59 Z53.55
+📍 Attempted Interpolated Step 8.1: Position = [0.1006  0.26945 0.4092 ]
+→ Interpolated Joints = [ 1.84451  1.51058 -0.6789   0.90628 -1.35213 -2.28769]
+📍 Interpolated Step 8.1: Position = [0.0527 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.68 B86.55 C86.55 D-25.92 X-51.93 Y208.54 Z53.6
+📍 Attempted Interpolated Step 8.2: Position = [0.1016  0.26945 0.4102 ]
+→ Interpolated Joints = [ 1.84371  1.51109 -0.67996  0.90683 -1.35133 -2.28777]
+📍 Interpolated Step 8.2: Position = [0.0529 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.64 B86.58 C86.58 D-25.97 X-51.96 Y208.51 Z53.65
+📍 Attempted Interpolated Step 8.3: Position = [0.1026  0.26945 0.4112 ]
+→ Interpolated Joints = [ 1.84292  1.51159 -0.68102  0.90738 -1.35052 -2.28784]
+📍 Interpolated Step 8.3: Position = [0.0532 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.59 B86.61 C86.61 D-26.03 X-51.99 Y208.46 Z53.7
+📍 Attempted Interpolated Step 9.0: Position = [0.1036  0.26945 0.4122 ]
+→ Interpolated Joints = [ 1.84212  1.51208 -0.68207  0.90793 -1.34972 -2.28792]
+📍 Interpolated Step 9.0: Position = [0.0534 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.55 B86.64 C86.64 D-26.08 X-52.02 Y208.42 Z53.76
+📍 Attempted Interpolated Step 9.1: Position = [0.1046  0.26945 0.4132 ]
+→ Interpolated Joints = [ 1.84133  1.51257 -0.68311  0.90849 -1.34892 -2.28799]
+📍 Interpolated Step 9.1: Position = [0.0537 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.5 B86.66 C86.66 D-26.14 X-52.05 Y208.38 Z53.8
+📍 Attempted Interpolated Step 9.2: Position = [0.1056  0.26945 0.4142 ]
+→ Interpolated Joints = [ 1.84053  1.51307 -0.68415  0.90904 -1.34812 -2.28806]
+📍 Interpolated Step 9.2: Position = [0.0539 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.45 B86.69 C86.69 D-26.2 X-52.08 Y208.34 Z53.86
+📍 Attempted Interpolated Step 9.3: Position = [0.1066  0.26945 0.4152 ]
+→ Interpolated Joints = [ 1.83974  1.51356 -0.68519  0.90959 -1.34732 -2.28814]
+📍 Interpolated Step 9.3: Position = [0.0542 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.41 B86.72 C86.72 D-26.25 X-52.12 Y208.3 Z53.9
+📍 Attempted Interpolated Step 10.0: Position = [0.1066  0.26945 0.4152 ]
+→ Interpolated Joints = [ 1.83974  1.51356 -0.68519  0.90959 -1.34732 -2.28814]
+📍 Interpolated Step 10.0: Position = [0.0542 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.41 B86.72 C86.72 D-26.25 X-52.12 Y208.3 Z53.9
+📍 Attempted Interpolated Step 10.1: Position = [0.1066  0.26945 0.4152 ]
+→ Interpolated Joints = [ 1.83974  1.51356 -0.68519  0.90959 -1.34732 -2.28814]
+📍 Interpolated Step 10.1: Position = [0.0542 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.41 B86.72 C86.72 D-26.25 X-52.12 Y208.3 Z53.9
+📍 Attempted Interpolated Step 10.2: Position = [0.1066  0.26945 0.4152 ]
+→ Interpolated Joints = [ 1.83974  1.51356 -0.68519  0.90959 -1.34732 -2.28814]
+📍 Interpolated Step 10.2: Position = [0.0542 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.41 B86.72 C86.72 D-26.25 X-52.12 Y208.3 Z53.9
+📍 Attempted Interpolated Step 10.3: Position = [0.1066  0.26945 0.4152 ]
+→ Interpolated Joints = [ 1.83974  1.51356 -0.68519  0.90959 -1.34732 -2.28814]
+📍 Interpolated Step 10.3: Position = [0.0542 0.2871 0.442 ], Orientation (RPY rad) = [0.0658 0.9369 0.0464]
+>>> A105.41 B86.72 C86.72 D-26.25 X-52.12 Y208.3 Z53.9
+📍 Attempted Interpolated Step 11.0: Position = [0.10763 0.2687  0.41623]
+→ Interpolated Joints = [ 1.83908  1.51537 -0.68903  0.91033 -1.34569 -2.28947]
+📍 Interpolated Step 11.0: Position = [0.0545 0.2869 0.442 ], Orientation (RPY rad) = [0.0658 0.9368 0.0464]
+>>> A105.37 B86.82 C86.82 D-26.46 X-52.16 Y208.28 Z54.08
+📍 Attempted Interpolated Step 11.1: Position = [0.10866 0.26795 0.41726]
+→ Interpolated Joints = [ 1.83843  1.51719 -0.69287  0.91107 -1.34406 -2.29081]
+📍 Interpolated Step 11.1: Position = [0.0547 0.2867 0.442 ], Orientation (RPY rad) = [0.0658 0.9368 0.0464]
+>>> A105.33 B86.93 C86.93 D-26.66 X-52.2 Y208.26 Z54.24
+📍 Attempted Interpolated Step 11.2: Position = [0.10969 0.2672  0.41829]
+→ Interpolated Joints = [ 1.83777  1.519   -0.69671  0.91181 -1.34244 -2.29215]
+📍 Interpolated Step 11.2: Position = [0.055  0.2865 0.442 ], Orientation (RPY rad) = [0.0658 0.9368 0.0464]
+>>> A105.3 B87.03 C87.03 D-26.87 X-52.24 Y208.25 Z54.41
+📍 Attempted Interpolated Step 11.3: Position = [0.11072 0.26645 0.41932]
+→ Interpolated Joints = [ 1.83711  1.52081 -0.70056  0.91255 -1.34081 -2.29348]
+📍 Interpolated Step 11.3: Position = [0.0552 0.2863 0.442 ], Orientation (RPY rad) = [0.0658 0.9368 0.0464]
+>>> A105.26 B87.14 C87.14 D-27.07 X-52.29 Y208.23 Z54.59
+📍 Attempted Interpolated Step 12.0: Position = [0.11175 0.2657  0.42035]
+→ Interpolated Joints = [ 1.83645  1.52258 -0.70431  0.9133  -1.33921 -2.29479]
+📍 Interpolated Step 12.0: Position = [0.0555 0.2861 0.442 ], Orientation (RPY rad) = [0.0658 0.9368 0.0464]
+>>> A105.22 B87.24 C87.24 D-27.26 X-52.33 Y208.21 Z54.75
+📍 Attempted Interpolated Step 12.1: Position = [0.11278 0.26495 0.42138]
+→ Interpolated Joints = [ 1.83579  1.52434 -0.70806  0.91405 -1.33762 -2.2961 ]
+📍 Interpolated Step 12.1: Position = [0.0557 0.2859 0.442 ], Orientation (RPY rad) = [0.0658 0.9368 0.0464]
+>>> A105.18 B87.34 C87.34 D-27.47 X-52.37 Y208.2 Z54.92
+📍 Attempted Interpolated Step 12.2: Position = [0.11382 0.2642  0.42241]
+→ Interpolated Joints = [ 1.83513  1.5261  -0.71181  0.9148  -1.33602 -2.29741]
+📍 Interpolated Step 12.2: Position = [0.056  0.2857 0.442 ], Orientation (RPY rad) = [0.0658 0.9368 0.0464]
+>>> A105.15 B87.44 C87.44 D-27.66 X-52.41 Y208.18 Z55.08
+📍 Attempted Interpolated Step 12.3: Position = [0.11485 0.26345 0.42345]
+→ Interpolated Joints = [ 1.83447  1.52787 -0.71556  0.91555 -1.33442 -2.29872]
+📍 Interpolated Step 12.3: Position = [0.0563 0.2855 0.442 ], Orientation (RPY rad) = [0.0658 0.9368 0.0465]
+>>> A105.11 B87.54 C87.54 D-27.87 X-52.46 Y208.17 Z55.25
+📍 Attempted Interpolated Step 13.0: Position = [0.11588 0.2627  0.42448]
+→ Interpolated Joints = [ 1.8338   1.52958 -0.71922  0.91631 -1.33285 -2.30001]
+📍 Interpolated Step 13.0: Position = [0.0565 0.2854 0.442 ], Orientation (RPY rad) = [0.0658 0.9368 0.0465]
+>>> A105.07 B87.64 C87.64 D-28.06 X-52.5 Y208.15 Z55.41
+📍 Attempted Interpolated Step 13.1: Position = [0.11691 0.26195 0.42551]
+→ Interpolated Joints = [ 1.83314  1.5313  -0.72289  0.91707 -1.33128 -2.3013 ]
+📍 Interpolated Step 13.1: Position = [0.0568 0.2852 0.442 ], Orientation (RPY rad) = [0.0658 0.9368 0.0465]
+>>> A105.03 B87.74 C87.74 D-28.26 X-52.54 Y208.13 Z55.57
+📍 Attempted Interpolated Step 13.2: Position = [0.11794 0.2612  0.42654]
+→ Interpolated Joints = [ 1.83247  1.53302 -0.72655  0.91783 -1.32971 -2.30258]
+📍 Interpolated Step 13.2: Position = [0.057 0.285 0.442], Orientation (RPY rad) = [0.0658 0.9368 0.0465]
+>>> A104.99 B87.84 C87.84 D-28.45 X-52.59 Y208.12 Z55.74
+📍 Attempted Interpolated Step 13.3: Position = [0.11897 0.26045 0.42757]
+→ Interpolated Joints = [ 1.83181  1.53473 -0.73022  0.91858 -1.32814 -2.30387]
+📍 Interpolated Step 13.3: Position = [0.0573 0.2848 0.442 ], Orientation (RPY rad) = [0.0658 0.9368 0.0465]
+>>> A104.95 B87.93 C87.93 D-28.65 X-52.63 Y208.1 Z55.9
+📍 Attempted Interpolated Step 14.0: Position = [0.12   0.2597 0.4286]
+→ Interpolated Joints = [ 1.83114  1.53641 -0.7338   0.91935 -1.3266  -2.30513]
+📍 Interpolated Step 14.0: Position = [0.0575 0.2846 0.442 ], Orientation (RPY rad) = [0.0658 0.9368 0.0465]
+>>> A104.92 B88.03 C88.03 D-28.84 X-52.68 Y208.08 Z56.06
+📍 Attempted Interpolated Step 14.1: Position = [0.12103 0.25895 0.42963]
+→ Interpolated Joints = [ 1.83047  1.53808 -0.73739  0.92012 -1.32505 -2.3064 ]
+📍 Interpolated Step 14.1: Position = [0.0578 0.2844 0.442 ], Orientation (RPY rad) = [0.0658 0.9368 0.0465]
+>>> A104.88 B88.13 C88.13 D-29.03 X-52.72 Y208.07 Z56.23
+📍 Attempted Interpolated Step 14.2: Position = [0.12207 0.2582  0.43066]
+→ Interpolated Joints = [ 1.8298   1.53975 -0.74097  0.92089 -1.32351 -2.30766]
+📍 Interpolated Step 14.2: Position = [0.0581 0.2842 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.84 B88.22 C88.22 D-29.22 X-52.76 Y208.05 Z56.39
+📍 Attempted Interpolated Step 14.3: Position = [0.1231  0.25745 0.4317 ]
+→ Interpolated Joints = [ 1.82913  1.54142 -0.74456  0.92166 -1.32196 -2.30893]
+📍 Interpolated Step 14.3: Position = [0.0583 0.284  0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.8 B88.32 C88.32 D-29.41 X-52.81 Y208.03 Z56.55
+📍 Attempted Interpolated Step 15.0: Position = [0.1231  0.25745 0.4317 ]
+→ Interpolated Joints = [ 1.82913  1.54142 -0.74456  0.92166 -1.32196 -2.30893]
+📍 Interpolated Step 15.0: Position = [0.0583 0.284  0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.8 B88.32 C88.32 D-29.41 X-52.81 Y208.03 Z56.55
+📍 Attempted Interpolated Step 15.1: Position = [0.1231  0.25745 0.4317 ]
+→ Interpolated Joints = [ 1.82913  1.54142 -0.74456  0.92166 -1.32196 -2.30893]
+📍 Interpolated Step 15.1: Position = [0.0583 0.284  0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.8 B88.32 C88.32 D-29.41 X-52.81 Y208.03 Z56.55
+📍 Attempted Interpolated Step 15.2: Position = [0.1231  0.25745 0.4317 ]
+→ Interpolated Joints = [ 1.82913  1.54142 -0.74456  0.92166 -1.32196 -2.30893]
+📍 Interpolated Step 15.2: Position = [0.0583 0.284  0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.8 B88.32 C88.32 D-29.41 X-52.81 Y208.03 Z56.55
+📍 Attempted Interpolated Step 15.3: Position = [0.1231  0.25745 0.4317 ]
+→ Interpolated Joints = [ 1.82913  1.54142 -0.74456  0.92166 -1.32196 -2.30893]
+📍 Interpolated Step 15.3: Position = [0.0583 0.284  0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.8 B88.32 C88.32 D-29.41 X-52.81 Y208.03 Z56.55
+📍 Attempted Interpolated Step 16.0: Position = [0.12339 0.25686 0.43199]
+→ Interpolated Joints = [ 1.82902  1.54248 -0.74684  0.92197 -1.32116 -2.30988]
+📍 Interpolated Step 16.0: Position = [0.0584 0.2839 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.8 B88.38 C88.38 D-29.53 X-52.83 Y208.05 Z56.65
+📍 Attempted Interpolated Step 16.1: Position = [0.12369 0.25627 0.43228]
+→ Interpolated Joints = [ 1.82891  1.54355 -0.74913  0.92228 -1.32035 -2.31084]
+📍 Interpolated Step 16.1: Position = [0.0585 0.2837 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.79 B88.44 C88.44 D-29.65 X-52.84 Y208.05 Z56.75
+📍 Attempted Interpolated Step 16.2: Position = [0.12398 0.25568 0.43258]
+→ Interpolated Joints = [ 1.82879  1.54461 -0.75141  0.9226  -1.31955 -2.31179]
+📍 Interpolated Step 16.2: Position = [0.0585 0.2836 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.78 B88.5 C88.5 D-29.78 X-52.86 Y208.06 Z56.86
+📍 Attempted Interpolated Step 16.3: Position = [0.12427 0.2551  0.43287]
+→ Interpolated Joints = [ 1.82868  1.54567 -0.7537   0.92291 -1.31875 -2.31275]
+📍 Interpolated Step 16.3: Position = [0.0586 0.2834 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.78 B88.56 C88.56 D-29.9 X-52.88 Y208.07 Z56.95
+📍 Attempted Interpolated Step 17.0: Position = [0.12427 0.2551  0.43287]
+→ Interpolated Joints = [ 1.82868  1.54567 -0.7537   0.92291 -1.31875 -2.31275]
+📍 Interpolated Step 17.0: Position = [0.0586 0.2834 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.78 B88.56 C88.56 D-29.9 X-52.88 Y208.07 Z56.95
+📍 Attempted Interpolated Step 17.1: Position = [0.12427 0.2551  0.43287]
+→ Interpolated Joints = [ 1.82868  1.54567 -0.7537   0.92291 -1.31875 -2.31275]
+📍 Interpolated Step 17.1: Position = [0.0586 0.2834 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.78 B88.56 C88.56 D-29.9 X-52.88 Y208.07 Z56.95
+📍 Attempted Interpolated Step 17.2: Position = [0.12427 0.2551  0.43287]
+→ Interpolated Joints = [ 1.82868  1.54567 -0.7537   0.92291 -1.31875 -2.31275]
+📍 Interpolated Step 17.2: Position = [0.0586 0.2834 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.78 B88.56 C88.56 D-29.9 X-52.88 Y208.07 Z56.95
+📍 Attempted Interpolated Step 17.3: Position = [0.12427 0.2551  0.43287]
+→ Interpolated Joints = [ 1.82868  1.54567 -0.7537   0.92291 -1.31875 -2.31275]
+📍 Interpolated Step 17.3: Position = [0.0586 0.2834 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.78 B88.56 C88.56 D-29.9 X-52.88 Y208.07 Z56.95
+📍 Attempted Interpolated Step 18.0: Position = [0.12465 0.2536  0.43325]
+→ Interpolated Joints = [ 1.8287   1.54818 -0.75912  0.9235  -1.317   -2.31515]
+📍 Interpolated Step 18.0: Position = [0.0587 0.2831 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.78 B88.7 C88.7 D-30.18 X-52.91 Y208.11 Z57.19
+📍 Attempted Interpolated Step 18.1: Position = [0.12502 0.2521  0.43362]
+→ Interpolated Joints = [ 1.82871  1.55069 -0.76454  0.92409 -1.31525 -2.31756]
+📍 Interpolated Step 18.1: Position = [0.0588 0.2827 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.78 B88.85 C88.85 D-30.48 X-52.95 Y208.15 Z57.43
+📍 Attempted Interpolated Step 18.2: Position = [0.1254 0.2506 0.434 ]
+→ Interpolated Joints = [ 1.82873  1.55321 -0.76997  0.92468 -1.31351 -2.31996]
+📍 Interpolated Step 18.2: Position = [0.0589 0.2823 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.78 B88.99 C88.99 D-30.77 X-52.98 Y208.18 Z57.66
+📍 Attempted Interpolated Step 18.3: Position = [0.12577 0.2491  0.43437]
+→ Interpolated Joints = [ 1.82875  1.55572 -0.77539  0.92526 -1.31176 -2.32236]
+📍 Interpolated Step 18.3: Position = [0.059  0.2819 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.78 B89.14 C89.14 D-31.06 X-53.01 Y208.22 Z57.9
+📍 Attempted Interpolated Step 19.0: Position = [0.12577 0.2491  0.43437]
+→ Interpolated Joints = [ 1.82875  1.55572 -0.77539  0.92526 -1.31176 -2.32236]
+📍 Interpolated Step 19.0: Position = [0.059  0.2819 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.78 B89.14 C89.14 D-31.06 X-53.01 Y208.22 Z57.9
+📍 Attempted Interpolated Step 19.1: Position = [0.12577 0.2491  0.43437]
+→ Interpolated Joints = [ 1.82875  1.55572 -0.77539  0.92526 -1.31176 -2.32236]
+📍 Interpolated Step 19.1: Position = [0.059  0.2819 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.78 B89.14 C89.14 D-31.06 X-53.01 Y208.22 Z57.9
+📍 Attempted Interpolated Step 19.2: Position = [0.12577 0.2491  0.43437]
+→ Interpolated Joints = [ 1.82875  1.55572 -0.77539  0.92526 -1.31176 -2.32236]
+📍 Interpolated Step 19.2: Position = [0.059  0.2819 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.78 B89.14 C89.14 D-31.06 X-53.01 Y208.22 Z57.9
+📍 Attempted Interpolated Step 19.3: Position = [0.12577 0.2491  0.43437]
+→ Interpolated Joints = [ 1.82875  1.55572 -0.77539  0.92526 -1.31176 -2.32236]
+📍 Interpolated Step 19.3: Position = [0.059  0.2819 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.78 B89.14 C89.14 D-31.06 X-53.01 Y208.22 Z57.9
+📍 Attempted Interpolated Step 20.0: Position = [0.12577 0.24835 0.43437]
+→ Interpolated Joints = [ 1.82891  1.55686 -0.77786  0.92545 -1.31105 -2.32354]
+📍 Interpolated Step 20.0: Position = [0.059  0.2817 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.79 B89.2 C89.2 D-31.19 X-53.02 Y208.25 Z58.01
+📍 Attempted Interpolated Step 20.1: Position = [0.12577 0.2476  0.43437]
+→ Interpolated Joints = [ 1.82907  1.558   -0.78034  0.92564 -1.31033 -2.32471]
+📍 Interpolated Step 20.1: Position = [0.059  0.2815 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.8 B89.27 C89.27 D-31.32 X-53.03 Y208.28 Z58.12
+📍 Attempted Interpolated Step 20.2: Position = [0.12577 0.24685 0.43437]
+→ Interpolated Joints = [ 1.82923  1.55914 -0.78281  0.92582 -1.30962 -2.32589]
+📍 Interpolated Step 20.2: Position = [0.059  0.2813 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.81 B89.33 C89.33 D-31.45 X-53.05 Y208.3 Z58.22
+📍 Attempted Interpolated Step 20.3: Position = [0.12577 0.2461  0.43437]
+→ Interpolated Joints = [ 1.82939  1.56027 -0.78528  0.92601 -1.30891 -2.32706]
+📍 Interpolated Step 20.3: Position = [0.059  0.2812 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.82 B89.4 C89.4 D-31.58 X-53.06 Y208.32 Z58.34
+📍 Attempted Interpolated Step 21.0: Position = [0.12577 0.2461  0.43437]
+→ Interpolated Joints = [ 1.82939  1.56027 -0.78528  0.92601 -1.30891 -2.32706]
+📍 Interpolated Step 21.0: Position = [0.059  0.2812 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.82 B89.4 C89.4 D-31.58 X-53.06 Y208.32 Z58.34
+📍 Attempted Interpolated Step 21.1: Position = [0.12577 0.2461  0.43437]
+→ Interpolated Joints = [ 1.82939  1.56027 -0.78528  0.92601 -1.30891 -2.32706]
+📍 Interpolated Step 21.1: Position = [0.059  0.2812 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.82 B89.4 C89.4 D-31.58 X-53.06 Y208.32 Z58.34
+📍 Attempted Interpolated Step 21.2: Position = [0.12577 0.2461  0.43437]
+→ Interpolated Joints = [ 1.82939  1.56027 -0.78528  0.92601 -1.30891 -2.32706]
+📍 Interpolated Step 21.2: Position = [0.059  0.2812 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.82 B89.4 C89.4 D-31.58 X-53.06 Y208.32 Z58.34
+📍 Attempted Interpolated Step 21.3: Position = [0.12577 0.2461  0.43437]
+→ Interpolated Joints = [ 1.82939  1.56027 -0.78528  0.92601 -1.30891 -2.32706]
+📍 Interpolated Step 21.3: Position = [0.059  0.2812 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.82 B89.4 C89.4 D-31.58 X-53.06 Y208.32 Z58.34
+📍 Attempted Interpolated Step 22.0: Position = [0.12574 0.24466 0.43434]
+→ Interpolated Joints = [ 1.82973  1.56241 -0.78994  0.92634 -1.30758 -2.32929]
+📍 Interpolated Step 22.0: Position = [0.059  0.2808 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.84 B89.52 C89.52 D-31.83 X-53.08 Y208.38 Z58.54
+📍 Attempted Interpolated Step 22.1: Position = [0.12571 0.24322 0.43431]
+→ Interpolated Joints = [ 1.83007  1.56455 -0.79459  0.92668 -1.30626 -2.33152]
+📍 Interpolated Step 22.1: Position = [0.059  0.2804 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.86 B89.64 C89.64 D-32.08 X-53.09 Y208.43 Z58.75
+📍 Attempted Interpolated Step 22.2: Position = [0.12568 0.24178 0.43428]
+→ Interpolated Joints = [ 1.8304   1.56668 -0.79925  0.92702 -1.30493 -2.33375]
+📍 Interpolated Step 22.2: Position = [0.059  0.2801 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.87 B89.76 C89.76 D-32.33 X-53.11 Y208.48 Z58.94
+📍 Attempted Interpolated Step 22.3: Position = [0.12565 0.24035 0.43425]
+→ Interpolated Joints = [ 1.83074  1.56882 -0.8039   0.92736 -1.30361 -2.33598]
+📍 Interpolated Step 22.3: Position = [0.059  0.2797 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.89 B89.89 C89.89 D-32.58 X-53.13 Y208.53 Z59.15
+📍 Attempted Interpolated Step 23.0: Position = [0.12562 0.23891 0.43422]
+→ Interpolated Joints = [ 1.83108  1.5709  -0.80845  0.92769 -1.30231 -2.33818]
+📍 Interpolated Step 23.0: Position = [0.0589 0.2793 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.91 B90.01 C90.01 D-32.82 X-53.15 Y208.59 Z59.35
+📍 Attempted Interpolated Step 23.1: Position = [0.12559 0.23747 0.43418]
+→ Interpolated Joints = [ 1.83142  1.57297 -0.813    0.92803 -1.30102 -2.34037]
+📍 Interpolated Step 23.1: Position = [0.0589 0.279  0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.93 B90.12 C90.12 D-33.06 X-53.17 Y208.63 Z59.55
+📍 Attempted Interpolated Step 23.2: Position = [0.12555 0.23603 0.43415]
+→ Interpolated Joints = [ 1.83176  1.57505 -0.81754  0.92836 -1.29972 -2.34257]
+📍 Interpolated Step 23.2: Position = [0.0589 0.2786 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.95 B90.24 C90.24 D-33.3 X-53.19 Y208.69 Z59.75
+📍 Attempted Interpolated Step 23.3: Position = [0.12552 0.2346  0.43412]
+→ Interpolated Joints = [ 1.8321   1.57712 -0.82209  0.9287  -1.29843 -2.34477]
+📍 Interpolated Step 23.3: Position = [0.0589 0.2783 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.97 B90.36 C90.36 D-33.55 X-53.21 Y208.74 Z59.96
+📍 Attempted Interpolated Step 24.0: Position = [0.12549 0.23316 0.43409]
+→ Interpolated Joints = [ 1.83244  1.57914 -0.82654  0.92903 -1.29716 -2.34693]
+📍 Interpolated Step 24.0: Position = [0.0589 0.2779 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A104.99 B90.48 C90.48 D-33.79 X-53.23 Y208.79 Z60.15
+📍 Attempted Interpolated Step 24.1: Position = [0.12546 0.23172 0.43406]
+→ Interpolated Joints = [ 1.83278  1.58116 -0.83098  0.92936 -1.2959  -2.3491 ]
+📍 Interpolated Step 24.1: Position = [0.0589 0.2775 0.442 ], Orientation (RPY rad) = [0.0659 0.9367 0.0465]
+>>> A105.01 B90.59 C90.59 D-34.02 X-53.25 Y208.84 Z60.34
+📍 Attempted Interpolated Step 24.2: Position = [0.12543 0.23028 0.43403]
+→ Interpolated Joints = [ 1.83312  1.58318 -0.83543  0.92969 -1.29463 -2.35126]
+📍 Interpolated Step 24.2: Position = [0.0589 0.2772 0.442 ], Orientation (RPY rad) = [0.0659 0.9366 0.0465]
+>>> A105.03 B90.71 C90.71 D-34.26 X-53.27 Y208.9 Z60.54
+📍 Attempted Interpolated Step 24.3: Position = [0.1254  0.22885 0.434  ]
+→ Interpolated Joints = [ 1.83347  1.58519 -0.83988  0.93003 -1.29336 -2.35343]
+📍 Interpolated Step 24.3: Position = [0.0589 0.2768 0.442 ], Orientation (RPY rad) = [0.0659 0.9366 0.0465]
+>>> A105.05 B90.82 C90.82 D-34.5 X-53.29 Y208.94 Z60.74
+📍 Attempted Interpolated Step 25.0: Position = [0.12537 0.22741 0.43397]
+→ Interpolated Joints = [ 1.83381  1.58716 -0.84423  0.93036 -1.29212 -2.35556]
+📍 Interpolated Step 25.0: Position = [0.0589 0.2764 0.442 ], Orientation (RPY rad) = [0.0659 0.9366 0.0465]
+>>> A105.07 B90.94 C90.94 D-34.73 X-53.31 Y208.99 Z60.93
+📍 Attempted Interpolated Step 25.1: Position = [0.12534 0.22597 0.43393]
+→ Interpolated Joints = [ 1.83416  1.58912 -0.84858  0.93069 -1.29088 -2.3577 ]
+📍 Interpolated Step 25.1: Position = [0.0589 0.2761 0.442 ], Orientation (RPY rad) = [0.0659 0.9366 0.0465]
+>>> A105.09 B91.05 C91.05 D-34.96 X-53.32 Y209.05 Z61.13
+📍 Attempted Interpolated Step 25.2: Position = [0.1253  0.22453 0.4339 ]
+→ Interpolated Joints = [ 1.8345   1.59109 -0.85294  0.93102 -1.28964 -2.35984]
+📍 Interpolated Step 25.2: Position = [0.0589 0.2757 0.442 ], Orientation (RPY rad) = [0.0659 0.9366 0.0465]
+>>> A105.11 B91.16 C91.16 D-35.2 X-53.34 Y209.1 Z61.32
+📍 Attempted Interpolated Step 25.3: Position = [0.12527 0.2231  0.43387]
+→ Interpolated Joints = [ 1.83485  1.59305 -0.85729  0.93135 -1.2884  -2.36197]
+📍 Interpolated Step 25.3: Position = [0.0589 0.2754 0.442 ], Orientation (RPY rad) = [0.0659 0.9366 0.0465]
+>>> A105.13 B91.28 C91.28 D-35.43 X-53.36 Y209.15 Z61.51
+📍 Attempted Interpolated Step 26.0: Position = [0.12524 0.22166 0.43384]
+→ Interpolated Joints = [ 1.8352   1.59496 -0.86155  0.93168 -1.28719 -2.36408]
+📍 Interpolated Step 26.0: Position = [0.0589 0.275  0.442 ], Orientation (RPY rad) = [0.0659 0.9366 0.0465]
+>>> A105.15 B91.38 C91.38 D-35.65 X-53.38 Y209.2 Z61.7
+📍 Attempted Interpolated Step 26.1: Position = [0.12521 0.22022 0.43381]
+→ Interpolated Joints = [ 1.83555  1.59688 -0.86582  0.93201 -1.28597 -2.36619]
+📍 Interpolated Step 26.1: Position = [0.0589 0.2746 0.442 ], Orientation (RPY rad) = [0.0659 0.9366 0.0465]
+>>> A105.17 B91.49 C91.49 D-35.89 X-53.4 Y209.25 Z61.89
+📍 Attempted Interpolated Step 26.2: Position = [0.12518 0.21878 0.43378]
+→ Interpolated Joints = [ 1.8359   1.59879 -0.87008  0.93234 -1.28476 -2.3683 ]
+📍 Interpolated Step 26.2: Position = [0.0589 0.2743 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.19 B91.6 C91.6 D-36.11 X-53.42 Y209.3 Z62.08
+📍 Attempted Interpolated Step 26.3: Position = [0.12515 0.21735 0.43375]
+→ Interpolated Joints = [ 1.83625  1.60071 -0.87434  0.93267 -1.28354 -2.37041]
+📍 Interpolated Step 26.3: Position = [0.0588 0.2739 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.21 B91.71 C91.71 D-36.34 X-53.44 Y209.35 Z62.27
+📍 Attempted Interpolated Step 27.0: Position = [0.12512 0.21591 0.43372]
+→ Interpolated Joints = [ 1.8366   1.60257 -0.87853  0.93299 -1.28235 -2.3725 ]
+📍 Interpolated Step 27.0: Position = [0.0588 0.2735 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.23 B91.82 C91.82 D-36.57 X-53.46 Y209.4 Z62.46
+📍 Attempted Interpolated Step 27.1: Position = [0.12509 0.21447 0.43368]
+→ Interpolated Joints = [ 1.83695  1.60444 -0.88271  0.93332 -1.28116 -2.37458]
+📍 Interpolated Step 27.1: Position = [0.0588 0.2732 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.25 B91.93 C91.93 D-36.79 X-53.48 Y209.46 Z62.64
+📍 Attempted Interpolated Step 27.2: Position = [0.12505 0.21303 0.43365]
+→ Interpolated Joints = [ 1.83731  1.6063  -0.88689  0.93365 -1.27997 -2.37667]
+📍 Interpolated Step 27.2: Position = [0.0588 0.2728 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.27 B92.03 C92.03 D-37.0 X-53.49 Y209.51 Z62.83
+📍 Attempted Interpolated Step 27.3: Position = [0.12502 0.2116  0.43362]
+→ Interpolated Joints = [ 1.83766  1.60817 -0.89107  0.93398 -1.27878 -2.37875]
+📍 Interpolated Step 27.3: Position = [0.0588 0.2725 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.29 B92.14 C92.14 D-37.23 X-53.51 Y209.56 Z63.02
+📍 Attempted Interpolated Step 28.0: Position = [0.12499 0.21016 0.43359]
+→ Interpolated Joints = [ 1.83801  1.60999 -0.89517  0.9343  -1.27761 -2.38081]
+📍 Interpolated Step 28.0: Position = [0.0588 0.2721 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.31 B92.25 C92.25 D-37.45 X-53.53 Y209.61 Z63.21
+📍 Attempted Interpolated Step 28.1: Position = [0.12496 0.20872 0.43356]
+→ Interpolated Joints = [ 1.83837  1.61181 -0.89927  0.93463 -1.27644 -2.38287]
+📍 Interpolated Step 28.1: Position = [0.0588 0.2717 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.33 B92.35 C92.35 D-37.67 X-53.55 Y209.66 Z63.4
+📍 Attempted Interpolated Step 28.2: Position = [0.12493 0.20728 0.43353]
+→ Interpolated Joints = [ 1.83873  1.61363 -0.90337  0.93495 -1.27527 -2.38493]
+📍 Interpolated Step 28.2: Position = [0.0588 0.2714 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.35 B92.45 C92.45 D-37.89 X-53.57 Y209.72 Z63.58
+📍 Attempted Interpolated Step 28.3: Position = [0.1249  0.20585 0.4335 ]
+→ Interpolated Joints = [ 1.83908  1.61545 -0.90748  0.93528 -1.2741  -2.387  ]
+📍 Interpolated Step 28.3: Position = [0.0588 0.271  0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.37 B92.56 C92.56 D-38.11 X-53.59 Y209.76 Z63.76
+📍 Attempted Interpolated Step 29.0: Position = [0.12487 0.20441 0.43347]
+→ Interpolated Joints = [ 1.83944  1.61722 -0.9115   0.9356  -1.27296 -2.38904]
+📍 Interpolated Step 29.0: Position = [0.0588 0.2706 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.39 B92.66 C92.66 D-38.33 X-53.61 Y209.82 Z63.94
+📍 Attempted Interpolated Step 29.1: Position = [0.12484 0.20297 0.43343]
+→ Interpolated Joints = [ 1.8398   1.619   -0.91553  0.93592 -1.27181 -2.39107]
+📍 Interpolated Step 29.1: Position = [0.0588 0.2703 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.41 B92.76 C92.76 D-38.55 X-53.62 Y209.87 Z64.13
+📍 Attempted Interpolated Step 29.2: Position = [0.1248  0.20153 0.4334 ]
+→ Interpolated Joints = [ 1.84016  1.62078 -0.91956  0.93625 -1.27066 -2.39311]
+📍 Interpolated Step 29.2: Position = [0.0588 0.2699 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.43 B92.86 C92.86 D-38.76 X-53.64 Y209.92 Z64.32
+📍 Attempted Interpolated Step 29.3: Position = [0.12477 0.2001  0.43337]
+→ Interpolated Joints = [ 1.84052  1.62255 -0.92359  0.93657 -1.26951 -2.39515]
+📍 Interpolated Step 29.3: Position = [0.0588 0.2696 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.45 B92.97 C92.97 D-38.98 X-53.66 Y209.97 Z64.49
+📍 Attempted Interpolated Step 30.0: Position = [0.12474 0.19866 0.43334]
+→ Interpolated Joints = [ 1.84088  1.62429 -0.92754  0.93689 -1.26838 -2.39717]
+📍 Interpolated Step 30.0: Position = [0.0588 0.2692 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.47 B93.06 C93.06 D-39.18 X-53.68 Y210.02 Z64.68
+📍 Attempted Interpolated Step 30.1: Position = [0.12471 0.19722 0.43331]
+→ Interpolated Joints = [ 1.84125  1.62602 -0.9315   0.93721 -1.26725 -2.39919]
+📍 Interpolated Step 30.1: Position = [0.0587 0.2688 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.5 B93.16 C93.16 D-39.4 X-53.7 Y210.07 Z64.85
+📍 Attempted Interpolated Step 30.2: Position = [0.12468 0.19578 0.43328]
+→ Interpolated Joints = [ 1.84161  1.62776 -0.93546  0.93753 -1.26613 -2.40121]
+📍 Interpolated Step 30.2: Position = [0.0587 0.2685 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.52 B93.26 C93.26 D-39.61 X-53.72 Y210.12 Z65.04
+📍 Attempted Interpolated Step 30.3: Position = [0.12465 0.19435 0.43325]
+→ Interpolated Joints = [ 1.84197  1.6295  -0.93942  0.93785 -1.265   -2.40323]
+📍 Interpolated Step 30.3: Position = [0.0587 0.2681 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.54 B93.36 C93.36 D-39.82 X-53.74 Y210.17 Z65.21
+📍 Attempted Interpolated Step 31.0: Position = [0.12462 0.19291 0.43322]
+→ Interpolated Joints = [ 1.84234  1.63119 -0.94331  0.93817 -1.26389 -2.40523]
+📍 Interpolated Step 31.0: Position = [0.0587 0.2678 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.56 B93.46 C93.46 D-40.03 X-53.75 Y210.23 Z65.39
+📍 Attempted Interpolated Step 31.1: Position = [0.12459 0.19147 0.43318]
+→ Interpolated Joints = [ 1.8427   1.63289 -0.9472   0.93849 -1.26278 -2.40723]
+📍 Interpolated Step 31.1: Position = [0.0587 0.2674 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.58 B93.56 C93.56 D-40.24 X-53.77 Y210.27 Z65.57
+📍 Attempted Interpolated Step 31.2: Position = [0.12455 0.19003 0.43315]
+→ Interpolated Joints = [ 1.84307  1.63458 -0.95109  0.93881 -1.26167 -2.40923]
+📍 Interpolated Step 31.2: Position = [0.0587 0.267  0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.6 B93.65 C93.65 D-40.44 X-53.79 Y210.33 Z65.75
+📍 Attempted Interpolated Step 31.3: Position = [0.12452 0.1886  0.43312]
+→ Interpolated Joints = [ 1.84344  1.63628 -0.95498  0.93913 -1.26056 -2.41123]
+📍 Interpolated Step 31.3: Position = [0.0587 0.2667 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.62 B93.75 C93.75 D-40.66 X-53.81 Y210.37 Z65.93
+📍 Attempted Interpolated Step 32.0: Position = [0.12449 0.18716 0.43309]
+→ Interpolated Joints = [ 1.84381  1.63794 -0.9588   0.93945 -1.25947 -2.41321]
+📍 Interpolated Step 32.0: Position = [0.0587 0.2663 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.64 B93.85 C93.85 D-40.86 X-53.83 Y210.43 Z66.11
+📍 Attempted Interpolated Step 32.1: Position = [0.12446 0.18572 0.43306]
+→ Interpolated Joints = [ 1.84418  1.6396  -0.96263  0.93977 -1.25838 -2.41519]
+📍 Interpolated Step 32.1: Position = [0.0587 0.2659 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.66 B93.94 C93.94 D-41.06 X-53.84 Y210.48 Z66.28
+📍 Attempted Interpolated Step 32.2: Position = [0.12443 0.18428 0.43303]
+→ Interpolated Joints = [ 1.84455  1.64126 -0.96646  0.94008 -1.25728 -2.41717]
+📍 Interpolated Step 32.2: Position = [0.0587 0.2656 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.68 B94.04 C94.04 D-41.26 X-53.86 Y210.53 Z66.45
+📍 Attempted Interpolated Step 32.3: Position = [0.1244  0.18285 0.433  ]
+→ Interpolated Joints = [ 1.84492  1.64292 -0.97028  0.9404  -1.25619 -2.41915]
+📍 Interpolated Step 32.3: Position = [0.0587 0.2652 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.71 B94.13 C94.13 D-41.47 X-53.88 Y210.58 Z66.64
+📍 Attempted Interpolated Step 33.0: Position = [0.12437 0.18141 0.43297]
+→ Interpolated Joints = [ 1.84529  1.64454 -0.97405  0.94072 -1.25512 -2.42112]
+📍 Interpolated Step 33.0: Position = [0.0587 0.2649 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.73 B94.23 C94.23 D-41.68 X-53.9 Y210.63 Z66.81
+📍 Attempted Interpolated Step 33.1: Position = [0.12434 0.17997 0.43293]
+→ Interpolated Joints = [ 1.84567  1.64616 -0.97781  0.94103 -1.25404 -2.42308]
+📍 Interpolated Step 33.1: Position = [0.0587 0.2645 0.442 ], Orientation (RPY rad) = [0.066  0.9366 0.0465]
+>>> A105.75 B94.32 C94.32 D-41.87 X-53.92 Y210.68 Z66.98
+📍 Attempted Interpolated Step 33.2: Position = [0.1243  0.17853 0.4329 ]
+→ Interpolated Joints = [ 1.84604  1.64778 -0.98158  0.94135 -1.25297 -2.42505]
+📍 Interpolated Step 33.2: Position = [0.0587 0.2641 0.442 ], Orientation (RPY rad) = [0.066  0.9365 0.0465]
+>>> A105.77 B94.41 C94.41 D-42.08 X-53.94 Y210.73 Z67.15
+📍 Attempted Interpolated Step 33.3: Position = [0.12427 0.1771  0.43287]
+→ Interpolated Joints = [ 1.84641  1.64941 -0.98534  0.94166 -1.25189 -2.42701]
+📍 Interpolated Step 33.3: Position = [0.0586 0.2638 0.442 ], Orientation (RPY rad) = [0.066  0.9365 0.0465]
+>>> A105.79 B94.5 C94.5 D-42.28 X-53.95 Y210.79 Z67.33
+📍 Attempted Interpolated Step 34.0: Position = [0.12427 0.1771  0.43287]
+→ Interpolated Joints = [ 1.84641  1.64941 -0.98534  0.94166 -1.25189 -2.42701]
+📍 Interpolated Step 34.0: Position = [0.0586 0.2638 0.442 ], Orientation (RPY rad) = [0.066  0.9365 0.0465]
+>>> A105.79 B94.5 C94.5 D-42.28 X-53.95 Y210.79 Z67.33
+📍 Attempted Interpolated Step 34.1: Position = [0.12427 0.1771  0.43287]
+→ Interpolated Joints = [ 1.84641  1.64941 -0.98534  0.94166 -1.25189 -2.42701]
+📍 Interpolated Step 34.1: Position = [0.0586 0.2638 0.442 ], Orientation (RPY rad) = [0.066  0.9365 0.0465]
+>>> A105.79 B94.5 C94.5 D-42.28 X-53.95 Y210.79 Z67.33
+📍 Attempted Interpolated Step 34.2: Position = [0.12427 0.1771  0.43287]
+→ Interpolated Joints = [ 1.84641  1.64941 -0.98534  0.94166 -1.25189 -2.42701]
+📍 Interpolated Step 34.2: Position = [0.0586 0.2638 0.442 ], Orientation (RPY rad) = [0.066  0.9365 0.0465]
+>>> A105.79 B94.5 C94.5 D-42.28 X-53.95 Y210.79 Z67.33
+📍 Attempted Interpolated Step 34.3: Position = [0.12427 0.1771  0.43287]
+→ Interpolated Joints = [ 1.84641  1.64941 -0.98534  0.94166 -1.25189 -2.42701]
+📍 Interpolated Step 34.3: Position = [0.0586 0.2638 0.442 ], Orientation (RPY rad) = [0.066  0.9365 0.0465]
+>>> A105.79 B94.5 C94.5 D-42.28 X-53.95 Y210.79 Z67.33
+📍 Attempted Interpolated Step 35.0: Position = [0.12421 0.17547 0.43281]
+→ Interpolated Joints = [ 1.84686  1.65119 -0.98952  0.942   -1.25071 -2.42921]
+📍 Interpolated Step 35.0: Position = [0.0586 0.2634 0.442 ], Orientation (RPY rad) = [0.066  0.9365 0.0465]
+>>> A105.82 B94.61 C94.61 D-42.51 X-53.97 Y210.84 Z67.52
+📍 Attempted Interpolated Step 35.1: Position = [0.12415 0.17385 0.43275]
+→ Interpolated Joints = [ 1.84731  1.65298 -0.99369  0.94234 -1.24954 -2.43142]
+📍 Interpolated Step 35.1: Position = [0.0586 0.263  0.442 ], Orientation (RPY rad) = [0.066  0.9365 0.0465]
+>>> A105.84 B94.71 C94.71 D-42.72 X-53.99 Y210.9 Z67.72
+📍 Attempted Interpolated Step 35.2: Position = [0.12409 0.17222 0.43268]
+→ Interpolated Joints = [ 1.84776  1.65477 -0.99786  0.94267 -1.24836 -2.43362]
+📍 Interpolated Step 35.2: Position = [0.0586 0.2625 0.442 ], Orientation (RPY rad) = [0.066  0.9365 0.0465]
+>>> A105.87 B94.81 C94.81 D-42.95 X-54.01 Y210.97 Z67.91
+📍 Attempted Interpolated Step 35.3: Position = [0.12402 0.1706  0.43262]
+→ Interpolated Joints = [ 1.84821  1.65656 -1.00203  0.94301 -1.24718 -2.43582]
+📍 Interpolated Step 35.3: Position = [0.0586 0.2621 0.4419], Orientation (RPY rad) = [0.066  0.9365 0.0465]
+>>> A105.89 B94.91 C94.91 D-43.17 X-54.03 Y211.02 Z68.1
+📍 Attempted Interpolated Step 36.0: Position = [0.12396 0.16897 0.43256]
+→ Interpolated Joints = [ 1.84867  1.6583  -1.00613  0.94334 -1.24602 -2.438  ]
+📍 Interpolated Step 36.0: Position = [0.0586 0.2617 0.4419], Orientation (RPY rad) = [0.066  0.9365 0.0465]
+>>> A105.92 B95.01 C95.01 D-43.4 X-54.05 Y211.08 Z68.3
+📍 Attempted Interpolated Step 36.1: Position = [0.1239  0.16735 0.4325 ]
+→ Interpolated Joints = [ 1.84912  1.66005 -1.01023  0.94367 -1.24486 -2.44018]
+📍 Interpolated Step 36.1: Position = [0.0586 0.2613 0.4419], Orientation (RPY rad) = [0.066  0.9365 0.0465]
+>>> A105.95 B95.11 C95.11 D-43.61 X-54.07 Y211.14 Z68.48
+📍 Attempted Interpolated Step 36.2: Position = [0.12384 0.16572 0.43243]
+→ Interpolated Joints = [ 1.84958  1.66179 -1.01433  0.94401 -1.2437  -2.44237]
+📍 Interpolated Step 36.2: Position = [0.0585 0.2609 0.4419], Orientation (RPY rad) = [0.0661 0.9365 0.0465]
+>>> A105.97 B95.21 C95.21 D-43.84 X-54.09 Y211.2 Z68.68
+📍 Attempted Interpolated Step 36.3: Position = [0.12377 0.1641  0.43237]
+→ Interpolated Joints = [ 1.85003  1.66354 -1.01843  0.94434 -1.24254 -2.44455]
+📍 Interpolated Step 36.3: Position = [0.0585 0.2605 0.4419], Orientation (RPY rad) = [0.0661 0.9365 0.0465]
+>>> A106.0 B95.31 C95.31 D-44.05 X-54.11 Y211.25 Z68.87
+📍 Attempted Interpolated Step 37.0: Position = [0.12371 0.16247 0.43231]
+→ Interpolated Joints = [ 1.85049  1.66524 -1.02246  0.94467 -1.2414  -2.44671]
+📍 Interpolated Step 37.0: Position = [0.0585 0.2601 0.4419], Orientation (RPY rad) = [0.0661 0.9365 0.0465]
+>>> A106.03 B95.41 C95.41 D-44.27 X-54.13 Y211.32 Z69.06
+📍 Attempted Interpolated Step 37.1: Position = [0.12365 0.16085 0.43225]
+→ Interpolated Joints = [ 1.85095  1.66695 -1.0265   0.945   -1.24026 -2.44888]
+📍 Interpolated Step 37.1: Position = [0.0585 0.2597 0.4419], Orientation (RPY rad) = [0.0661 0.9365 0.0465]
+>>> A106.05 B95.51 C95.51 D-44.48 X-54.14 Y211.37 Z69.25
+📍 Attempted Interpolated Step 37.2: Position = [0.12359 0.15922 0.43218]
+→ Interpolated Joints = [ 1.85141  1.66865 -1.03053  0.94533 -1.23912 -2.45104]
+📍 Interpolated Step 37.2: Position = [0.0585 0.2593 0.4419], Orientation (RPY rad) = [0.0661 0.9365 0.0465]
+>>> A106.08 B95.61 C95.61 D-44.71 X-54.16 Y211.43 Z69.43
+📍 Attempted Interpolated Step 37.3: Position = [0.12352 0.1576  0.43212]
+→ Interpolated Joints = [ 1.85187  1.67036 -1.03456  0.94566 -1.23798 -2.4532 ]
+📍 Interpolated Step 37.3: Position = [0.0585 0.2589 0.4419], Orientation (RPY rad) = [0.0661 0.9365 0.0465]
+>>> A106.1 B95.7 C95.7 D-44.92 X-54.18 Y211.49 Z69.63
+❌ Invalid motion at step 38. Joint limits exceeded
+❌ Joint limits report: Joint 1: 1.67702 > max 1.57080
+✅ Fallback IK succeeded. Sending command.
+>>> A-75.54 B-89.25 C-89.25 D55.73 X-64.66 Y-87.29 Z42.13
+❌ Invalid motion at step 38. Joint limits exceeded
+❌ Joint limits report: Joint 1: 1.67702 > max 1.57080
+✅ Fallback IK succeeded. Sending command.
+>>> A111.33 B83.24 C83.24 D-69.17 X112.96 Y-61.72 Z56.54
+❌ Invalid motion at step 38. Joint limits exceeded
+❌ Joint limits report: Joint 1: 1.67702 > max 1.57080
+✅ Fallback IK succeeded. Sending command.
+>>> A94.84 B8.1 C8.1 D68.65 X122.72 Y-162.27 Z11.59
+❌ Invalid motion at step 38. Joint limits exceeded
+❌ Joint limits report: Joint 1: 1.67702 > max 1.57080
+✅ Fallback IK succeeded. Sending command.
+>>> A92.93 B89.29 C89.29 D-67.0 X-81.16 Y229.6 Z108.96
+❌ Invalid motion at step 38. Joint limits exceeded
+❌ Joint limits report: Joint 1: 1.67702 > max 1.57080
+✅ Fallback IK succeeded. Sending command.
+>>> A96.6 B80.5 C80.5 D-51.51 X-72.99 Y222.8 Z97.94
+❌ Invalid motion at step 38. Joint limits exceeded
+❌ Joint limits report: Joint 1: 1.67702 > max 1.57080
+✅ Fallback IK succeeded. Sending command.
+>>> A94.75 B6.19 C6.19 D72.73 X122.85 Y-165.59 Z10.67
+❌ Invalid motion at step 38. Joint limits exceeded
+❌ Joint limits report: Joint 1: 1.67702 > max 1.57080
+✅ Fallback IK succeeded. Sending command.
+>>> A-92.08 B-10.95 C-10.95 D-68.99 X121.68 Y181.0 Z15.96
+❌ Invalid motion at step 38. Joint limits exceeded
+❌ Joint limits report: Joint 1: 1.67702 > max 1.57080
+✅ Fallback IK succeeded. Sending command.
+>>> A-87.32 B-76.87 C-76.87 D51.15 X101.43 Y224.61 Z102.09
+❌ Invalid motion at step 38. Joint limits exceeded
+❌ Joint limits report: Joint 1: 1.67702 > max 1.57080
+✅ Fallback IK succeeded. Sending command.
+>>> A90.17 B78.76 C78.76 D-58.74 X95.44 Y-69.9 Z50.1
+❌ Invalid motion at step 38. Joint limits exceeded
+❌ Joint limits report: Joint 1: 1.67702 > max 1.57080
+✅ Fallback IK succeeded. Sending command.
+>>> A-83.84 B-87.7 C-87.7 D64.25 X-77.02 Y-72.84 Z48.26
+❌222 Invalid motion at step 38. Joint limits exceeded or Jacobian issue.
+❌ 222Joint limits report: Joint 1: 1.67702 > max 1.57080
+✅ Fallback IK succeeded. Sending command.
+>>> A86.17 B-8.06 C-8.06 D85.38 X123.82 Y-163.48 Z-3.34
+📍 Attempted Interpolated Step 39.0: Position = [0.12321 0.14947 0.43181]
+→ Interpolated Joints = [ 1.50395 -0.14317  1.5134  -2.16093  1.39725  1.45561]
+📍 Interpolated Step 39.0: Position = [0.1482 0.1678 0.4955], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.17 B-8.2 C-8.2 D85.48 X123.81 Y-163.46 Z-3.34
+📍 Attempted Interpolated Step 39.1: Position = [0.12315 0.14785 0.43175]
+→ Interpolated Joints = [ 1.50388 -0.14566  1.5156  -2.16088  1.39703  1.4554 ]
+📍 Interpolated Step 39.1: Position = [0.1482 0.1674 0.4955], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.17 B-8.35 C-8.35 D85.59 X123.81 Y-163.43 Z-3.35
+📍 Attempted Interpolated Step 39.2: Position = [0.12309 0.14622 0.43168]
+→ Interpolated Joints = [ 1.50381 -0.14816  1.5178  -2.16083  1.39681  1.45519]
+📍 Interpolated Step 39.2: Position = [0.1482 0.167  0.4955], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.16 B-8.49 C-8.49 D85.69 X123.81 Y-163.41 Z-3.35
+📍 Attempted Interpolated Step 39.3: Position = [0.12302 0.1446  0.43162]
+→ Interpolated Joints = [ 1.50374 -0.15065  1.51999 -2.16078  1.39659  1.45498]
+📍 Interpolated Step 39.3: Position = [0.1482 0.1666 0.4955], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.16 B-8.63 C-8.63 D85.8 X123.8 Y-163.38 Z-3.34
+📍 Attempted Interpolated Step 40.0: Position = [0.12296 0.14297 0.43156]
+→ Interpolated Joints = [ 1.50367 -0.15314  1.52217 -2.16073  1.39636  1.45476]
+📍 Interpolated Step 40.0: Position = [0.1481 0.1662 0.4955], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.15 B-8.77 C-8.77 D85.89 X123.8 Y-163.36 Z-3.34
+📍 Attempted Interpolated Step 40.1: Position = [0.1229  0.14135 0.4315 ]
+→ Interpolated Joints = [ 1.5036  -0.15563  1.52435 -2.16068  1.39612  1.45453]
+📍 Interpolated Step 40.1: Position = [0.1481 0.1657 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.15 B-8.92 C-8.92 D86.0 X123.8 Y-163.33 Z-3.35
+📍 Attempted Interpolated Step 40.2: Position = [0.12284 0.13972 0.43143]
+→ Interpolated Joints = [ 1.50353 -0.15812  1.52653 -2.16062  1.39589  1.4543 ]
+📍 Interpolated Step 40.2: Position = [0.1481 0.1653 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.15 B-9.06 C-9.06 D86.1 X123.79 Y-163.31 Z-3.35
+📍 Attempted Interpolated Step 40.3: Position = [0.12277 0.1381  0.43137]
+→ Interpolated Joints = [ 1.50346 -0.16062  1.5287  -2.16057  1.39566  1.45408]
+📍 Interpolated Step 40.3: Position = [0.1481 0.1649 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.14 B-9.2 C-9.2 D86.21 X123.79 Y-163.28 Z-3.34
+📍 Attempted Interpolated Step 41.0: Position = [0.12277 0.1381  0.43137]
+→ Interpolated Joints = [ 1.50346 -0.16062  1.5287  -2.16057  1.39566  1.45408]
+📍 Interpolated Step 41.0: Position = [0.1481 0.1649 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.14 B-9.2 C-9.2 D86.21 X123.79 Y-163.28 Z-3.34
+📍 Attempted Interpolated Step 41.1: Position = [0.12277 0.1381  0.43137]
+→ Interpolated Joints = [ 1.50346 -0.16062  1.5287  -2.16057  1.39566  1.45408]
+📍 Interpolated Step 41.1: Position = [0.1481 0.1649 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.14 B-9.2 C-9.2 D86.21 X123.79 Y-163.28 Z-3.34
+📍 Attempted Interpolated Step 41.2: Position = [0.12277 0.1381  0.43137]
+→ Interpolated Joints = [ 1.50346 -0.16062  1.5287  -2.16057  1.39566  1.45408]
+📍 Interpolated Step 41.2: Position = [0.1481 0.1649 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.14 B-9.2 C-9.2 D86.21 X123.79 Y-163.28 Z-3.34
+📍 Attempted Interpolated Step 41.3: Position = [0.12277 0.1381  0.43137]
+→ Interpolated Joints = [ 1.50346 -0.16062  1.5287  -2.16057  1.39566  1.45408]
+📍 Interpolated Step 41.3: Position = [0.1481 0.1649 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.14 B-9.2 C-9.2 D86.21 X123.79 Y-163.28 Z-3.34
+📍 Attempted Interpolated Step 42.0: Position = [0.12248 0.13751 0.43108]
+→ Interpolated Joints = [ 1.50385 -0.16154  1.52951 -2.16059  1.3959   1.45376]
+📍 Interpolated Step 42.0: Position = [0.148  0.1648 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.16 B-9.26 C-9.26 D86.24 X123.79 Y-163.27 Z-3.31
+📍 Attempted Interpolated Step 42.1: Position = [0.12219 0.13692 0.43078]
+→ Interpolated Joints = [ 1.50423 -0.16247  1.53031 -2.16061  1.39615  1.45344]
+📍 Interpolated Step 42.1: Position = [0.148  0.1646 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.19 B-9.31 C-9.31 D86.28 X123.79 Y-163.27 Z-3.29
+📍 Attempted Interpolated Step 42.2: Position = [0.12189 0.13633 0.43049]
+→ Interpolated Joints = [ 1.50462 -0.1634   1.53112 -2.16064  1.39639  1.45312]
+📍 Interpolated Step 42.2: Position = [0.1479 0.1645 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.21 B-9.36 C-9.36 D86.33 X123.8 Y-163.27 Z-3.25
+📍 Attempted Interpolated Step 42.3: Position = [0.1216  0.13574 0.4302 ]
+→ Interpolated Joints = [ 1.505   -0.16433  1.53192 -2.16066  1.39664  1.4528 ]
+📍 Interpolated Step 42.3: Position = [0.1478 0.1643 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.23 B-9.42 C-9.42 D86.36 X123.8 Y-163.26 Z-3.22
+📍 Attempted Interpolated Step 43.0: Position = [0.1216  0.13574 0.4302 ]
+→ Interpolated Joints = [ 1.505   -0.16433  1.53192 -2.16066  1.39664  1.4528 ]
+📍 Interpolated Step 43.0: Position = [0.1478 0.1643 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.23 B-9.42 C-9.42 D86.36 X123.8 Y-163.26 Z-3.22
+📍 Attempted Interpolated Step 43.1: Position = [0.1216  0.13574 0.4302 ]
+→ Interpolated Joints = [ 1.505   -0.16433  1.53192 -2.16066  1.39664  1.4528 ]
+📍 Interpolated Step 43.1: Position = [0.1478 0.1643 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.23 B-9.42 C-9.42 D86.36 X123.8 Y-163.26 Z-3.22
+📍 Attempted Interpolated Step 43.2: Position = [0.1216  0.13574 0.4302 ]
+→ Interpolated Joints = [ 1.505   -0.16433  1.53192 -2.16066  1.39664  1.4528 ]
+📍 Interpolated Step 43.2: Position = [0.1478 0.1643 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.23 B-9.42 C-9.42 D86.36 X123.8 Y-163.26 Z-3.22
+📍 Attempted Interpolated Step 43.3: Position = [0.1216  0.13574 0.4302 ]
+→ Interpolated Joints = [ 1.505   -0.16433  1.53192 -2.16066  1.39664  1.4528 ]
+📍 Interpolated Step 43.3: Position = [0.1478 0.1643 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.23 B-9.42 C-9.42 D86.36 X123.8 Y-163.26 Z-3.22
+📍 Attempted Interpolated Step 44.0: Position = [0.12047 0.13424 0.42907]
+→ Interpolated Joints = [ 1.50657 -0.16674  1.53399 -2.16077  1.39773  1.45166]
+📍 Interpolated Step 44.0: Position = [0.1475 0.164  0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.32 B-9.55 C-9.55 D86.46 X123.8 Y-163.25 Z-3.09
+📍 Attempted Interpolated Step 44.1: Position = [0.11935 0.13274 0.42795]
+→ Interpolated Joints = [ 1.50813 -0.16914  1.53607 -2.16089  1.39881  1.45051]
+📍 Interpolated Step 44.1: Position = [0.1472 0.1636 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.41 B-9.69 C-9.69 D86.56 X123.81 Y-163.26 Z-2.96
+📍 Attempted Interpolated Step 44.2: Position = [0.11822 0.13124 0.42682]
+→ Interpolated Joints = [ 1.50969 -0.17155  1.53814 -2.16101  1.3999   1.44937]
+📍 Interpolated Step 44.2: Position = [0.147  0.1632 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.5 B-9.83 C-9.83 D86.66 X123.82 Y-163.25 Z-2.83
+📍 Attempted Interpolated Step 44.3: Position = [0.1171  0.12974 0.4257 ]
+→ Interpolated Joints = [ 1.51125 -0.17396  1.54022 -2.16113  1.40099  1.44822]
+📍 Interpolated Step 44.3: Position = [0.1467 0.1628 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.59 B-9.97 C-9.97 D86.75 X123.82 Y-163.25 Z-2.71
+📍 Attempted Interpolated Step 45.0: Position = [0.1171  0.12974 0.4257 ]
+→ Interpolated Joints = [ 1.51125 -0.17396  1.54022 -2.16113  1.40099  1.44822]
+📍 Interpolated Step 45.0: Position = [0.1467 0.1628 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.59 B-9.97 C-9.97 D86.75 X123.82 Y-163.25 Z-2.71
+📍 Attempted Interpolated Step 45.1: Position = [0.1171  0.12974 0.4257 ]
+→ Interpolated Joints = [ 1.51125 -0.17396  1.54022 -2.16113  1.40099  1.44822]
+📍 Interpolated Step 45.1: Position = [0.1467 0.1628 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.59 B-9.97 C-9.97 D86.75 X123.82 Y-163.25 Z-2.71
+📍 Attempted Interpolated Step 45.2: Position = [0.1171  0.12974 0.4257 ]
+→ Interpolated Joints = [ 1.51125 -0.17396  1.54022 -2.16113  1.40099  1.44822]
+📍 Interpolated Step 45.2: Position = [0.1467 0.1628 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.59 B-9.97 C-9.97 D86.75 X123.82 Y-163.25 Z-2.71
+📍 Attempted Interpolated Step 45.3: Position = [0.1171  0.12974 0.4257 ]
+→ Interpolated Joints = [ 1.51125 -0.17396  1.54022 -2.16113  1.40099  1.44822]
+📍 Interpolated Step 45.3: Position = [0.1467 0.1628 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.59 B-9.97 C-9.97 D86.75 X123.82 Y-163.25 Z-2.71
+📍 Attempted Interpolated Step 46.0: Position = [0.11585 0.12899 0.42445]
+→ Interpolated Joints = [ 1.51311 -0.17522  1.54129 -2.1613   1.40239  1.44704]
+📍 Interpolated Step 46.0: Position = [0.1464 0.1627 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.69 B-10.04 C-10.04 D86.8 X123.83 Y-163.26 Z-2.56
+📍 Attempted Interpolated Step 46.1: Position = [0.1146  0.12824 0.4232 ]
+→ Interpolated Joints = [ 1.51496 -0.17647  1.54237 -2.16148  1.4038   1.44587]
+📍 Interpolated Step 46.1: Position = [0.1461 0.1625 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.8 B-10.11 C-10.11 D86.85 X123.84 Y-163.27 Z-2.41
+📍 Attempted Interpolated Step 46.2: Position = [0.11335 0.12749 0.42195]
+→ Interpolated Joints = [ 1.51681 -0.17773  1.54344 -2.16166  1.4052   1.44469]
+📍 Interpolated Step 46.2: Position = [0.1458 0.1623 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A86.91 B-10.18 C-10.18 D86.9 X123.85 Y-163.28 Z-2.26
+📍 Attempted Interpolated Step 46.3: Position = [0.1121  0.12674 0.4207 ]
+→ Interpolated Joints = [ 1.51867 -0.17899  1.54452 -2.16183  1.40661  1.44351]
+📍 Interpolated Step 46.3: Position = [0.1454 0.1621 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A87.01 B-10.26 C-10.26 D86.95 X123.86 Y-163.3 Z-2.12
+📍 Attempted Interpolated Step 47.0: Position = [0.11085 0.12599 0.41945]
+→ Interpolated Joints = [ 1.52054 -0.18024  1.54558 -2.16202  1.40803  1.44231]
+📍 Interpolated Step 47.0: Position = [0.1451 0.1619 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A87.12 B-10.33 C-10.33 D87.01 X123.87 Y-163.31 Z-1.97
+📍 Attempted Interpolated Step 47.1: Position = [0.1096  0.12524 0.4182 ]
+→ Interpolated Joints = [ 1.52241 -0.18149  1.54664 -2.16221  1.40945  1.44112]
+📍 Interpolated Step 47.1: Position = [0.1448 0.1617 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A87.23 B-10.4 C-10.4 D87.06 X123.89 Y-163.33 Z-1.81
+📍 Attempted Interpolated Step 47.2: Position = [0.10835 0.12449 0.41695]
+→ Interpolated Joints = [ 1.52429 -0.18273  1.5477  -2.16239  1.41086  1.43993]
+📍 Interpolated Step 47.2: Position = [0.1445 0.1615 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A87.34 B-10.47 C-10.47 D87.11 X123.9 Y-163.34 Z-1.66
+📍 Attempted Interpolated Step 47.3: Position = [0.1071  0.12374 0.4157 ]
+→ Interpolated Joints = [ 1.52616 -0.18398  1.54876 -2.16258  1.41228  1.43873]
+📍 Interpolated Step 47.3: Position = [0.1442 0.1613 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A87.44 B-10.54 C-10.54 D87.16 X123.91 Y-163.35 Z-1.51
+📍 Attempted Interpolated Step 48.0: Position = [0.10585 0.12299 0.41445]
+→ Interpolated Joints = [ 1.52805 -0.18521  1.5498  -2.16278  1.41371  1.43753]
+📍 Interpolated Step 48.0: Position = [0.1439 0.1612 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A87.55 B-10.61 C-10.61 D87.21 X123.92 Y-163.36 Z-1.36
+📍 Attempted Interpolated Step 48.1: Position = [0.1046  0.12224 0.4132 ]
+→ Interpolated Joints = [ 1.52994 -0.18644  1.55084 -2.16297  1.41514  1.43632]
+📍 Interpolated Step 48.1: Position = [0.1436 0.161  0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A87.66 B-10.68 C-10.68 D87.26 X123.93 Y-163.38 Z-1.22
+📍 Attempted Interpolated Step 48.2: Position = [0.10335 0.12149 0.41195]
+→ Interpolated Joints = [ 1.53183 -0.18767  1.55188 -2.16317  1.41657  1.43512]
+📍 Interpolated Step 48.2: Position = [0.1433 0.1608 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A87.77 B-10.75 C-10.75 D87.31 X123.94 Y-163.39 Z-1.07
+📍 Attempted Interpolated Step 48.3: Position = [0.1021  0.12074 0.4107 ]
+→ Interpolated Joints = [ 1.53372 -0.1889   1.55292 -2.16337  1.41801  1.43391]
+📍 Interpolated Step 48.3: Position = [0.143  0.1606 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A87.88 B-10.82 C-10.82 D87.36 X123.95 Y-163.41 Z-0.91
+📍 Attempted Interpolated Step 49.0: Position = [0.1021  0.12074 0.4107 ]
+→ Interpolated Joints = [ 1.53372 -0.1889   1.55292 -2.16337  1.41801  1.43391]
+📍 Interpolated Step 49.0: Position = [0.143  0.1606 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A87.88 B-10.82 C-10.82 D87.36 X123.95 Y-163.41 Z-0.91
+📍 Attempted Interpolated Step 49.1: Position = [0.1021  0.12074 0.4107 ]
+→ Interpolated Joints = [ 1.53372 -0.1889   1.55292 -2.16337  1.41801  1.43391]
+📍 Interpolated Step 49.1: Position = [0.143  0.1606 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A87.88 B-10.82 C-10.82 D87.36 X123.95 Y-163.41 Z-0.91
+📍 Attempted Interpolated Step 49.2: Position = [0.1021  0.12074 0.4107 ]
+→ Interpolated Joints = [ 1.53372 -0.1889   1.55292 -2.16337  1.41801  1.43391]
+📍 Interpolated Step 49.2: Position = [0.143  0.1606 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A87.88 B-10.82 C-10.82 D87.36 X123.95 Y-163.41 Z-0.91
+📍 Attempted Interpolated Step 49.3: Position = [0.1021  0.12074 0.4107 ]
+→ Interpolated Joints = [ 1.53372 -0.1889   1.55292 -2.16337  1.41801  1.43391]
+📍 Interpolated Step 49.3: Position = [0.143  0.1606 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A87.88 B-10.82 C-10.82 D87.36 X123.95 Y-163.41 Z-0.91
+📍 Attempted Interpolated Step 50.0: Position = [0.1006  0.12074 0.4092 ]
+→ Interpolated Joints = [ 1.53607 -0.18899  1.553   -2.16365  1.4199   1.4326 ]
+📍 Interpolated Step 50.0: Position = [0.1426 0.1606 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A88.01 B-10.83 C-10.83 D87.36 X123.97 Y-163.43 Z-0.73
+📍 Attempted Interpolated Step 50.1: Position = [0.0991  0.12074 0.4077 ]
+→ Interpolated Joints = [ 1.53841 -0.18907  1.55307 -2.16393  1.4218   1.4313 ]
+📍 Interpolated Step 50.1: Position = [0.1422 0.1606 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A88.14 B-10.83 C-10.83 D87.36 X123.98 Y-163.47 Z-0.55
+📍 Attempted Interpolated Step 50.2: Position = [0.0976  0.12074 0.4062 ]
+→ Interpolated Joints = [ 1.54076 -0.18916  1.55314 -2.16421  1.42369  1.42999]
+📍 Interpolated Step 50.2: Position = [0.1418 0.1606 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A88.28 B-10.84 C-10.84 D87.36 X124.0 Y-163.5 Z-0.36
+📍 Attempted Interpolated Step 50.3: Position = [0.0961  0.12074 0.4047 ]
+→ Interpolated Joints = [ 1.5431  -0.18924  1.55321 -2.1645   1.42559  1.42868]
+📍 Interpolated Step 50.3: Position = [0.1415 0.1606 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A88.41 B-10.84 C-10.84 D87.36 X124.02 Y-163.54 Z-0.18
+📍 Attempted Interpolated Step 51.0: Position = [0.0961  0.12074 0.4047 ]
+→ Interpolated Joints = [ 1.5431  -0.18924  1.55321 -2.1645   1.42559  1.42868]
+📍 Interpolated Step 51.0: Position = [0.1415 0.1606 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A88.41 B-10.84 C-10.84 D87.36 X124.02 Y-163.54 Z-0.18
+📍 Attempted Interpolated Step 51.1: Position = [0.0961  0.12074 0.4047 ]
+→ Interpolated Joints = [ 1.5431  -0.18924  1.55321 -2.1645   1.42559  1.42868]
+📍 Interpolated Step 51.1: Position = [0.1415 0.1606 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A88.41 B-10.84 C-10.84 D87.36 X124.02 Y-163.54 Z-0.18
+📍 Attempted Interpolated Step 51.2: Position = [0.0961  0.12074 0.4047 ]
+→ Interpolated Joints = [ 1.5431  -0.18924  1.55321 -2.1645   1.42559  1.42868]
+📍 Interpolated Step 51.2: Position = [0.1415 0.1606 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A88.41 B-10.84 C-10.84 D87.36 X124.02 Y-163.54 Z-0.18
+📍 Attempted Interpolated Step 51.3: Position = [0.0961  0.12074 0.4047 ]
+→ Interpolated Joints = [ 1.5431  -0.18924  1.55321 -2.1645   1.42559  1.42868]
+📍 Interpolated Step 51.3: Position = [0.1415 0.1606 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A88.41 B-10.84 C-10.84 D87.36 X124.02 Y-163.54 Z-0.18
+📍 Attempted Interpolated Step 52.0: Position = [0.09507 0.12187 0.40366]
+→ Interpolated Joints = [ 1.54477 -0.18757  1.5518  -2.16474  1.42709  1.42798]
+📍 Interpolated Step 52.0: Position = [0.1412 0.1609 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A88.51 B-10.75 C-10.75 D87.3 X124.03 Y-163.59 Z-0.05
+📍 Attempted Interpolated Step 52.1: Position = [0.09403 0.12299 0.40263]
+→ Interpolated Joints = [ 1.54643 -0.18589  1.55039 -2.16498  1.42858  1.42729]
+📍 Interpolated Step 52.1: Position = [0.1409 0.1611 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A88.6 B-10.65 C-10.65 D87.23 X124.04 Y-163.63 Z0.07
+📍 Attempted Interpolated Step 52.2: Position = [0.093   0.12412 0.4016 ]
+→ Interpolated Joints = [ 1.54809 -0.18422  1.54898 -2.16522  1.43008  1.42659]
+📍 Interpolated Step 52.2: Position = [0.1407 0.1614 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.023 ]
+>>> A88.7 B-10.55 C-10.55 D87.17 X124.06 Y-163.68 Z0.2
+📍 Attempted Interpolated Step 52.3: Position = [0.09197 0.12524 0.40057]
+→ Interpolated Joints = [ 1.54975 -0.18254  1.54757 -2.16546  1.43158  1.42589]
+📍 Interpolated Step 52.3: Position = [0.1404 0.1617 0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.0231]
+>>> A88.79 B-10.46 C-10.46 D87.1 X124.07 Y-163.72 Z0.32
+📍 Attempted Interpolated Step 53.0: Position = [0.09094 0.12637 0.39954]
+→ Interpolated Joints = [ 1.55139 -0.18085  1.54614 -2.1657   1.43305  1.4252 ]
+📍 Interpolated Step 53.0: Position = [0.1402 0.162  0.4954], Orientation (RPY rad) = [0.0137 0.9624 0.0231]
+>>> A88.89 B-10.36 C-10.36 D87.04 X124.09 Y-163.77 Z0.45
+📍 Attempted Interpolated Step 53.1: Position = [0.08991 0.12749 0.39851]
+→ Interpolated Joints = [ 1.55303 -0.17916  1.54471 -2.16594  1.43452  1.42451]
+📍 Interpolated Step 53.1: Position = [0.1399 0.1623 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A88.98 B-10.27 C-10.27 D86.97 X124.1 Y-163.81 Z0.57
+📍 Attempted Interpolated Step 53.2: Position = [0.08888 0.12862 0.39748]
+→ Interpolated Joints = [ 1.55467 -0.17748  1.54328 -2.16618  1.436    1.42382]
+📍 Interpolated Step 53.2: Position = [0.1397 0.1625 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.08 B-10.17 C-10.17 D86.89 X124.11 Y-163.86 Z0.7
+📍 Attempted Interpolated Step 53.3: Position = [0.08785 0.12974 0.39645]
+→ Interpolated Joints = [ 1.55631 -0.17579  1.54185 -2.16641  1.43747  1.42313]
+📍 Interpolated Step 53.3: Position = [0.1394 0.1628 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.17 B-10.07 C-10.07 D86.83 X124.13 Y-163.9 Z0.82
+📍 Attempted Interpolated Step 54.0: Position = [0.08682 0.13087 0.39541]
+→ Interpolated Joints = [ 1.55792 -0.17409  1.5404  -2.16665  1.43892  1.42244]
+📍 Interpolated Step 54.0: Position = [0.1391 0.1631 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.26 B-9.97 C-9.97 D86.76 X124.14 Y-163.94 Z0.94
+📍 Attempted Interpolated Step 54.1: Position = [0.08578 0.13199 0.39438]
+→ Interpolated Joints = [ 1.55954 -0.17239  1.53895 -2.16689  1.44037  1.42175]
+📍 Interpolated Step 54.1: Position = [0.1389 0.1634 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.36 B-9.88 C-9.88 D86.7 X124.15 Y-163.99 Z1.07
+📍 Attempted Interpolated Step 54.2: Position = [0.08475 0.13312 0.39335]
+→ Interpolated Joints = [ 1.56116 -0.17069  1.5375  -2.16713  1.44182  1.42106]
+📍 Interpolated Step 54.2: Position = [0.1386 0.1637 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.45 B-9.78 C-9.78 D86.62 X124.17 Y-164.03 Z1.19
+📍 Attempted Interpolated Step 54.3: Position = [0.08372 0.13424 0.39232]
+→ Interpolated Joints = [ 1.56277 -0.16899  1.53606 -2.16736  1.44327  1.42038]
+📍 Interpolated Step 54.3: Position = [0.1384 0.1639 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.54 B-9.68 C-9.68 D86.56 X124.18 Y-164.07 Z1.31
+📍 Attempted Interpolated Step 55.0: Position = [0.08269 0.13537 0.39129]
+→ Interpolated Joints = [ 1.56437 -0.16728  1.53459 -2.1676   1.4447   1.41969]
+📍 Interpolated Step 55.0: Position = [0.1381 0.1642 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.63 B-9.58 C-9.58 D86.49 X124.19 Y-164.12 Z1.44
+📍 Attempted Interpolated Step 55.1: Position = [0.08166 0.13649 0.39026]
+→ Interpolated Joints = [ 1.56596 -0.16557  1.53312 -2.16784  1.44613  1.41901]
+📍 Interpolated Step 55.1: Position = [0.1378 0.1645 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.72 B-9.49 C-9.49 D86.42 X124.21 Y-164.16 Z1.56
+📍 Attempted Interpolated Step 55.2: Position = [0.08063 0.13762 0.38923]
+→ Interpolated Joints = [ 1.56756 -0.16386  1.53165 -2.16807  1.44756  1.41833]
+📍 Interpolated Step 55.2: Position = [0.1376 0.1648 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.81 B-9.39 C-9.39 D86.35 X124.22 Y-164.2 Z1.68
+📍 Attempted Interpolated Step 55.3: Position = [0.0796  0.13874 0.3882 ]
+→ Interpolated Joints = [ 1.56915 -0.16215  1.53019 -2.16831  1.44899  1.41765]
+📍 Interpolated Step 55.3: Position = [0.1373 0.1651 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.91 B-9.29 C-9.29 D86.28 X124.23 Y-164.25 Z1.79
+📍 Attempted Interpolated Step 56.0: Position = [0.0796  0.13874 0.3882 ]
+→ Interpolated Joints = [ 1.56915 -0.16215  1.53019 -2.16831  1.44899  1.41765]
+📍 Interpolated Step 56.0: Position = [0.1373 0.1651 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.91 B-9.29 C-9.29 D86.28 X124.23 Y-164.25 Z1.79
+📍 Attempted Interpolated Step 56.1: Position = [0.0796  0.13874 0.3882 ]
+→ Interpolated Joints = [ 1.56915 -0.16215  1.53019 -2.16831  1.44899  1.41765]
+📍 Interpolated Step 56.1: Position = [0.1373 0.1651 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.91 B-9.29 C-9.29 D86.28 X124.23 Y-164.25 Z1.79
+📍 Attempted Interpolated Step 56.2: Position = [0.0796  0.13874 0.3882 ]
+→ Interpolated Joints = [ 1.56915 -0.16215  1.53019 -2.16831  1.44899  1.41765]
+📍 Interpolated Step 56.2: Position = [0.1373 0.1651 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.91 B-9.29 C-9.29 D86.28 X124.23 Y-164.25 Z1.79
+📍 Attempted Interpolated Step 56.3: Position = [0.0796  0.13874 0.3882 ]
+→ Interpolated Joints = [ 1.56915 -0.16215  1.53019 -2.16831  1.44899  1.41765]
+📍 Interpolated Step 56.3: Position = [0.1373 0.1651 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.91 B-9.29 C-9.29 D86.28 X124.23 Y-164.25 Z1.79
+📍 Attempted Interpolated Step 57.0: Position = [0.0793  0.13933 0.3879 ]
+→ Interpolated Joints = [ 1.5696  -0.16125  1.52941 -2.16838  1.44942  1.4175 ]
+📍 Interpolated Step 57.0: Position = [0.1372 0.1652 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.93 B-9.24 C-9.24 D86.24 X124.24 Y-164.27 Z1.83
+📍 Attempted Interpolated Step 57.1: Position = [0.07901 0.13992 0.38761]
+→ Interpolated Joints = [ 1.57005 -0.16035  1.52863 -2.16845  1.44985  1.41735]
+📍 Interpolated Step 57.1: Position = [0.1372 0.1654 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.96 B-9.19 C-9.19 D86.2 X124.24 Y-164.28 Z1.86
+📍 Attempted Interpolated Step 57.2: Position = [0.07871 0.14051 0.38731]
+→ Interpolated Joints = [ 1.5705  -0.15945  1.52785 -2.16852  1.45028  1.4172 ]
+📍 Interpolated Step 57.2: Position = [0.1371 0.1655 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A89.98 B-9.14 C-9.14 D86.17 X124.25 Y-164.3 Z1.9
+📍 Attempted Interpolated Step 57.3: Position = [0.07842 0.1411  0.38702]
+→ Interpolated Joints = [ 1.57095 -0.15855  1.52707 -2.1686   1.45072  1.41706]
+📍 Interpolated Step 57.3: Position = [0.137  0.1657 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.01 B-9.08 C-9.08 D86.13 X124.25 Y-164.31 Z1.93
+📍 Attempted Interpolated Step 58.0: Position = [0.07842 0.1411  0.38702]
+→ Interpolated Joints = [ 1.57095 -0.15855  1.52707 -2.1686   1.45072  1.41706]
+📍 Interpolated Step 58.0: Position = [0.137  0.1657 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.01 B-9.08 C-9.08 D86.13 X124.25 Y-164.31 Z1.93
+📍 Attempted Interpolated Step 58.1: Position = [0.07842 0.1411  0.38702]
+→ Interpolated Joints = [ 1.57095 -0.15855  1.52707 -2.1686   1.45072  1.41706]
+📍 Interpolated Step 58.1: Position = [0.137  0.1657 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.01 B-9.08 C-9.08 D86.13 X124.25 Y-164.31 Z1.93
+📍 Attempted Interpolated Step 58.2: Position = [0.07842 0.1411  0.38702]
+→ Interpolated Joints = [ 1.57095 -0.15855  1.52707 -2.1686   1.45072  1.41706]
+📍 Interpolated Step 58.2: Position = [0.137  0.1657 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.01 B-9.08 C-9.08 D86.13 X124.25 Y-164.31 Z1.93
+📍 Attempted Interpolated Step 58.3: Position = [0.07842 0.1411  0.38702]
+→ Interpolated Joints = [ 1.57095 -0.15855  1.52707 -2.1686   1.45072  1.41706]
+📍 Interpolated Step 58.3: Position = [0.137  0.1657 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.01 B-9.08 C-9.08 D86.13 X124.25 Y-164.31 Z1.93
+📍 Attempted Interpolated Step 59.0: Position = [0.0773  0.14335 0.38589]
+→ Interpolated Joints = [ 1.57266 -0.15511  1.52408 -2.16887  1.45236  1.41649]
+📍 Interpolated Step 59.0: Position = [0.1367 0.1662 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.11 B-8.89 C-8.89 D85.99 X124.27 Y-164.37 Z2.05
+📍 Attempted Interpolated Step 59.1: Position = [0.07617 0.1456  0.38477]
+→ Interpolated Joints = [ 1.57436 -0.15166  1.5211  -2.16915  1.454    1.41592]
+📍 Interpolated Step 59.1: Position = [0.1365 0.1668 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.2 B-8.69 C-8.69 D85.85 X124.28 Y-164.44 Z2.18
+📍 Attempted Interpolated Step 59.2: Position = [0.07505 0.14785 0.38364]
+→ Interpolated Joints = [ 1.57607 -0.14821  1.51811 -2.16942  1.45564  1.41536]
+📍 Interpolated Step 59.2: Position = [0.1362 0.1673 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.3 B-8.49 C-8.49 D85.71 X124.3 Y-164.49 Z2.31
+📍 Attempted Interpolated Step 59.3: Position = [0.07392 0.1501  0.38252]
+→ Interpolated Joints = [ 1.57778 -0.14476  1.51512 -2.1697   1.45728  1.41479]
+📍 Interpolated Step 59.3: Position = [0.1359 0.1679 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.4 B-8.29 C-8.29 D85.57 X124.31 Y-164.56 Z2.44
+📍 Attempted Interpolated Step 60.0: Position = [0.07392 0.1501  0.38252]
+→ Interpolated Joints = [ 1.57778 -0.14476  1.51512 -2.1697   1.45728  1.41479]
+📍 Interpolated Step 60.0: Position = [0.1359 0.1679 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.4 B-8.29 C-8.29 D85.57 X124.31 Y-164.56 Z2.44
+📍 Attempted Interpolated Step 60.1: Position = [0.07392 0.1501  0.38252]
+→ Interpolated Joints = [ 1.57778 -0.14476  1.51512 -2.1697   1.45728  1.41479]
+📍 Interpolated Step 60.1: Position = [0.1359 0.1679 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.4 B-8.29 C-8.29 D85.57 X124.31 Y-164.56 Z2.44
+📍 Attempted Interpolated Step 60.2: Position = [0.07392 0.1501  0.38252]
+→ Interpolated Joints = [ 1.57778 -0.14476  1.51512 -2.1697   1.45728  1.41479]
+📍 Interpolated Step 60.2: Position = [0.1359 0.1679 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.4 B-8.29 C-8.29 D85.57 X124.31 Y-164.56 Z2.44
+📍 Attempted Interpolated Step 60.3: Position = [0.07392 0.1501  0.38252]
+→ Interpolated Joints = [ 1.57778 -0.14476  1.51512 -2.1697   1.45728  1.41479]
+📍 Interpolated Step 60.3: Position = [0.1359 0.1679 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.4 B-8.29 C-8.29 D85.57 X124.31 Y-164.56 Z2.44
+📍 Attempted Interpolated Step 61.0: Position = [0.07355 0.15085 0.38214]
+→ Interpolated Joints = [ 1.57833 -0.14361  1.5141  -2.16979  1.4578   1.4146 ]
+📍 Interpolated Step 61.0: Position = [0.1358 0.1681 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.43 B-8.23 C-8.23 D85.52 X124.32 Y-164.58 Z2.48
+📍 Attempted Interpolated Step 61.1: Position = [0.07317 0.1516  0.38177]
+→ Interpolated Joints = [ 1.57888 -0.14245  1.51309 -2.16987  1.45833  1.41441]
+📍 Interpolated Step 61.1: Position = [0.1357 0.1683 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.46 B-8.16 C-8.16 D85.47 X124.32 Y-164.6 Z2.52
+📍 Attempted Interpolated Step 61.2: Position = [0.0728  0.15235 0.38139]
+→ Interpolated Joints = [ 1.57944 -0.1413   1.51207 -2.16996  1.45886  1.41422]
+📍 Interpolated Step 61.2: Position = [0.1356 0.1685 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.49 B-8.1 C-8.1 D85.43 X124.33 Y-164.62 Z2.56
+📍 Attempted Interpolated Step 61.3: Position = [0.07242 0.1531  0.38102]
+→ Interpolated Joints = [ 1.57999 -0.14015  1.51106 -2.17005  1.45938  1.41403]
+📍 Interpolated Step 61.3: Position = [0.1355 0.1687 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.53 B-8.03 C-8.03 D85.38 X124.33 Y-164.64 Z2.6
+📍 Attempted Interpolated Step 62.0: Position = [0.07242 0.1531  0.38102]
+→ Interpolated Joints = [ 1.57999 -0.14015  1.51106 -2.17005  1.45938  1.41403]
+📍 Interpolated Step 62.0: Position = [0.1355 0.1687 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.53 B-8.03 C-8.03 D85.38 X124.33 Y-164.64 Z2.6
+📍 Attempted Interpolated Step 62.1: Position = [0.07242 0.1531  0.38102]
+→ Interpolated Joints = [ 1.57999 -0.14015  1.51106 -2.17005  1.45938  1.41403]
+📍 Interpolated Step 62.1: Position = [0.1355 0.1687 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.53 B-8.03 C-8.03 D85.38 X124.33 Y-164.64 Z2.6
+📍 Attempted Interpolated Step 62.2: Position = [0.07242 0.1531  0.38102]
+→ Interpolated Joints = [ 1.57999 -0.14015  1.51106 -2.17005  1.45938  1.41403]
+📍 Interpolated Step 62.2: Position = [0.1355 0.1687 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.53 B-8.03 C-8.03 D85.38 X124.33 Y-164.64 Z2.6
+📍 Attempted Interpolated Step 62.3: Position = [0.07242 0.1531  0.38102]
+→ Interpolated Joints = [ 1.57999 -0.14015  1.51106 -2.17005  1.45938  1.41403]
+📍 Interpolated Step 62.3: Position = [0.1355 0.1687 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.53 B-8.03 C-8.03 D85.38 X124.33 Y-164.64 Z2.6
+📍 Attempted Interpolated Step 63.0: Position = [0.0718  0.15447 0.38039]
+→ Interpolated Joints = [ 1.5809  -0.13803  1.50919 -2.1702   1.46026  1.41373]
+📍 Interpolated Step 63.0: Position = [0.1353 0.169  0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.58 B-7.91 C-7.91 D85.28 X124.34 Y-164.67 Z2.67
+📍 Attempted Interpolated Step 63.1: Position = [0.07117 0.15585 0.37977]
+→ Interpolated Joints = [ 1.58181 -0.13591  1.50732 -2.17035  1.46114  1.41343]
+📍 Interpolated Step 63.1: Position = [0.1352 0.1693 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.63 B-7.79 C-7.79 D85.19 X124.35 Y-164.7 Z2.74
+📍 Attempted Interpolated Step 63.2: Position = [0.07055 0.15722 0.37914]
+→ Interpolated Joints = [ 1.58273 -0.13379  1.50545 -2.17049  1.46202  1.41313]
+📍 Interpolated Step 63.2: Position = [0.135  0.1697 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.68 B-7.67 C-7.67 D85.11 X124.36 Y-164.74 Z2.8
+📍 Attempted Interpolated Step 63.3: Position = [0.06992 0.1586  0.37852]
+→ Interpolated Joints = [ 1.58364 -0.13167  1.50358 -2.17064  1.4629   1.41283]
+📍 Interpolated Step 63.3: Position = [0.1349 0.17   0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.74 B-7.54 C-7.54 D85.02 X124.37 Y-164.77 Z2.87
+📍 Attempted Interpolated Step 64.0: Position = [0.0693  0.15997 0.37789]
+→ Interpolated Joints = [ 1.58454 -0.12955  1.5017  -2.17079  1.46376  1.41252]
+📍 Interpolated Step 64.0: Position = [0.1347 0.1704 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.79 B-7.42 C-7.42 D84.93 X124.38 Y-164.8 Z2.94
+📍 Attempted Interpolated Step 64.1: Position = [0.06867 0.16135 0.37727]
+→ Interpolated Joints = [ 1.58543 -0.12743  1.49981 -2.17093  1.46462  1.41222]
+📍 Interpolated Step 64.1: Position = [0.1346 0.1707 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.84 B-7.3 C-7.3 D84.83 X124.39 Y-164.83 Z3.01
+📍 Attempted Interpolated Step 64.2: Position = [0.06805 0.16272 0.37664]
+→ Interpolated Joints = [ 1.58633 -0.1253   1.49792 -2.17108  1.46547  1.41191]
+📍 Interpolated Step 64.2: Position = [0.1344 0.1711 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.89 B-7.18 C-7.18 D84.74 X124.39 Y-164.87 Z3.07
+📍 Attempted Interpolated Step 64.3: Position = [0.06742 0.1641  0.37602]
+→ Interpolated Joints = [ 1.58723 -0.12318  1.49603 -2.17122  1.46633  1.41161]
+📍 Interpolated Step 64.3: Position = [0.1342 0.1714 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.94 B-7.06 C-7.06 D84.66 X124.4 Y-164.89 Z3.13
+📍 Attempted Interpolated Step 65.0: Position = [0.0668  0.16547 0.37539]
+→ Interpolated Joints = [ 1.58811 -0.12105  1.49412 -2.17136  1.46717  1.4113 ]
+📍 Interpolated Step 65.0: Position = [0.1341 0.1717 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.99 B-6.94 C-6.94 D84.57 X124.41 Y-164.92 Z3.2
+📍 Attempted Interpolated Step 65.1: Position = [0.06617 0.16685 0.37477]
+→ Interpolated Joints = [ 1.58899 -0.11893  1.49221 -2.1715   1.46801  1.41099]
+📍 Interpolated Step 65.1: Position = [0.1339 0.1721 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.04 B-6.81 C-6.81 D84.48 X124.42 Y-164.95 Z3.27
+📍 Attempted Interpolated Step 65.2: Position = [0.06555 0.16822 0.37414]
+→ Interpolated Joints = [ 1.58988 -0.1168   1.49031 -2.17164  1.46885  1.41068]
+📍 Interpolated Step 65.2: Position = [0.1338 0.1724 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.09 B-6.69 C-6.69 D84.39 X124.43 Y-164.99 Z3.33
+📍 Attempted Interpolated Step 65.3: Position = [0.06492 0.1696  0.37352]
+→ Interpolated Joints = [ 1.59076 -0.11467  1.4884  -2.17179  1.46969  1.41037]
+📍 Interpolated Step 65.3: Position = [0.1336 0.1728 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.14 B-6.57 C-6.57 D84.29 X124.43 Y-165.02 Z3.4
+📍 Attempted Interpolated Step 66.0: Position = [0.0643  0.17097 0.37289]
+→ Interpolated Joints = [ 1.59163 -0.11254  1.48647 -2.17192  1.47051  1.41005]
+📍 Interpolated Step 66.0: Position = [0.1335 0.1731 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.19 B-6.45 C-6.45 D84.2 X124.44 Y-165.04 Z3.46
+📍 Attempted Interpolated Step 66.1: Position = [0.06367 0.17235 0.37227]
+→ Interpolated Joints = [ 1.5925  -0.1104   1.48454 -2.17206  1.47132  1.40974]
+📍 Interpolated Step 66.1: Position = [0.1333 0.1735 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.24 B-6.33 C-6.33 D84.11 X124.45 Y-165.07 Z3.53
+📍 Attempted Interpolated Step 66.2: Position = [0.06305 0.17372 0.37164]
+→ Interpolated Joints = [ 1.59337 -0.10827  1.48262 -2.1722   1.47214  1.40943]
+📍 Interpolated Step 66.2: Position = [0.1331 0.1738 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.29 B-6.2 C-6.2 D84.02 X124.46 Y-165.1 Z3.6
+📍 Attempted Interpolated Step 66.3: Position = [0.06242 0.1751  0.37102]
+→ Interpolated Joints = [ 1.59423 -0.10614  1.48069 -2.17234  1.47296  1.40911]
+📍 Interpolated Step 66.3: Position = [0.133  0.1741 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.34 B-6.08 C-6.08 D83.93 X124.47 Y-165.13 Z3.65
+📍 Attempted Interpolated Step 67.0: Position = [0.0618  0.17647 0.37039]
+→ Interpolated Joints = [ 1.59509 -0.104    1.47874 -2.17247  1.47376  1.40879]
+📍 Interpolated Step 67.0: Position = [0.1328 0.1745 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.39 B-5.96 C-5.96 D83.84 X124.47 Y-165.16 Z3.72
+📍 Attempted Interpolated Step 67.1: Position = [0.06117 0.17785 0.36977]
+→ Interpolated Joints = [ 1.59594 -0.10186  1.47679 -2.17261  1.47456  1.40847]
+📍 Interpolated Step 67.1: Position = [0.1327 0.1748 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.44 B-5.84 C-5.84 D83.73 X124.48 Y-165.19 Z3.79
+📍 Attempted Interpolated Step 67.2: Position = [0.06055 0.17922 0.36914]
+→ Interpolated Joints = [ 1.5968  -0.09973  1.47485 -2.17275  1.47536  1.40816]
+📍 Interpolated Step 67.2: Position = [0.1325 0.1752 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.49 B-5.71 C-5.71 D83.64 X124.49 Y-165.21 Z3.85
+📍 Attempted Interpolated Step 67.3: Position = [0.05992 0.1806  0.36852]
+→ Interpolated Joints = [ 1.59765 -0.09759  1.4729  -2.17288  1.47616  1.40784]
+📍 Interpolated Step 67.3: Position = [0.1324 0.1755 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.54 B-5.59 C-5.59 D83.55 X124.5 Y-165.24 Z3.92
+📍 Attempted Interpolated Step 68.0: Position = [0.0593  0.18197 0.36789]
+→ Interpolated Joints = [ 1.59849 -0.09545  1.47093 -2.17301  1.47694  1.40751]
+📍 Interpolated Step 68.0: Position = [0.1322 0.1759 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.59 B-5.47 C-5.47 D83.46 X124.5 Y-165.26 Z3.98
+📍 Attempted Interpolated Step 68.1: Position = [0.05867 0.18335 0.36727]
+→ Interpolated Joints = [ 1.59934 -0.0933   1.46896 -2.17315  1.47772  1.40719]
+📍 Interpolated Step 68.1: Position = [0.132  0.1762 0.4954], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.64 B-5.35 C-5.35 D83.37 X124.51 Y-165.3 Z4.04
+📍 Attempted Interpolated Step 68.2: Position = [0.05805 0.18472 0.36664]
+→ Interpolated Joints = [ 1.60018 -0.09116  1.467   -2.17328  1.4785   1.40686]
+📍 Interpolated Step 68.2: Position = [0.1319 0.1766 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.68 B-5.22 C-5.22 D83.27 X124.52 Y-165.32 Z4.1
+📍 Attempted Interpolated Step 68.3: Position = [0.05742 0.1861  0.36602]
+→ Interpolated Joints = [ 1.60102 -0.08902  1.46503 -2.17341  1.47928  1.40654]
+📍 Interpolated Step 68.3: Position = [0.1317 0.1769 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.73 B-5.1 C-5.1 D83.17 X124.53 Y-165.35 Z4.17
+📍 Attempted Interpolated Step 69.0: Position = [0.05742 0.1861  0.36602]
+→ Interpolated Joints = [ 1.60102 -0.08902  1.46503 -2.17341  1.47928  1.40654]
+📍 Interpolated Step 69.0: Position = [0.1317 0.1769 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.73 B-5.1 C-5.1 D83.17 X124.53 Y-165.35 Z4.17
+📍 Attempted Interpolated Step 69.1: Position = [0.05742 0.1861  0.36602]
+→ Interpolated Joints = [ 1.60102 -0.08902  1.46503 -2.17341  1.47928  1.40654]
+📍 Interpolated Step 69.1: Position = [0.1317 0.1769 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.73 B-5.1 C-5.1 D83.17 X124.53 Y-165.35 Z4.17
+📍 Attempted Interpolated Step 69.2: Position = [0.05742 0.1861  0.36602]
+→ Interpolated Joints = [ 1.60102 -0.08902  1.46503 -2.17341  1.47928  1.40654]
+📍 Interpolated Step 69.2: Position = [0.1317 0.1769 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.73 B-5.1 C-5.1 D83.17 X124.53 Y-165.35 Z4.17
+📍 Attempted Interpolated Step 69.3: Position = [0.05742 0.1861  0.36602]
+→ Interpolated Joints = [ 1.60102 -0.08902  1.46503 -2.17341  1.47928  1.40654]
+📍 Interpolated Step 69.3: Position = [0.1317 0.1769 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.73 B-5.1 C-5.1 D83.17 X124.53 Y-165.35 Z4.17
+📍 Attempted Interpolated Step 70.0: Position = [0.05727 0.1876  0.36587]
+→ Interpolated Joints = [ 1.60117 -0.0867   1.46288 -2.17345  1.47949  1.4066 ]
+📍 Interpolated Step 70.0: Position = [0.1317 0.1773 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.74 B-4.97 C-4.97 D83.07 X124.53 Y-165.36 Z4.18
+📍 Attempted Interpolated Step 70.1: Position = [0.05712 0.1891  0.36572]
+→ Interpolated Joints = [ 1.60132 -0.08438  1.46074 -2.17348  1.47971  1.40666]
+📍 Interpolated Step 70.1: Position = [0.1316 0.1776 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.75 B-4.83 C-4.83 D82.96 X124.53 Y-165.38 Z4.18
+📍 Attempted Interpolated Step 70.2: Position = [0.05697 0.1906  0.36557]
+→ Interpolated Joints = [ 1.60146 -0.08206  1.45859 -2.17352  1.47993  1.40672]
+📍 Interpolated Step 70.2: Position = [0.1316 0.178  0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.76 B-4.7 C-4.7 D82.86 X124.53 Y-165.39 Z4.19
+📍 Attempted Interpolated Step 70.3: Position = [0.05682 0.1921  0.36542]
+→ Interpolated Joints = [ 1.60161 -0.07974  1.45645 -2.17355  1.48015  1.40678]
+📍 Interpolated Step 70.3: Position = [0.1316 0.1784 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.77 B-4.57 C-4.57 D82.76 X124.54 Y-165.41 Z4.21
+📍 Attempted Interpolated Step 71.0: Position = [0.05667 0.1936  0.36527]
+→ Interpolated Joints = [ 1.60176 -0.07742  1.45428 -2.17358  1.48035  1.40683]
+📍 Interpolated Step 71.0: Position = [0.1315 0.1788 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.77 B-4.44 C-4.44 D82.65 X124.54 Y-165.43 Z4.21
+📍 Attempted Interpolated Step 71.1: Position = [0.05652 0.1951  0.36512]
+→ Interpolated Joints = [ 1.6019  -0.0751   1.45212 -2.17361  1.48056  1.40688]
+📍 Interpolated Step 71.1: Position = [0.1315 0.1791 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.78 B-4.3 C-4.3 D82.55 X124.54 Y-165.44 Z4.22
+📍 Attempted Interpolated Step 71.2: Position = [0.05637 0.1966  0.36497]
+→ Interpolated Joints = [ 1.60205 -0.07278  1.44995 -2.17365  1.48077  1.40692]
+📍 Interpolated Step 71.2: Position = [0.1315 0.1795 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.79 B-4.17 C-4.17 D82.45 X124.54 Y-165.45 Z4.23
+📍 Attempted Interpolated Step 71.3: Position = [0.05622 0.1981  0.36482]
+→ Interpolated Joints = [ 1.6022  -0.07046  1.44779 -2.17368  1.48097  1.40697]
+📍 Interpolated Step 71.3: Position = [0.1314 0.1799 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.8 B-4.04 C-4.04 D82.34 X124.54 Y-165.46 Z4.24
+📍 Attempted Interpolated Step 72.0: Position = [0.05607 0.1996  0.36467]
+→ Interpolated Joints = [ 1.60234 -0.06814  1.4456  -2.17371  1.48117  1.407  ]
+📍 Interpolated Step 72.0: Position = [0.1314 0.1803 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.81 B-3.9 C-3.9 D82.24 X124.54 Y-165.48 Z4.24
+📍 Attempted Interpolated Step 72.1: Position = [0.05592 0.2011  0.36452]
+→ Interpolated Joints = [ 1.60248 -0.06581  1.44342 -2.17374  1.48136  1.40704]
+📍 Interpolated Step 72.1: Position = [0.1313 0.1806 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.82 B-3.77 C-3.77 D82.13 X124.55 Y-165.5 Z4.26
+📍 Attempted Interpolated Step 72.2: Position = [0.05577 0.2026  0.36437]
+→ Interpolated Joints = [ 1.60263 -0.06349  1.44123 -2.17377  1.48155  1.40707]
+📍 Interpolated Step 72.2: Position = [0.1313 0.181  0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.82 B-3.64 C-3.64 D82.03 X124.55 Y-165.51 Z4.27
+📍 Attempted Interpolated Step 72.3: Position = [0.05562 0.2041  0.36422]
+→ Interpolated Joints = [ 1.60277 -0.06117  1.43904 -2.1738   1.48175  1.4071 ]
+📍 Interpolated Step 72.3: Position = [0.1313 0.1814 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.83 B-3.5 C-3.5 D81.92 X124.55 Y-165.52 Z4.28
+📍 Attempted Interpolated Step 73.0: Position = [0.05547 0.2056  0.36407]
+→ Interpolated Joints = [ 1.60291 -0.05884  1.43684 -2.17383  1.48193  1.40712]
+📍 Interpolated Step 73.0: Position = [0.1312 0.1818 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.84 B-3.37 C-3.37 D81.81 X124.55 Y-165.53 Z4.29
+📍 Attempted Interpolated Step 73.1: Position = [0.05532 0.2071  0.36392]
+→ Interpolated Joints = [ 1.60305 -0.05651  1.43463 -2.17386  1.48211  1.40714]
+📍 Interpolated Step 73.1: Position = [0.1312 0.1821 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.85 B-3.24 C-3.24 D81.71 X124.55 Y-165.54 Z4.3
+📍 Attempted Interpolated Step 73.2: Position = [0.05517 0.2086  0.36377]
+→ Interpolated Joints = [ 1.60319 -0.05419  1.43242 -2.17389  1.48229  1.40716]
+📍 Interpolated Step 73.2: Position = [0.1312 0.1825 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.86 B-3.1 C-3.1 D81.6 X124.55 Y-165.55 Z4.31
+📍 Attempted Interpolated Step 73.3: Position = [0.05502 0.2101  0.36362]
+→ Interpolated Joints = [ 1.60333 -0.05186  1.43021 -2.17392  1.48248  1.40718]
+📍 Interpolated Step 73.3: Position = [0.1311 0.1829 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.86 B-2.97 C-2.97 D81.5 X124.56 Y-165.57 Z4.31
+📍 Attempted Interpolated Step 74.0: Position = [0.05487 0.2116  0.36347]
+→ Interpolated Joints = [ 1.60347 -0.04953  1.42799 -2.17394  1.48265  1.40719]
+📍 Interpolated Step 74.0: Position = [0.1311 0.1833 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.87 B-2.84 C-2.84 D81.39 X124.56 Y-165.58 Z4.32
+📍 Attempted Interpolated Step 74.1: Position = [0.05472 0.2131  0.36332]
+→ Interpolated Joints = [ 1.60361 -0.0472   1.42576 -2.17397  1.48282  1.4072 ]
+📍 Interpolated Step 74.1: Position = [0.131  0.1836 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.88 B-2.7 C-2.7 D81.28 X124.56 Y-165.59 Z4.33
+📍 Attempted Interpolated Step 74.2: Position = [0.05457 0.2146  0.36317]
+→ Interpolated Joints = [ 1.60375 -0.04487  1.42353 -2.174    1.48299  1.4072 ]
+📍 Interpolated Step 74.2: Position = [0.131  0.184  0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.89 B-2.57 C-2.57 D81.17 X124.56 Y-165.6 Z4.34
+📍 Attempted Interpolated Step 74.3: Position = [0.05442 0.2161  0.36302]
+→ Interpolated Joints = [ 1.60389 -0.04254  1.4213  -2.17403  1.48315  1.40721]
+📍 Interpolated Step 74.3: Position = [0.131  0.1844 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.9 B-2.44 C-2.44 D81.06 X124.56 Y-165.61 Z4.35
+📍 Attempted Interpolated Step 75.0: Position = [0.05442 0.2161  0.36302]
+→ Interpolated Joints = [ 1.60389 -0.04254  1.4213  -2.17403  1.48315  1.40721]
+📍 Interpolated Step 75.0: Position = [0.131  0.1844 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.9 B-2.44 C-2.44 D81.06 X124.56 Y-165.61 Z4.35
+📍 Attempted Interpolated Step 75.1: Position = [0.05442 0.2161  0.36302]
+→ Interpolated Joints = [ 1.60389 -0.04254  1.4213  -2.17403  1.48315  1.40721]
+📍 Interpolated Step 75.1: Position = [0.131  0.1844 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.9 B-2.44 C-2.44 D81.06 X124.56 Y-165.61 Z4.35
+📍 Attempted Interpolated Step 75.2: Position = [0.05442 0.2161  0.36302]
+→ Interpolated Joints = [ 1.60389 -0.04254  1.4213  -2.17403  1.48315  1.40721]
+📍 Interpolated Step 75.2: Position = [0.131  0.1844 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.9 B-2.44 C-2.44 D81.06 X124.56 Y-165.61 Z4.35
+📍 Attempted Interpolated Step 75.3: Position = [0.05442 0.2161  0.36302]
+→ Interpolated Joints = [ 1.60389 -0.04254  1.4213  -2.17403  1.48315  1.40721]
+📍 Interpolated Step 75.3: Position = [0.131  0.1844 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.9 B-2.44 C-2.44 D81.06 X124.56 Y-165.61 Z4.35
+📍 Attempted Interpolated Step 76.0: Position = [0.05442 0.2176  0.36302]
+→ Interpolated Joints = [ 1.60382 -0.04022  1.41906 -2.17402  1.48315  1.40732]
+📍 Interpolated Step 76.0: Position = [0.131  0.1848 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.89 B-2.3 C-2.3 D80.96 X124.56 Y-165.61 Z4.35
+📍 Attempted Interpolated Step 76.1: Position = [0.05442 0.2191  0.36302]
+→ Interpolated Joints = [ 1.60375 -0.03789  1.41682 -2.17402  1.48314  1.40742]
+📍 Interpolated Step 76.1: Position = [0.131  0.1852 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.89 B-2.17 C-2.17 D80.85 X124.56 Y-165.62 Z4.34
+📍 Attempted Interpolated Step 76.2: Position = [0.05442 0.2206  0.36302]
+→ Interpolated Joints = [ 1.60369 -0.03556  1.41457 -2.17401  1.48313  1.40753]
+📍 Interpolated Step 76.2: Position = [0.131  0.1855 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.88 B-2.04 C-2.04 D80.74 X124.56 Y-165.63 Z4.33
+📍 Attempted Interpolated Step 76.3: Position = [0.05442 0.2221  0.36302]
+→ Interpolated Joints = [ 1.60362 -0.03324  1.41233 -2.17401  1.48312  1.40764]
+📍 Interpolated Step 76.3: Position = [0.131  0.1859 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.88 B-1.9 C-1.9 D80.63 X124.56 Y-165.63 Z4.33
+📍 Attempted Interpolated Step 77.0: Position = [0.05442 0.2221  0.36302]
+→ Interpolated Joints = [ 1.60362 -0.03324  1.41233 -2.17401  1.48312  1.40764]
+📍 Interpolated Step 77.0: Position = [0.131  0.1859 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.88 B-1.9 C-1.9 D80.63 X124.56 Y-165.63 Z4.33
+📍 Attempted Interpolated Step 77.1: Position = [0.05442 0.2221  0.36302]
+→ Interpolated Joints = [ 1.60362 -0.03324  1.41233 -2.17401  1.48312  1.40764]
+📍 Interpolated Step 77.1: Position = [0.131  0.1859 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.88 B-1.9 C-1.9 D80.63 X124.56 Y-165.63 Z4.33
+📍 Attempted Interpolated Step 77.2: Position = [0.05442 0.2221  0.36302]
+→ Interpolated Joints = [ 1.60362 -0.03324  1.41233 -2.17401  1.48312  1.40764]
+📍 Interpolated Step 77.2: Position = [0.131  0.1859 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.88 B-1.9 C-1.9 D80.63 X124.56 Y-165.63 Z4.33
+📍 Attempted Interpolated Step 77.3: Position = [0.05442 0.2221  0.36302]
+→ Interpolated Joints = [ 1.60362 -0.03324  1.41233 -2.17401  1.48312  1.40764]
+📍 Interpolated Step 77.3: Position = [0.131  0.1859 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.88 B-1.9 C-1.9 D80.63 X124.56 Y-165.63 Z4.33
+📍 Attempted Interpolated Step 78.0: Position = [0.0548  0.2236  0.36339]
+→ Interpolated Joints = [ 1.60305 -0.03093  1.41009 -2.17393  1.4827   1.40801]
+📍 Interpolated Step 78.0: Position = [0.1311 0.1863 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.85 B-1.77 C-1.77 D80.52 X124.56 Y-165.62 Z4.28
+📍 Attempted Interpolated Step 78.1: Position = [0.05517 0.2251  0.36377]
+→ Interpolated Joints = [ 1.60247 -0.02862  1.40784 -2.17386  1.48227  1.40838]
+📍 Interpolated Step 78.1: Position = [0.1312 0.1867 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.82 B-1.64 C-1.64 D80.41 X124.55 Y-165.62 Z4.24
+📍 Attempted Interpolated Step 78.2: Position = [0.05555 0.2266  0.36414]
+→ Interpolated Joints = [ 1.6019  -0.02631  1.4056  -2.17378  1.48185  1.40876]
+📍 Interpolated Step 78.2: Position = [0.1313 0.187  0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.78 B-1.51 C-1.51 D80.3 X124.55 Y-165.62 Z4.18
+📍 Attempted Interpolated Step 78.3: Position = [0.05592 0.2281  0.36452]
+→ Interpolated Joints = [ 1.60133 -0.024    1.40335 -2.17371  1.48142  1.40913]
+📍 Interpolated Step 78.3: Position = [0.1313 0.1874 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.75 B-1.38 C-1.38 D80.2 X124.54 Y-165.62 Z4.14
+📍 Attempted Interpolated Step 79.0: Position = [0.0563  0.2296  0.36489]
+→ Interpolated Joints = [ 1.60077 -0.02169  1.40108 -2.17363  1.48099  1.40948]
+📍 Interpolated Step 79.0: Position = [0.1314 0.1878 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.72 B-1.24 C-1.24 D80.09 X124.54 Y-165.61 Z4.09
+📍 Attempted Interpolated Step 79.1: Position = [0.05667 0.2311  0.36527]
+→ Interpolated Joints = [ 1.6002  -0.01937  1.39882 -2.17355  1.48056  1.40984]
+📍 Interpolated Step 79.1: Position = [0.1315 0.1882 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.68 B-1.11 C-1.11 D79.98 X124.54 Y-165.61 Z4.05
+📍 Attempted Interpolated Step 79.2: Position = [0.05705 0.2326  0.36564]
+→ Interpolated Joints = [ 1.59964 -0.01706  1.39655 -2.17348  1.48013  1.41019]
+📍 Interpolated Step 79.2: Position = [0.1316 0.1885 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.65 B-0.98 C-0.98 D79.87 X124.53 Y-165.61 Z4.01
+📍 Attempted Interpolated Step 79.3: Position = [0.05742 0.2341  0.36602]
+→ Interpolated Joints = [ 1.59908 -0.01474  1.39428 -2.1734   1.4797   1.41054]
+📍 Interpolated Step 79.3: Position = [0.1317 0.1889 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.62 B-0.84 C-0.84 D79.76 X124.53 Y-165.6 Z3.96
+📍 Attempted Interpolated Step 80.0: Position = [0.0578  0.2356  0.36639]
+→ Interpolated Joints = [ 1.59852 -0.01242  1.39199 -2.17333  1.47927  1.41088]
+📍 Interpolated Step 80.0: Position = [0.1318 0.1893 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.59 B-0.71 C-0.71 D79.65 X124.52 Y-165.6 Z3.92
+📍 Attempted Interpolated Step 80.1: Position = [0.05817 0.2371  0.36677]
+→ Interpolated Joints = [ 1.59797 -0.0101   1.3897  -2.17325  1.47884  1.41121]
+📍 Interpolated Step 80.1: Position = [0.1319 0.1896 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.56 B-0.58 C-0.58 D79.53 X124.52 Y-165.59 Z3.87
+📍 Attempted Interpolated Step 80.2: Position = [0.05855 0.2386  0.36714]
+→ Interpolated Joints = [ 1.59741 -0.00778  1.38741 -2.17318  1.47841  1.41154]
+📍 Interpolated Step 80.2: Position = [0.132  0.19   0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.52 B-0.45 C-0.45 D79.42 X124.51 Y-165.59 Z3.83
+📍 Attempted Interpolated Step 80.3: Position = [0.05892 0.2401  0.36752]
+→ Interpolated Joints = [ 1.59686 -0.00546  1.38512 -2.1731   1.47797  1.41188]
+📍 Interpolated Step 80.3: Position = [0.1321 0.1904 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.49 B-0.31 C-0.31 D79.31 X124.51 Y-165.57 Z3.79
+📍 Attempted Interpolated Step 81.0: Position = [0.0593  0.2416  0.36789]
+→ Interpolated Joints = [ 1.59631 -0.00314  1.3828  -2.17303  1.47754  1.41219]
+📍 Interpolated Step 81.0: Position = [0.1322 0.1908 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.46 B-0.18 C-0.18 D79.2 X124.51 Y-165.57 Z3.75
+📍 Attempted Interpolated Step 81.1: Position = [0.05967 0.2431  0.36827]
+→ Interpolated Joints = [ 1.59577 -0.00081  1.38049 -2.17295  1.4771   1.4125 ]
+📍 Interpolated Step 81.1: Position = [0.1323 0.1911 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.43 B-0.05 C-0.05 D79.09 X124.5 Y-165.56 Z3.7
+📍 Attempted Interpolated Step 81.2: Position = [0.06005 0.2446  0.36864]
+→ Interpolated Joints = [ 1.59522  0.00151  1.37817 -2.17288  1.47667  1.41282]
+📍 Interpolated Step 81.2: Position = [0.1324 0.1915 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.4 B0.09 C0.09 D78.97 X124.5 Y-165.56 Z3.66
+📍 Attempted Interpolated Step 81.3: Position = [0.06042 0.2461  0.36902]
+→ Interpolated Joints = [ 1.59467  0.00384  1.37586 -2.1728   1.47623  1.41313]
+📍 Interpolated Step 81.3: Position = [0.1325 0.1919 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.37 B0.22 C0.22 D78.86 X124.49 Y-165.55 Z3.61
+📍 Attempted Interpolated Step 82.0: Position = [0.0608  0.2476  0.36939]
+→ Interpolated Joints = [ 1.59414  0.00617  1.37352 -2.17273  1.47579  1.41343]
+📍 Interpolated Step 82.0: Position = [0.1326 0.1923 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.34 B0.35 C0.35 D78.75 X124.49 Y-165.54 Z3.58
+📍 Attempted Interpolated Step 82.1: Position = [0.06117 0.2491  0.36977]
+→ Interpolated Joints = [ 1.5936   0.0085   1.37118 -2.17266  1.47535  1.41372]
+📍 Interpolated Step 82.1: Position = [0.1327 0.1926 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.31 B0.49 C0.49 D78.63 X124.48 Y-165.53 Z3.53
+📍 Attempted Interpolated Step 82.2: Position = [0.06155 0.2506  0.37014]
+→ Interpolated Joints = [ 1.59306  0.01083  1.36884 -2.17258  1.47491  1.41401]
+📍 Interpolated Step 82.2: Position = [0.1328 0.193  0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.28 B0.62 C0.62 D78.52 X124.48 Y-165.53 Z3.49
+📍 Attempted Interpolated Step 82.3: Position = [0.06192 0.2521  0.37052]
+→ Interpolated Joints = [ 1.59252  0.01316  1.3665  -2.17251  1.47448  1.41431]
+📍 Interpolated Step 82.3: Position = [0.1329 0.1934 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.24 B0.75 C0.75 D78.4 X124.48 Y-165.51 Z3.45
+📍 Attempted Interpolated Step 83.0: Position = [0.06192 0.2521  0.37052]
+→ Interpolated Joints = [ 1.59252  0.01316  1.3665  -2.17251  1.47448  1.41431]
+📍 Interpolated Step 83.0: Position = [0.1329 0.1934 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.24 B0.75 C0.75 D78.4 X124.48 Y-165.51 Z3.45
+📍 Attempted Interpolated Step 83.1: Position = [0.06192 0.2521  0.37052]
+→ Interpolated Joints = [ 1.59252  0.01316  1.3665  -2.17251  1.47448  1.41431]
+📍 Interpolated Step 83.1: Position = [0.1329 0.1934 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.24 B0.75 C0.75 D78.4 X124.48 Y-165.51 Z3.45
+📍 Attempted Interpolated Step 83.2: Position = [0.06192 0.2521  0.37052]
+→ Interpolated Joints = [ 1.59252  0.01316  1.3665  -2.17251  1.47448  1.41431]
+📍 Interpolated Step 83.2: Position = [0.1329 0.1934 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.24 B0.75 C0.75 D78.4 X124.48 Y-165.51 Z3.45
+📍 Attempted Interpolated Step 83.3: Position = [0.06192 0.2521  0.37052]
+→ Interpolated Joints = [ 1.59252  0.01316  1.3665  -2.17251  1.47448  1.41431]
+📍 Interpolated Step 83.3: Position = [0.1329 0.1934 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.24 B0.75 C0.75 D78.4 X124.48 Y-165.51 Z3.45
+📍 Attempted Interpolated Step 84.0: Position = [0.06267 0.25435 0.37127]
+→ Interpolated Joints = [ 1.59149  0.01666  1.36297 -2.17236  1.47361  1.41485]
+📍 Interpolated Step 84.0: Position = [0.133  0.194  0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.19 B0.95 C0.95 D78.23 X124.47 Y-165.5 Z3.36
+📍 Attempted Interpolated Step 84.1: Position = [0.06342 0.2566  0.37202]
+→ Interpolated Joints = [ 1.59045  0.02016  1.35943 -2.17222  1.47275  1.4154 ]
+📍 Interpolated Step 84.1: Position = [0.1332 0.1945 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.13 B1.16 C1.16 D78.06 X124.46 Y-165.48 Z3.28
+📍 Attempted Interpolated Step 84.2: Position = [0.06417 0.25885 0.37277]
+→ Interpolated Joints = [ 1.58941  0.02366  1.35589 -2.17207  1.47189  1.41595]
+📍 Interpolated Step 84.2: Position = [0.1334 0.1951 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.07 B1.36 C1.36 D77.89 X124.45 Y-165.46 Z3.2
+📍 Attempted Interpolated Step 84.3: Position = [0.06492 0.2611  0.37352]
+→ Interpolated Joints = [ 1.58838  0.02716  1.35235 -2.17193  1.47103  1.4165 ]
+📍 Interpolated Step 84.3: Position = [0.1336 0.1956 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.01 B1.56 C1.56 D77.71 X124.44 Y-165.44 Z3.12
+📍 Attempted Interpolated Step 85.0: Position = [0.06492 0.2611  0.37352]
+→ Interpolated Joints = [ 1.58838  0.02716  1.35235 -2.17193  1.47103  1.4165 ]
+📍 Interpolated Step 85.0: Position = [0.1336 0.1956 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.01 B1.56 C1.56 D77.71 X124.44 Y-165.44 Z3.12
+📍 Attempted Interpolated Step 85.1: Position = [0.06492 0.2611  0.37352]
+→ Interpolated Joints = [ 1.58838  0.02716  1.35235 -2.17193  1.47103  1.4165 ]
+📍 Interpolated Step 85.1: Position = [0.1336 0.1956 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.01 B1.56 C1.56 D77.71 X124.44 Y-165.44 Z3.12
+📍 Attempted Interpolated Step 85.2: Position = [0.06492 0.2611  0.37352]
+→ Interpolated Joints = [ 1.58838  0.02716  1.35235 -2.17193  1.47103  1.4165 ]
+📍 Interpolated Step 85.2: Position = [0.1336 0.1956 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.01 B1.56 C1.56 D77.71 X124.44 Y-165.44 Z3.12
+📍 Attempted Interpolated Step 85.3: Position = [0.06492 0.2611  0.37352]
+→ Interpolated Joints = [ 1.58838  0.02716  1.35235 -2.17193  1.47103  1.4165 ]
+📍 Interpolated Step 85.3: Position = [0.1336 0.1956 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A91.01 B1.56 C1.56 D77.71 X124.44 Y-165.44 Z3.12
+📍 Attempted Interpolated Step 86.0: Position = [0.06521 0.26168 0.37381]
+→ Interpolated Joints = [ 1.58799  0.02807  1.35142 -2.17187  1.4707   1.4167 ]
+📍 Interpolated Step 86.0: Position = [0.1337 0.1958 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.98 B1.61 C1.61 D77.67 X124.44 Y-165.44 Z3.1
+📍 Attempted Interpolated Step 86.1: Position = [0.06551 0.26227 0.37411]
+→ Interpolated Joints = [ 1.5876   0.02899  1.35048 -2.17182  1.47037  1.4169 ]
+📍 Interpolated Step 86.1: Position = [0.1338 0.1959 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.96 B1.66 C1.66 D77.63 X124.44 Y-165.43 Z3.07
+📍 Attempted Interpolated Step 86.2: Position = [0.0658  0.26286 0.3744 ]
+→ Interpolated Joints = [ 1.5872   0.0299   1.34954 -2.17177  1.47005  1.4171 ]
+📍 Interpolated Step 86.2: Position = [0.1338 0.1961 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.94 B1.71 C1.71 D77.58 X124.43 Y-165.42 Z3.04
+📍 Attempted Interpolated Step 86.3: Position = [0.0661  0.26345 0.3747 ]
+→ Interpolated Joints = [ 1.58681  0.03082  1.34861 -2.17171  1.46972  1.4173 ]
+📍 Interpolated Step 86.3: Position = [0.1339 0.1962 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.92 B1.77 C1.77 D77.53 X124.43 Y-165.42 Z3.0
+📍 Attempted Interpolated Step 87.0: Position = [0.0661  0.26345 0.3747 ]
+→ Interpolated Joints = [ 1.58681  0.03082  1.34861 -2.17171  1.46972  1.4173 ]
+📍 Interpolated Step 87.0: Position = [0.1339 0.1962 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.92 B1.77 C1.77 D77.53 X124.43 Y-165.42 Z3.0
+📍 Attempted Interpolated Step 87.1: Position = [0.0661  0.26345 0.3747 ]
+→ Interpolated Joints = [ 1.58681  0.03082  1.34861 -2.17171  1.46972  1.4173 ]
+📍 Interpolated Step 87.1: Position = [0.1339 0.1962 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.92 B1.77 C1.77 D77.53 X124.43 Y-165.42 Z3.0
+📍 Attempted Interpolated Step 87.2: Position = [0.0661  0.26345 0.3747 ]
+→ Interpolated Joints = [ 1.58681  0.03082  1.34861 -2.17171  1.46972  1.4173 ]
+📍 Interpolated Step 87.2: Position = [0.1339 0.1962 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.92 B1.77 C1.77 D77.53 X124.43 Y-165.42 Z3.0
+📍 Attempted Interpolated Step 87.3: Position = [0.0661  0.26345 0.3747 ]
+→ Interpolated Joints = [ 1.58681  0.03082  1.34861 -2.17171  1.46972  1.4173 ]
+📍 Interpolated Step 87.3: Position = [0.1339 0.1962 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.92 B1.77 C1.77 D77.53 X124.43 Y-165.42 Z3.0
+📍 Attempted Interpolated Step 88.0: Position = [0.06722 0.26495 0.37582]
+→ Interpolated Joints = [ 1.58534  0.03315  1.34622 -2.17151  1.46849  1.41807]
+📍 Interpolated Step 88.0: Position = [0.1342 0.1966 0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.83 B1.9 C1.9 D77.41 X124.42 Y-165.39 Z2.89
+📍 Attempted Interpolated Step 88.1: Position = [0.06835 0.26645 0.37695]
+→ Interpolated Joints = [ 1.58387  0.03548  1.34383 -2.17131  1.46727  1.41884]
+📍 Interpolated Step 88.1: Position = [0.1345 0.197  0.4953], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.75 B2.03 C2.03 D77.3 X124.41 Y-165.36 Z2.78
+📍 Attempted Interpolated Step 88.2: Position = [0.06947 0.26795 0.37807]
+→ Interpolated Joints = [ 1.5824   0.03781  1.34143 -2.17111  1.46604  1.41961]
+📍 Interpolated Step 88.2: Position = [0.1348 0.1974 0.4952], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.67 B2.17 C2.17 D77.18 X124.4 Y-165.34 Z2.66
+📍 Attempted Interpolated Step 88.3: Position = [0.0706  0.26945 0.3792 ]
+→ Interpolated Joints = [ 1.58093  0.04014  1.33904 -2.1709   1.46482  1.42038]
+📍 Interpolated Step 88.3: Position = [0.1351 0.1977 0.4952], Orientation (RPY rad) = [0.0137 0.9625 0.0231]
+>>> A90.58 B2.3 C2.3 D77.06 X124.38 Y-165.31 Z2.55
