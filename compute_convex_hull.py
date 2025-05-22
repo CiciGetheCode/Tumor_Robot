@@ -6,6 +6,7 @@ from scipy.spatial.transform import Rotation as R
 import os
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+from collections import defaultdict
 # from robots_kinematics import compute_inverse_kinematics 
 # from robotic_manipulators_playground import robotic_manipulators_playground_window 
 # import kinematics as kin
@@ -23,63 +24,89 @@ class RobotTrajectory:
         self.min_bounds = min_bounds
         self.max_bounds = max_bounds
         self.trajectory_points_list = []
+        self.cross_trajectory = []
+        self.convex_trajectory = []
+        self.cross_along_y  = []
+        self.cross_along_z = []
+        self.robottrajectory_instance = None 
 
-
-    def is_pose_reachable(self, position, orientation):
+    def split_cross_only_by_y_and_z(self, cross_only):
         """
-        Checks if a given pose (position + orientation) is reachable using inverse kinematics.
-        
-        Parameters:
-            position (list or np.ndarray): Target 3D position [x, y, z]
-            orientation (list or np.ndarray): Orientation [roll, pitch, yaw] in radians
-
-        Returns:
-            bool: True if IK solver finds a valid solution, False otherwise.
+        Splits the cross trajectory into:
+        - `cross_along_y`: one representative point per unique Y-value (based on Z proximity to center)
+        - `cross_along_z`: all remaining points not in `cross_along_y`
         """
-        try:
-            if not self.robotic_manipulator_is_built:
-                return False
+        cross_only_array = np.array([np.array(p[0]) for p in cross_only])  # shape (N, 3)
 
-            # Get transformation matrix from position and orientation
-            target_pose_T = self.get_transformation_matrix(position, orientation)
+        self.cross_along_y = []
+        self.cross_along_z = []
 
-            # Call the existing IK solver function
-            _, success = kin.compute_inverse_kinematics(self.built_robotic_manipulator, target_pose_T, self.invkine_tolerance)
+        y_vals = cross_only_array[:, 1]
+        z_vals = cross_only_array[:, 2]
+        mid_z = (np.max(z_vals) + np.min(z_vals)) / 2
 
-            return bool(success)
-        except:
-            return False
+        grouped_by_y = defaultdict(list)
+        for point in cross_only_array:
+            y_rounded = round(point[1], 6)
+            grouped_by_y[y_rounded].append(point)
 
-    def adjust_pose_until_reachable(self, pos, orientation, max_tries=MAX_SHIFT_TRIES,shift_step=0.1):
-        pos = np.array(pos)
-        for _ in range(max_tries):
-            if self.is_pose_reachable(pos, orientation):        
-                return pos, orientation
-            pos[2] += shift_step
-            print("Shifted_step is: " ,shift_step)
-        
-        return None, orientation
+        cross_along_y_set = set()
 
+        for y_key, points in grouped_by_y.items():
+            # Pick the point with Z closest to mid_z as the Y representative
+            best_y_point = min(points, key=lambda p: abs(p[2] - mid_z))
+            self.cross_along_y.append(best_y_point)
+            cross_along_y_set.add(tuple(best_y_point))  # For fast comparison
 
-    def center_points_to_origin(self,points):
-        """
-        Move (translate) a set of 3D points so that their centroid becomes (0, 0, 0).
-        
-        Args:
-            points (np.ndarray): (N, 3) array of points.
+        for point in cross_only_array:
+            if tuple(point) not in cross_along_y_set:
+                self.cross_along_z.append(point)
 
-        Returns:
-            np.ndarray: Centered points.
-        """
-        points = np.asarray(points)
+        self.cross_along_y = np.array(self.cross_along_y)
+        self.cross_along_z = np.array(self.cross_along_z)
 
-        # Compute centroid
-        centroid = np.mean(points, axis=0)
+        print("✅ cross_along_y count:", len(self.cross_along_y))
+        print("✅ cross_along_z count:", len(self.cross_along_z))
 
-        # Subtract centroid from all points (move to 0,0,0)
-        centered_points = points - centroid
+    # def split_cross_only_by_y_and_z(self, cross_only):
+    #     """
+    #     Organizes the cross trajectory points by unique y-values.
+    #     Keeps one representative per y (closest to mid-z), and places the rest in cross_along_z.
+    #     """
+    #     cross_only_array = np.array([np.array(p[0]) for p in cross_only])  # Extract positions
 
-        return centered_points
+    #     self.cross_along_y = []
+    #     self.cross_along_z = []
+
+    #     y_vals = cross_only_array[:, 1]
+    #     z_vals = cross_only_array[:, 2]
+    #     mid_y = (np.max(y_vals) + np.min(y_vals)) / 2
+    #     mid_z = (np.max(z_vals) + np.min(z_vals)) / 2
+
+    #     grouped_by_y = defaultdict(list)
+    #     for i, point in enumerate(cross_only_array):
+    #         y_rounded = round(point[1], 6)
+    #         grouped_by_y[y_rounded].append(point)
+
+    #     for y_key, points in grouped_by_y.items():
+    #         if len(points) == 1:
+    #             self.cross_along_y.append(points[0])
+    #         else:
+    #             sorted_points = sorted(points, key=lambda p: p[2])
+    #             mid_candidates = [p for p in sorted_points if abs(p[1] - mid_y) < 1e-6]
+
+    #             if mid_candidates:
+    #                 mid_z_point = min(mid_candidates, key=lambda p: abs(p[2] - mid_z))
+    #                 self.cross_along_y.append(mid_z_point)
+    #                 for p in sorted_points:
+    #                     if not np.allclose(p, mid_z_point, atol=1e-8):
+    #                         self.cross_along_z.append(p)
+    #             else:
+    #                 self.cross_along_y.append(sorted_points[0])
+    #                 self.cross_along_z.extend(sorted_points[1:])
+
+    #     self.cross_along_y = np.array(self.cross_along_y)
+    #     self.cross_along_z = np.array(self.cross_along_z)
 
     def extract_points_from_dae(self,dae_path):
         """
@@ -136,33 +163,6 @@ class RobotTrajectory:
         # print([tuple(p1 + (p2 - p1) * t) for t in np.linspace(0, 1, num_points)])
 
         return [tuple(p1 + (p2 - p1) * t) for t in np.linspace(0, 1, num_points)]
-
-    def compute_convex_hull_trajectory(self,dae_path, max_radius=0.8, fixed_orientation=(0, 0, 0), max_point_spacing=0.5):
-        points = self.extract_points_from_dae(dae_path)
-        if points is None or len(points) < 4:
-            print("⚠️ Not enough points to compute a convex hull.")
-            return []
-
-        hull = ConvexHull(points)
-        hull_points = points[hull.vertices]
-        projected_points = hull_points
-
-        trajectory = []
-        for i in range(len(projected_points) - 1):
-            p1 = np.array(projected_points[i])
-            p2 = np.array(projected_points[i + 1])
-            segment = self.interpolate_line_segment(p1, p2, max_point_spacing)
-            for pos in segment:
-                trajectory.append((pos, fixed_orientation))
-
-        # Optional: close the loop
-        p1 = np.array(projected_points[-1])
-        p2 = np.array(projected_points[0])
-        segment = self.interpolate_line_segment(p1, p2, max_point_spacing)
-        for pos in segment:
-            trajectory.append((pos, fixed_orientation))
-        
-        return trajectory
 
     def compute_convex_hull_trajectory_3d(self,dae_path, max_radius=0.8, fixed_orientation=(0, 0, 0), max_point_spacing=0.5):
         points = self.extract_points_from_dae(dae_path)
@@ -465,13 +465,74 @@ class RobotTrajectory:
 
         # Combine all trajectories vertically
         final_trajectory_positions = np.vstack((initial_position, cross_points, convex_hull_points))[:, 0, :]
-                # Rotate trajectory positions around Y axis to match the inclined object
+        # Rotate trajectory positions around Y axis to match the inclined object
+        rotation = R.from_euler('y', -45, degrees=True)
+        rotation2 = R.from_euler('z', 180, degrees=True)
+        final_trajectory_positions = rotation.apply(final_trajectory_positions)
+        final_trajectory_positions = rotation2.apply(final_trajectory_positions)
+        
+        
+        # Define fixed orientation
+        fixed_orientation = np.array([-1 ,0, 0], dtype=float)        
+        # Define the rotation: 45 degrees around the Y-axis
         rotation = R.from_euler('y', 45, degrees=True)
+        # rotation = R.from_euler('z', 180, degrees=True)
+        fixed_orientation = rotation.apply([0, 0, 1])
+        # Repeat the fixed orientation for each position
+        repeated_orientations = np.tile(fixed_orientation, (final_trajectory_positions.shape[0], 1))
+        # Combine positions and orientations into one array
+        final_trajectory_for_robot = np.stack((final_trajectory_positions, repeated_orientations), axis=1)
+
+        
+        
+        
+        
+        return final_trajectory_for_robot
+
+    def compute_total_trajectory_for_robot_SCARA(self,convex_hull_points, cross_points, initial_position):
+        """
+        Combines the initial position, cross trajectory, and convex hull trajectory
+        into a single 3D trajectory array suitable for the robot.
+
+        Args:
+            convex_hull_points (np.ndarray): Trajectory points along the convex hull (N, 1, 3)
+            cross_points (np.ndarray): Cross trajectory points (M, 1, 3)
+            initial_position (np.ndarray): Initial position (1, 1, 3) or (1, 3)
+
+        Returns:
+            np.ndarray: Combined trajectory of shape (N+M+1, 1, 3)
+        """
+        # Ensure all are NumPy arrays
+        convex_hull_points = np.asarray(convex_hull_points, dtype=float)
+        cross_points = np.asarray(cross_points, dtype=float)
+        initial_position = np.asarray(initial_position, dtype=float)
+
+        # Reshape to consistent (N, 1, 3) format
+        if initial_position.shape == (1, 3):
+            initial_position = initial_position.reshape((1, 1, 3))
+        elif initial_position.shape == (3,):
+            initial_position = initial_position.reshape((1, 1, 3))
+
+        if cross_points.ndim == 2:
+            cross_points = cross_points.reshape((-1, 1, 3))
+
+        if convex_hull_points.ndim == 2:
+            convex_hull_points = convex_hull_points.reshape((-1, 1, 3))
+
+        print("initial_position shape:", initial_position.shape)
+        print("cross_points shape:", cross_points.shape)
+        print("convex_hull_points shape:", convex_hull_points.shape)
+
+
+        # Combine all trajectories vertically
+        final_trajectory_positions = np.vstack((initial_position, cross_points, convex_hull_points))[:, 0, :]
+                # Rotate trajectory positions around Y axis to match the inclined object
+        rotation = R.from_euler('y', -90, degrees=True)
         final_trajectory_positions = rotation.apply(final_trajectory_positions)
         # Define fixed orientation
         fixed_orientation = np.array([-1 ,0, 0], dtype=float)
         # Define the rotation: 45 degrees around the Y-axis
-        rotation = R.from_euler('y', 45, degrees=True)
+        rotation = R.from_euler('y', -90, degrees=True)
         fixed_orientation = rotation.apply([0, 0, 1])
 
 
@@ -481,6 +542,68 @@ class RobotTrajectory:
         # Combine positions and orientations into one array
         final_trajectory_for_robot = np.stack((final_trajectory_positions, repeated_orientations), axis=1)
 
+        return final_trajectory_for_robot
+
+
+    def compute_total_trajectory_for_robot_cross_algorithm(self,convex_hull_points, cross_points, initial_position):
+        """
+        Combines the initial position, cross trajectory, and convex hull trajectory
+        into a single 3D trajectory array suitable for the robot.
+
+        Args:
+            convex_hull_points (np.ndarray): Trajectory points along the convex hull (N, 1, 3)
+            cross_points (np.ndarray): Cross trajectory points (M, 1, 3)
+            initial_position (np.ndarray): Initial position (1, 1, 3) or (1, 3)
+
+        Returns:
+            np.ndarray: Combined trajectory of shape (N+M+1, 1, 3)
+        """
+        # Ensure all are NumPy arrays
+        convex_hull_points = np.asarray(convex_hull_points, dtype=float)
+        cross_points = np.asarray(cross_points, dtype=float)
+        initial_position = np.asarray(initial_position, dtype=float)
+
+        # Reshape to consistent (N, 1, 3) format
+        if initial_position.shape == (1, 3):
+            initial_position = initial_position.reshape((1, 1, 3))
+        elif initial_position.shape == (3,):
+            initial_position = initial_position.reshape((1, 1, 3))
+
+        if cross_points.ndim == 2:
+            cross_points = cross_points.reshape((-1, 1, 3))
+
+        if convex_hull_points.ndim == 2:
+            convex_hull_points = convex_hull_points.reshape((-1, 1, 3))
+
+        print("initial_position shape:", initial_position.shape)
+        print("cross_points shape:", cross_points.shape)
+        print("convex_hull_points shape:", convex_hull_points.shape)
+
+
+        # Combine all trajectories vertically
+        final_trajectory_positions = np.vstack((initial_position, cross_points, convex_hull_points))[:, 0, :]
+        # Rotate trajectory positions around Y axis to match the inclined object
+        rotation = R.from_euler('y', 0, degrees=True)
+        rotation2 = R.from_euler('z', 0, degrees=True)
+        final_trajectory_positions = rotation.apply(final_trajectory_positions)
+        final_trajectory_positions = rotation2.apply(final_trajectory_positions)
+        
+        
+        # Define fixed orientation
+        fixed_orientation = np.array([-1 ,0, 0], dtype=float)        
+        # Define the rotation: 45 degrees around the Y-axis
+        rotation = R.from_euler('y', 45, degrees=True)
+        # rotation = R.from_euler('z', 180, degrees=True)
+        fixed_orientation = rotation.apply([0, 0, 1])
+        # Repeat the fixed orientation for each position
+        repeated_orientations = np.tile(fixed_orientation, (final_trajectory_positions.shape[0], 1))
+        # Combine positions and orientations into one array
+        final_trajectory_for_robot = np.stack((final_trajectory_positions, repeated_orientations), axis=1)
+
+        
+        
+        
+        
         return final_trajectory_for_robot
 
     def select_widest_boundary_points_along_z(self,points):
@@ -510,44 +633,6 @@ class RobotTrajectory:
 
         return boundary_points
 
-    # def extract_outermost_ring(self,points, projection='xy'):
-    #     """
-    #     Collapses the orthogonal axis and computes the convex hull in the selected 2D projection.
-    #     Returns 3D ring points with collapsed axis set to mean value.
-
-    #     Args:
-    #         points (np.ndarray): Full 3D point cloud (N, 3)
-    #         projection (str): One of 'xy', 'yz', or 'xz'
-
-    #     Returns:
-    #         np.ndarray: 3D points forming the outer ring in the selected plane
-    #     """
-    #     points = np.asarray(points)
-        
-    #     if projection == 'xy':
-    #         avg_z = np.min(points[:, 2])
-    #         plane_2d = points[:, :2]
-    #         collapsed = lambda x, y: [x, y, avg_z]
-
-    #     elif projection == 'yz':
-    #         avg_x = np.min(points[:, 0])
-    #         plane_2d = points[:, 1:3]
-    #         collapsed = lambda y, z: [avg_x, y, z]
-
-    #     elif projection == 'xz':
-    #         avg_y = np.min(points[:, 1])
-    #         plane_2d = points[:, [0, 2]]
-    #         collapsed = lambda x, z: [x, avg_y, z]
-
-    #     else:
-    #         raise ValueError("Projection must be 'xy', 'yz', or 'xz'")
-
-    #     # Compute convex hull in the projected 2D plane
-    #     hull = ConvexHull(plane_2d)
-    #     hull_indices = hull.vertices
-    #     ring_points = np.array([collapsed(*plane_2d[i]) for i in hull_indices])
-
-    #     return ring_points
     def extract_outermost_ring(self, points, projection='xy', max_point_spacing=0.01):
         """
         Compute a smooth ring on the outer boundary of a point cloud, in 3D space,
@@ -591,8 +676,7 @@ class RobotTrajectory:
                 interpolated_ring_3d.append(collapsed(*pt))
 
         return np.array(interpolated_ring_3d).tolist() 
-
-   
+ 
     def compute_optimal_transform(self, points, rotation_deg=45):
         """
         Automatically compute base_plane_origin and manual_offset to fit rotated object inside workspace.
@@ -639,10 +723,11 @@ class RobotTrajectory:
         for float_array in float_arrays:
             float_values = list(map(float, float_array.text.strip().split()))
             points = np.array(float_values).reshape(-1, 3)
-
+            
             # Center object at origin
             centroid = points.mean(axis=0)
             centered_points = points - centroid
+            centered_points = centered_points - manual_offset
 
             # Rotate around Y-axis
             rotated_points = rotation.apply(centered_points)
@@ -662,7 +747,7 @@ class RobotTrajectory:
         self.last_plane_normal = rotation.apply([0, 0, 1])  # Normal vector to rotated plane
         print(f"✅ Transformed DAE saved to: {output_dae_path}")
     
-    def do_everything(self,input_dae_path,output_dae_path,manual_offset = np.array([0.0,0.0,0.0])):
+    def do_everything(self,input_dae_path,output_dae_path,manual_offset = np.array([0.0,0.0,0.0]),fixed_plane_orientation_rpy=np.array([0.0, 0.0, 0.0])):
         #  Define your reachable workspace bounds
         min_bounds = np.array([-0.32500893, -0.14676859,  0.009])
         max_bounds = np.array([ 0.66500893,  0.74676859,  0.68019031])
@@ -690,10 +775,13 @@ class RobotTrajectory:
         convex_hull_points = self.compute_convex_hull_from_dae(path_to_shifted_dae) 
         
         # Define the fixed orientation vector (e.g., -X axis)
-        fixed_orientation_vector = np.array([-1, 0, 0], dtype=float)
-        # Rotate it 45 degrees around Y-axis to align with the inclined plane
-        rotation = R.from_euler('y', 45, degrees=True)
-        rotated_orientation_vector = rotation.apply(fixed_orientation_vector)
+        # fixed_orientation_vector = np.array([-1, 0, 0], dtype=float)
+        # # Rotate it 45 degrees around Y-axis to align with the inclined plane
+        # rotation = R.from_euler('y', 45, degrees=True)
+        # rotated_orientation_vector = rotation.apply(fixed_orientation_vector)
+          # rotated_orientation_vector = rotation.apply(fixed_orientation_vector)
+        rotated_orientation_vector = fixed_plane_orientation_rpy
+
 
 
 
@@ -735,10 +823,14 @@ class RobotTrajectory:
             # trajectory_points_list[:, 0,:] = trajectory_points_list[:, 0,:] / 100
             trajectory_points_list[:, 0:1, :] = trajectory_points_list[:, 0:1, :] / 1000 # scale all positions
             # 🔧 Shift the trajectory to be in a reachable region
-            trajectory_points_list[:, 0:1, 0] += 0.25   # X → front
-            trajectory_points_list[:, 0:1, 1] += 0.25   # Y → right
-            trajectory_points_list[:, 0:1, 2] += 0.15   # Z → higher
-                        # print(trajectory_points_list[0:10],'post devision')
+            # trajectory_points_list[:, 0:1, 0] += 0.25   # X → front
+            trajectory_points_list[:, 0:1, 1] -= 0.25   # Y → right
+            # trajectory_points_list[:, 0:1, 2] += 0.15   # Z → higher
+            #             # 🔁 Rotate trajectory positions to match tool orientation
+            # rotation = R.from_euler('y', 45, degrees=True)
+            # trajectory_points_list[:, 0, :] = rotation.apply(trajectory_points_list[:, 0, :])
+
+            # print(trajectory_points_list[0:10],'post devision')
             min_values = trajectory_points_list[:,0,:].min(axis=0)
             print(min_values)
             max_values = trajectory_points_list[:,0,:].max(axis=0) 
@@ -767,30 +859,328 @@ class RobotTrajectory:
 
             for idx, (pos, orientation_vec) in enumerate(trajectory):
                 if np.allclose(orientation_vec, [0, 0, 1], atol=1e-6):
-                    euler_deg = (0.0, 0.0, 0.0)
+                    euler_rad = (0.0, 0.0, 0.0)
                 else:
-                    euler_deg = tuple(R.from_rotvec(rotation.as_rotvec()).as_euler('xyz', degrees=True))
-
+                    euler_rad = tuple(fixed_plane_orientation_rpy)
                 pos_tuple = tuple(pos / 1000)
 
-                trajectory_output.append((pos_tuple, euler_deg))
+                trajectory_output.append((pos_tuple, euler_rad))
 
                 if idx < len(cross_points):  # Assuming cross is first
-                    cross_output.append((pos_tuple, euler_deg))
+                    cross_output.append((pos_tuple, euler_rad))
                 else:
-                    convex_output.append((pos_tuple, euler_deg))
+                    convex_output.append((pos_tuple, euler_rad))
 
             self.trajectory_points_list = trajectory_output
             self.cross_trajectory = cross_output
             self.convex_trajectory = convex_output
-            print("Last cross point:", cross_output[-1][0])
-            print("First convex point:", convex_output[0][0])
+
+            # print("Last cross point:", cross_output[-1][0])
+            # print("First convex point:", convex_output[0][0])
 
             
         
-            print(f"Debug ", cross_output[0],"/n" , self.cross_trajectory[0])
-            print(f"Debug ",convex_output[0],"/n",self.convex_trajectory[0])
-            print(f"Debug ",trajectory_output[0],"/n",self.trajectory_points_list[0])
+            # print(f"Debug ", cross_output[0],"/n" , self.cross_trajectory[0])
+            # print(f"Debug ",convex_output[0],"/n",self.convex_trajectory[0])
+            # print(f"Debug ",trajectory_output[0],"/n",self.trajectory_points_list[0])
+            # self.cross_trajectory = cross_points # 1 initial + N cross
+            # self.convex_trajectory = convex_hull_points # Remaining
+            # self.cross_trajectory.tolist()
+            # self.convex_trajectory.tolist()
+            # Save trajectory as numpy for debugging
+            np.save("/mnt/c/Users/aggel/Desktop/planned_trajectory_positions.npy", [p for p, _ in self.trajectory_points_list])
+            np.save("/mnt/c/Users/aggel/Desktop/planned_CROSS_positions.npy", [p for p, _ in self.cross_trajectory])
+            np.save("/mnt/c/Users/aggel/Desktop/planned_CONVEX_positions.npy", [p for p, _ in self.convex_trajectory])
+
+
+            return self.trajectory_points_list 
+        else:
+            print("❌ No convex hull points generated.")
+            self.trajectory_points_list = None
+            return None
+    
+    def do_everything_scara(self,input_dae_path,output_dae_path,manual_offset = np.array([0.0,0.0,0.0]), fixed_plane_orientation_rpy=np.array([0.0, 0.0, 0.0])):
+        
+        self.shift_dae_file_vertices(
+            input_dae_path=input_dae_path,
+            output_dae_path=output_dae_path,
+            base_plane_origin=np.array([0.0, 0.0, 0.0]),
+            plane_rotation_deg=0  ,
+            manual_offset=manual_offset)
+        
+        path_to_shifted_dae = os.path.expanduser(output_dae_path)
+        convex_hull_points = self.compute_convex_hull_from_dae(path_to_shifted_dae) 
+        
+        # # Define the fixed orientation vector (e.g., -X axis)
+        # fixed_orientation_vector = np.array([-1, 0, 0], dtype=float)
+        # # Rotate it 45 degrees around Y-axis to align with the inclined plane
+        # rotation = R.from_euler('y', 0, degrees=True)
+        # rotated_orientation_vector = rotation.apply(fixed_orientation_vector)
+        rotated_orientation_vector = fixed_plane_orientation_rpy
+
+
+
+        if convex_hull_points is not None:
+            print("🔺 Original Convex Hull Points:")
+            # transformed_points = project_points_to_workspace(convex_hull_points, max_radius=0.8)
+            transformed_points = convex_hull_points
+            points_array = np.array(transformed_points)
+            # print(len(transformed_points))
+
+            initial_position, orientation = self.calculate_initial_position_3d(points_array, orientation= rotated_orientation_vector)
+            # Compute cross trajectory
+            cross_points = self.compute_cross_trajectory_3d(initial_position.flatten(), points_array)
+            print("Cross points are : " ,len(cross_points))
+            # points = self.compute_convex_hull_trajectory_3d(path_to_shifted_dae, max_radius=0.8, fixed_orientation=fixed_orientation, max_point_spacing=0.01)
+
+        # # 🔧 FIX: Extract just the positions
+        # trajectory_positions = [points[i][0] for i in range(len(points)) if i % 10 == 0]
+
+        # # # Step 3: Get pre-position movement
+        # # initial_position,orientation= calculate_initial_position_3d(points, orientation=[0, 0, 0])
+        # initial_point = initial_position.reshape(1, 3)
+
+        
+            convex_hull_points_trajectory = self.extract_outermost_ring(points_array,projection='yz',max_point_spacing=5)
+            trajectory = self.compute_total_trajectory_for_robot_SCARA(convex_hull_points=convex_hull_points_trajectory,
+                                                        cross_points=cross_points,
+                                                        initial_position=initial_position
+                                                        )
+            
+            # Set numpy to print floats in the usual format, without scientific notation
+            np.set_printoptions(precision=8, suppress=True)
+
+            # Scale only the position part (index 0 of each tuple) by 1/1000
+            trajectory_scaled = [(pos , orientation) for (pos, orientation) in trajectory]
+
+
+            trajectory_points_list = np.array(trajectory_scaled)
+
+            # print(trajectory_points_list[0:10],'pre devision')
+
+            # Divide only the first column (x values) by 100
+            # trajectory_points_list[:, 0,:] = trajectory_points_list[:, 0,:] / 100
+            trajectory_points_list[:, 0:1, :] = trajectory_points_list[:, 0:1, :] /1000  # scale all positions
+            # 🔧 Shift the trajectory to be in a reachable region
+            # trajectory_points_list[:, 0:1, 0] += 0.25   # X → front
+            # trajectory_points_list[:, 0:1, 1] -= 0.25   # Y → right
+            # trajectory_points_list[:, 0:1, 2] += 0.15   # Z → higher
+            #             # 🔁 Rotate trajectory positions to match tool orientation
+            # rotation = R.from_euler('y', 45, degrees=True)
+            # trajectory_points_list[:, 0, :] = rotation.apply(trajectory_points_list[:, 0, :])
+
+            # print(trajectory_points_list[0:10],'post devision')
+            # min_values = trajectory_points_list[:,0,:].min(axis=0)
+            # print(min_values)
+            # max_values = trajectory_points_list[:,0,:].max(axis=0) 
+            # print(max_values)
+
+            # # Print trajectory details
+            # print(f"Generated trajectory with {len(trajectory)} points.")
+            # print(f"Trajectory dtype: {trajectory.dtype}")
+            # trajectory_output = []
+            # for pos, orientation_vec in trajectory:
+            #                 # Prevent warning from align_vectors when vectors are already aligned
+            #     if np.allclose(orientation_vec, [0, 0, 1], atol=1e-6):
+            #         euler_deg = (0.0, 0.0, 0.0)
+            #     else:
+            #         euler_deg = tuple(R.from_rotvec(rotation.as_rotvec()).as_euler('xyz', degrees=True))
+
+            #     pos_tuple = tuple(pos / 1000)
+            #     trajectory_output.append((pos_tuple, euler_deg))
+            # self.last_cross_point_count = len(cross_points)
+            # self.trajectory_points_list = trajectory_output
+
+
+            trajectory_output = []
+            cross_output = []
+            convex_output = []
+
+            for idx, (pos, orientation_vec) in enumerate(trajectory_scaled):
+                if np.allclose(orientation_vec, [0, 0, 1], atol=1e-6):
+                    euler_rad = (0.0, 0.0, 0.0)
+                else:
+                    euler_rad = tuple(fixed_plane_orientation_rpy)
+
+                pos_tuple = tuple(pos / 1000)
+
+                trajectory_output.append((pos_tuple, euler_rad))
+
+                if idx < len(cross_points):  # Assuming cross is first
+                    cross_output.append((pos_tuple, euler_rad))
+                else:
+                    convex_output.append((pos_tuple, euler_rad))
+
+            self.trajectory_points_list = trajectory_output
+            self.cross_trajectory = cross_output
+            self.convex_trajectory = convex_output
+            # print("Last cross point:", cross_output[-1][0])
+            # print("First convex point:", convex_output[0][0])
+
+            
+        
+            # print(f"Debug ", cross_output[0],"/n" , self.cross_trajectory[0])
+            # print(f"Debug ",convex_output[0],"/n",self.convex_trajectory[0])
+            # print(f"Debug ",trajectory_output[0],"/n",self.trajectory_points_list[0])
+            # self.cross_trajectory = cross_points # 1 initial + N cross
+            # self.convex_trajectory = convex_hull_points # Remaining
+            # self.cross_trajectory.tolist()
+            # self.convex_trajectory.tolist()
+            # Save trajectory as numpy for debugging
+            np.save("/mnt/c/Users/aggel/Desktop/planned_trajectory_positions.npy", [p for p, _ in self.trajectory_points_list])
+            np.save("/mnt/c/Users/aggel/Desktop/planned_CROSS_positions.npy", [p for p, _ in self.cross_trajectory])
+            np.save("/mnt/c/Users/aggel/Desktop/planned_CONVEX_positions.npy", [p for p, _ in self.convex_trajectory])
+
+
+            return self.trajectory_points_list 
+        else:
+            print("❌ No convex hull points generated.")
+            self.trajectory_points_list = None
+            return None
+    
+    def do_everything_cross_algorithm(self,input_dae_path,output_dae_path,manual_offset = np.array([0.0,0.0,0.0]),fixed_plane_orientation_rpy=np.array([0.0, 0.0, 0.0])):
+        #  Define your reachable workspace bounds
+        min_bounds = np.array([-0.32500893, -0.14676859,  0.009])
+        max_bounds = np.array([ 0.66500893,  0.74676859,  0.68019031])
+
+        dae_path = os.path.expanduser("~/experiment/robotic_manipulators_playground/mesh_mask_scaled_3x.dae")
+        # points = extract_points_from_dae(dae_path)
+        # shifted_points = self.shift_points_to_fit_workspace(points, min_bounds, max_bounds)
+       
+        # points = self.extract_points_from_dae(output_dae_path)
+        # # print("THis is the first",points[0])
+        # points /= 100
+
+        # base_origin, offset = self.compute_optimal_transform(points, rotation_deg=45)
+        # points = self.extract_points_from_dae(input_dae_path)
+        # base_origin, offset = self.compute_optimal_transform(points, rotation_deg=45)
+
+        # self.shift_dae_file_vertices(
+        #     input_dae_path=input_dae_path,
+        #     output_dae_path=output_dae_path,
+        #     base_plane_origin=np.array([32.0, 0.0, 51.0]),
+        #     plane_rotation_deg=45,
+        #     manual_offset=manual_offset)
+        self.shift_dae_file_vertices(
+            input_dae_path=input_dae_path,
+            output_dae_path=output_dae_path,
+            base_plane_origin=np.array([0.0, 0.0, 0.0]),
+            plane_rotation_deg=0)
+        
+        path_to_shifted_dae = os.path.expanduser(output_dae_path)
+        convex_hull_points = self.compute_convex_hull_from_dae(path_to_shifted_dae) 
+        
+        # Define the fixed orientation vector (e.g., -X axis)
+        # fixed_orientation_vector = np.array([-1, 0, 0], dtype=float)
+        # # Rotate it 45 degrees around Y-axis to align with the inclined plane
+        # rotation = R.from_euler('y', 45, degrees=True)
+        # rotated_orientation_vector = rotation.apply(fixed_orientation_vector)
+          # rotated_orientation_vector = rotation.apply(fixed_orientation_vector)
+        rotated_orientation_vector = fixed_plane_orientation_rpy
+
+
+
+
+        if convex_hull_points is not None:
+            print("🔺 Original Convex Hull Points:")
+            # transformed_points = project_points_to_workspace(convex_hull_points, max_radius=0.8)
+            transformed_points = convex_hull_points
+            points_array = np.array(transformed_points)
+            # print(len(transformed_points))
+
+            initial_position, orientation = self.calculate_initial_position_3d(points_array, orientation= rotated_orientation_vector)
+            # Compute cross trajectory
+            cross_points = self.compute_cross_trajectory_3d(initial_position.flatten(), points_array)
+            # print("Cross points are : " ,len(cross_points))
+            # print("Cross points are : " ,cross_points)
+            
+            # points = self.compute_convex_hull_trajectory_3d(path_to_shifted_dae, max_radius=0.8, fixed_orientation=fixed_orientation, max_point_spacing=0.01)
+
+        # # 🔧 FIX: Extract just the positions
+        # trajectory_positions = [points[i][0] for i in range(len(points)) if i % 10 == 0]
+    
+        # # # Step 3: Get pre-position movement
+        # # initial_position,orientation= calculate_initial_position_3d(points, orientation=[0, 0, 0])
+        # initial_point = initial_position.reshape(1, 3)
+    
+        
+            convex_hull_points_trajectory = self.extract_outermost_ring(points_array,projection='yz',max_point_spacing=5)
+            trajectory = self.compute_total_trajectory_for_robot_cross_algorithm(convex_hull_points=convex_hull_points_trajectory,
+                                                        cross_points=cross_points,
+                                                        initial_position=initial_position
+                                                        )
+            
+            # Set numpy to print floats in the usual format, without scientific notation
+            np.set_printoptions(precision=8, suppress=True)
+
+            trajectory_points_list = np.array(trajectory)
+
+            # print(trajectory_points_list[0:10],'pre devision')
+
+            # Divide only the first column (x values) by 100
+            # trajectory_points_list[:, 0,:] = trajectory_points_list[:, 0,:] / 100
+            trajectory_points_list[:, 0:1, :] = trajectory_points_list[:, 0:1, :] / 1000 # scale all positions
+            # 🔧 Shift the trajectory to be in a reachable region
+            # trajectory_points_list[:, 0:1, 0] += 0.25   # X → front
+            trajectory_points_list[:, 0:1, 1] -= 0.25   # Y → right
+            # trajectory_points_list[:, 0:1, 2] += 0.15   # Z → higher
+            #             # 🔁 Rotate trajectory positions to match tool orientation
+            # rotation = R.from_euler('y', 45, degrees=True)
+            # trajectory_points_list[:, 0, :] = rotation.apply(trajectory_points_list[:, 0, :])
+
+            # print(trajectory_points_list[0:10],'post devision')
+            min_values = trajectory_points_list[:,0,:].min(axis=0)
+            print(min_values)
+            max_values = trajectory_points_list[:,0,:].max(axis=0) 
+            print(max_values)
+
+            # Print trajectory details
+            print(f"Generated trajectory with {len(trajectory)} points.")
+            print(f"Trajectory dtype: {trajectory.dtype}")
+            # trajectory_output = []
+            # for pos, orientation_vec in trajectory:
+            #                 # Prevent warning from align_vectors when vectors are already aligned
+            #     if np.allclose(orientation_vec, [0, 0, 1], atol=1e-6):
+            #         euler_deg = (0.0, 0.0, 0.0)
+            #     else:
+            #         euler_deg = tuple(R.from_rotvec(rotation.as_rotvec()).as_euler('xyz', degrees=True))
+
+            #     pos_tuple = tuple(pos / 1000)
+            #     trajectory_output.append((pos_tuple, euler_deg))
+            # self.last_cross_point_count = len(cross_points)
+            # self.trajectory_points_list = trajectory_output
+
+
+            trajectory_output = []
+            cross_output = []
+            convex_output = []
+
+            for idx, (pos, orientation_vec) in enumerate(trajectory):
+                if np.allclose(orientation_vec, [0, 0, 1], atol=1e-6):
+                    euler_rad = (0.0, 0.0, 0.0)
+                else:
+                    euler_rad = tuple(fixed_plane_orientation_rpy)
+                pos_tuple = tuple(pos / 1000)
+
+                trajectory_output.append((pos_tuple, euler_rad))
+
+                if idx < len(cross_points):  # Assuming cross is first
+                    cross_output.append((pos_tuple, euler_rad))
+                else:
+                    convex_output.append((pos_tuple, euler_rad))
+
+            self.trajectory_points_list = trajectory_output
+            self.cross_trajectory = cross_output
+            self.convex_trajectory = convex_output
+
+            # print("Last cross point:", cross_output[-1][0])
+            # print("First convex point:", convex_output[0][0])
+
+            
+        
+            # print(f"Debug ", cross_output[0],"/n" , self.cross_trajectory[0])
+            # print(f"Debug ",convex_output[0],"/n",self.convex_trajectory[0])
+            # print(f"Debug ",trajectory_output[0],"/n",self.trajectory_points_list[0])
             # self.cross_trajectory = cross_points # 1 initial + N cross
             # self.convex_trajectory = convex_hull_points # Remaining
             # self.cross_trajectory.tolist()
@@ -832,8 +1222,10 @@ class RobotTrajectory:
         ax1.plot(trajectory_positions[:, 0], trajectory_positions[:, 1], trajectory_positions[:, 2],
                 'o-', label='Trajectory', color='blue')
 
-        ax1.plot(aligned_points[:, 0], aligned_points[:, 1], aligned_points[:, 2],
-                'x-', label='Aligned Workspace', color='orange')
+        # ax1.plot(aligned_points[:, 0], aligned_points[:, 1], aligned_points[:, 2],
+        #         'x-', label='Aligned Workspace', color='orange')
+        ax1.scatter(aligned_points[:, 0], aligned_points[:, 1], aligned_points[:, 2],
+            label='Aligned Workspace', color='orange', marker='x')
 
         ax1.set_xlabel('X')
         ax1.set_ylabel('Y')
@@ -898,7 +1290,100 @@ class RobotTrajectory:
         plt.tight_layout()
         plt.show()
 
+    def visualize_points_scara(self, points):
+        # Load workspace points from txt
+        points_txt = pd.read_csv("reachable_workspace.txt").values
+
+        # Extract trajectory positions
+        trajectory_positions = np.array([pos for pos, _ in points])
         
+
+        # # Align workspace points by centroids
+        # centroid_txt = points_txt.mean(axis=0)
+        # centroid_traj = trajectory_positions.mean(axis=0)
+        # translation = centroid_traj - centroid_txt
+        # aligned_points = points_txt + translation
+        # Align using Z-min instead of centroid
+        z_offset = trajectory_positions[:, 2].min() - points_txt[:, 2].min()
+        translation = np.array([0.0, 0.0, z_offset])
+        aligned_points = points_txt #
+        x_vals, y_vals, z_vals = zip(*trajectory_positions)
+        # ===================== 🔷 PLOT 1: Comparison =====================
+        fig1 = plt.figure()
+        ax1 = fig1.add_subplot(111, projection='3d')
+        
+        ax1.plot(trajectory_positions[:, 0], trajectory_positions[:, 1], trajectory_positions[:, 2],
+                'o-', label='Trajectory', color='blue')
+
+        # ax1.plot(aligned_points[:, 0], aligned_points[:, 1], aligned_points[:, 2],
+        #         'x-', label='Aligned Workspace', color='orange')
+        ax1.scatter(aligned_points[:, 0], aligned_points[:, 1], aligned_points[:, 2],
+            label='Aligned Workspace', color='orange', marker='x')
+
+        ax1.set_xlabel('X')
+        ax1.set_ylabel('Y')
+        ax1.set_zlabel('Z')
+        ax1.set_zlim(0.0, 0.75)  # Match the bounding box height
+
+        ax1.set_title("Trajectory vs. Aligned Workspace")
+        ax1.legend()
+
+      
+        # ===================== 🔷 PLOT 2: Final Workspace with markers =====================
+        # self.trajectory_points_list
+        final_positions = [pos for pos, _ in points]
+        x_vals, y_vals, z_vals = zip(*final_positions)
+
+        fig2 = plt.figure()
+        ax2 = fig2.add_subplot(111, projection='3d')
+        # ax2.plot(x_vals, y_vals, z_vals, marker='o')
+        ax2.scatter(x_vals, y_vals, z_vals, marker='o', color='blue', label='Trajectory Points')
+
+
+        ax2.set_xlabel('X')
+        ax2.set_ylabel('Y')
+        ax2.set_zlabel('Z')
+        ax2.set_title("Final Trajectory + Workspace Bounds")
+
+        # Draw bounding box
+        x_range = [-0.200, 0.400]
+        y_range = [-0.146, 0.546]
+        z_range = [0.000, 0.300]
+        corners = [
+            (x_range[0], y_range[0], z_range[0]),
+            (x_range[0], y_range[0], z_range[1]),
+            (x_range[0], y_range[1], z_range[0]),
+            (x_range[0], y_range[1], z_range[1]),
+            (x_range[1], y_range[0], z_range[0]),
+            (x_range[1], y_range[0], z_range[1]),
+            (x_range[1], y_range[1], z_range[0]),
+            (x_range[1], y_range[1], z_range[1]),
+        ]
+        edges = [
+            (0, 1), (0, 2), (0, 4),
+            (3, 1), (3, 2), (3, 7),
+            (5, 1), (5, 4), (5, 7),
+            (6, 2), (6, 4), (6, 7)
+        ]
+        for start, end in edges:
+            xs = [corners[start][0], corners[end][0]]
+            ys = [corners[start][1], corners[end][1]]
+            zs = [corners[start][2], corners[end][2]]
+            ax2.plot(xs, ys, zs, color='gray', linestyle='--')
+
+        # Red marker reference points
+        highlight_points = [
+            (0.0, 0.0, 0.000),
+            (0.0, 0.0, 0.724),
+        ]
+        for point in highlight_points:
+            ax2.scatter(*point, color='red', s=50, label=f'{point}')
+
+        ax2.legend()
+        plt.tight_layout()
+        plt.show()
+
+            
        
 if __name__ == "__main__":
     # Define workspace bounds and dae_path
@@ -910,7 +1395,10 @@ if __name__ == "__main__":
     robot_trajectory = RobotTrajectory(input_dae_path, min_bounds, max_bounds)
 
     # Call the 'do_everything' method to compute the trajectory
-    robot_trajectory.do_everything(input_dae_path,output_dae_path,manual_offset =np.array([-195.0, -195.0, 300.0]) )
+    offset = [np.array([300.0, 295.0, 300.0])]
+        
+    # robot_trajectory.do_everything(input_dae_path,output_dae_path,manual_offset=offset)
+    robot_trajectory.do_everything_cross_algorithm(input_dae_path,output_dae_path)
     # Print the first 5 and last 5 characters of the input DAE path
     # print(f"Input DAE path (first 5 characters): {input_dae_path[:5]}")
     # print(f"Input DAE path (last 5 characters): {input_dae_path[-5:]}")
@@ -919,7 +1407,7 @@ if __name__ == "__main__":
     # print(f"Output DAE path (first 5 characters): {output_dae_path[:5]}")
     # print(f"Output DAE path (last 5 characters): {output_dae_path[-5:]}")
 
-
+    # robot_trajectory.do_everything_scara(input_dae_path,output_dae_path,manual_offset =np.array([200.0, 300.0, -200.0]) )
     # Retrieve the computed trajectory points list
     trajectory_points = robot_trajectory.trajectory_points_list
     if len(trajectory_points)>0:
@@ -930,9 +1418,11 @@ if __name__ == "__main__":
     convex_points = robot_trajectory.convex_trajectory
     cross_points = robot_trajectory.cross_trajectory
     # print(trajectory_points)
-    # robot_trajectory.visualize_points(trajectory_points)
-    robot_trajectory.visualize_points(convex_points)
-    robot_trajectory.visualize_points(cross_points)
+    
+    # robot_trajectory.visualize_points_scara(trajectory_points)
+    robot_trajectory.visualize_points(trajectory_points)
+    # robot_trajectory.visualize_points(convex_points)
+    # robot_trajectory.visualize_points(cross_points)
 
 
 
