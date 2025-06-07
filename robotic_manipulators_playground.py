@@ -261,7 +261,7 @@ class robotic_manipulators_playground_window():
         self.chosen_invkine_3d_position = np.array([0.0, 0.0, 0.0])  # the 3D position of the end-effector for the inverse kinematics in meters
         self.chosen_invkine_orientation = np.array([0.0, 0.0, 0.0])  # the orientation of the end-effector for the inverse kinematics in radians (expressed in xyz extrinsic Euler angles in radians)
         self.invkine_joints_configuration = [0.0 for _ in range(self.joints_number)]  # the joints configuration for the inverse kinematics in radians or meters, depending on the joint's type
-        self.invkine_tolerance = 0.000005 # the tolerance for the inverse kinematics
+        self.invkine_tolerance = 1e-10 # the tolerance for the inverse kinematics
         self.chosen_joint_number_diffkine = 1  # the number of the chosen joint of the robotic manipulator for the differential kinematics
         self.differential_kinematics_velocities = [0.0 for _ in range(self.joints_number)]  # the velocities of the joints for the differential kinematics
         self.diffkine_velocities_limits = [[[-360, 360], [-1, 1]] for _ in range(self.joints_number)]  # the limits of the velocities of the joints for the differential kinematics
@@ -405,7 +405,7 @@ class robotic_manipulators_playground_window():
         self.navigation_field_plot_points_divs = 200  # the divisions of the plot points for the navigation field
         self.solver_time_step_dt = 0.005  # the time step for the obstacles avoidance solver (in seconds)
         self.solver_time_step_dt_limits = [1e-3, 1e-1]  # the limits of the time step for the obstacles avoidance solver (in seconds)
-        self.solver_error_tolerance = 0.005  # the error tolerance of the control law for the obstacles avoidance solver (in meters)
+        self.solver_error_tolerance =  1e-10  # the error tolerance of the control law for the obstacles avoidance solver (in meters)
         self.solver_error_tolerance_limits = [0.005, 1.0]  # the limits of the error tolerance of the control law for the obstacles avoidance solver (in meters)
         self.solver_enable_error_correction = False  # the flag to enable the error correction of the control law for the obstacles avoidance solver
         self.solver_maximum_iterations = 500  # the maximum number of iterations of the control law for the obstacles avoidance solver
@@ -3447,7 +3447,7 @@ class robotic_manipulators_playground_window():
                     data_read = str(self.serial_connection.readline().decode("utf-8")).strip()  # read the data from the serial connection
                     if data_read != "":  # if there is data read from the serial connection
                         self.emit_serial_signals_to_console(data_read)  # emit a message containing the data read from the serial connection
-                    print("<<< " + data_read)  # print the data read from the serial connection
+                    # print("<<< " + data_read)  # print the data read from the serial connection
                 except Exception as e:  # if an error occurs
                     self.emit_serial_signals_to_console(self.closed_serial_connection_message)  # emit a message that the serial connection is closed
                     print(self.closed_serial_connection_message + " Error: " + str(e))  # print that the serial connection is closed along with the error message
@@ -5823,7 +5823,7 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                     print("❌ Fallback IK also failed. Skipping step.")
 
                 continue  # ✅ Do NOT break; keep going to next point
-    
+        
         self.set_joints_variables_to_zero()
         time.sleep(30)
         
@@ -6889,7 +6889,7 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                         print("✅ Fallback IK succeeded. Sending command.")
                         self.built_robotic_manipulator.q = fallback_q
                         self.control_joints_variables = fallback_q
-                        self.send_command_to_all_motors()
+                        # self.send_command_to_all_motors()
                         time.sleep(0.1)
                         self.robot_joints_control_law_output.append(fallback_q)
                     else:
@@ -7284,8 +7284,43 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
         else:
             print("❌ Trajectory generation failed. Resetting.")
 
+    # def flip_exceeding_joints(self,q_old, q_new, q_min, q_max, allowed_flip_indices):
+    #     """
+    #     Flip the angles of joints that exceed limits and are in allowed_flip_indices.
+    #     Returns the flipped joint configuration and a list of flipped joint indices.
+    #     """
+    #     flip_indices = [idx for idx, (qi, qmin_i, qmax_i) in enumerate(zip(q_new, q_min, q_max))
+    #                     if idx in allowed_flip_indices and (qi < qmin_i - 1e-1 or qi > qmax_i + 1e-1)]
+    #     if not flip_indices:
+    #         return None, []
 
-    def create_and_project_points_onto_aggelos_plane(self, trajectory_points_list):
+    #     q_flipped = np.copy(q_old)
+    #     print(f"🔁 Original q_old: {np.round(q_old, 5)}")
+    #     for idx in flip_indices:
+    #         flipped_val = -q_flipped[idx]
+    #         q_flipped[idx] = np.clip(flipped_val, q_min[idx], q_max[idx])
+    #         print(f"🔁 Flipped joint {idx}: {q_old[idx]:.5f} → {q_flipped[idx]:.5f}")
+
+    #     print(f"🔁 Flipped q_old to: {np.round(q_flipped, 5)}")
+    #     return q_flipped, flip_indices
+
+    def flip_exceeding_joints(self,q_old, q_new, q_min, q_max, allowed_flip_indices):
+        flip_indices = [idx for idx, (qi, qmin_i, qmax_i) in enumerate(zip(q_new, q_min, q_max))
+                        if idx in allowed_flip_indices and (qi < qmin_i - 1e-1 or qi > qmax_i + 1e-1)]
+        if not flip_indices:
+            return None, []
+
+        q_flipped = np.copy(q_new)  # Flip q_new, not q_old!
+        print(f"🔁 Original q_new: {np.round(q_new, 5)}")
+        for idx in flip_indices:
+            flipped_val = -q_flipped[idx]
+            q_flipped[idx] = np.clip(flipped_val, q_min[idx], q_max[idx])
+            print(f"🔁 Flipped joint {idx}: {q_new[idx]:.5f} → {q_flipped[idx]:.5f}")
+
+        print(f"🔁 Flipped q_new to: {np.round(q_flipped, 5)}")
+        return q_flipped, flip_indices
+    
+    def create_and_project_points_onto_aggelos_plane_N_2_3(self, trajectory_points_list):
         """
         Projects input trajectory points onto the obstacle plane defined by
         self.obst_plane_wrt_world_transformation_matrix, which is:
@@ -7326,11 +7361,66 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
         z_axis = R[:, 2]
           
 
-        print("📌 Obstacle Plane Frame (in world coordinates):")
-        print(f"🟡 Origin      : {origin}")
-        print(f"🔴 X-axis dir : {x_axis}")
-        print(f"🟢 Y-axis dir : {y_axis}")
-        print(f"🔵 Z-axis dir : {z_axis}")
+        # print("📌 Obstacle Plane Frame (in world coordinates):")
+        # print(f"🟡 Origin      : {origin}")
+        # print(f"🔴 X-axis dir : {x_axis}")
+        # print(f"🟢 Y-axis dir : {y_axis}")
+        # print(f"🔵 Z-axis dir : {z_axis}")
+        return projected_list
+
+    def create_and_project_points_onto_aggelos_plane_N_3(self, trajectory_points_list):
+        """
+        Projects input trajectory points onto the obstacle plane defined by
+        self.obst_plane_wrt_world_transformation_matrix, which is:
+        - Rotated 45° around Y
+        - Translated to [0.32, 0.0, 0.51]
+
+        Args:
+            trajectory_points_list: either
+                - list/array of shape [N, 2, 3] (positions at [0])
+                - or list/array of shape [N, 3] (positions only)
+
+        Returns:
+            list: projected points (positions lie on the obstacle plane), 
+                same structure as input (i.e., if input has extra info per point, it’s preserved)
+        """
+        from scipy.spatial.transform import Rotation as R
+        import numpy as np
+
+        R_y = R.from_euler('y', 45, degrees=True).as_matrix()
+        T_aggelos = np.eye(4)
+        T_aggelos[0:3, 0:3] = R_y
+        T_aggelos[0:3, 3] = [0.32, 0.0, 0.51]
+        self.obst_plane_wrt_world_transformation_matrix = T_aggelos
+        T_aggelos_inv = np.linalg.inv(T_aggelos)
+
+        projected_list = []
+
+        # Determine input shape and handle accordingly
+        # If shape is (N, 3) assume simple positions only
+        # If shape is (N, 2, 3) assume positions at [0], extra data at [1]
+        if hasattr(trajectory_points_list, "shape") and len(trajectory_points_list.shape) == 2 and trajectory_points_list.shape[1] == 3:
+            # Input is (N,3) positions only
+            for pos_world in trajectory_points_list:
+                pos_hom = np.append(pos_world, 1.0)
+                pos_local = T_aggelos_inv @ pos_hom
+                pos_local[2] = 0.0  # Flatten onto the plane
+                pos_projected_world = T_aggelos @ pos_local
+                projected_list.append(pos_projected_world[:3])
+        else:
+            # Assume input is list-like of shape (N, 2, 3) or similar
+            for point in trajectory_points_list:
+                pos_world = point[0]
+                extra_data = point[1] if len(point) > 1 else None
+                pos_hom = np.append(pos_world, 1.0)
+                pos_local = T_aggelos_inv @ pos_hom
+                pos_local[2] = 0.0  # Flatten onto the plane
+                pos_projected_world = T_aggelos @ pos_local
+                if extra_data is not None:
+                    projected_list.append([pos_projected_world[:3], extra_data])
+                else:
+                    projected_list.append([pos_projected_world[:3]])
+
         return projected_list
 
     def send_trajectory_path_hybrid_interpolation_cross_algorithm(self,event = None): 
@@ -7348,12 +7438,12 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
         R_mat = np.column_stack((x_axis, y_axis, z_axis))
         # Convert to RPY
         self.fixed_plane_orientation_rpy = R.from_matrix(R_mat).as_euler('zyx', degrees=False)
-        print(f"aaaaaaaaaaaa {self.fixed_plane_orientation_rpy} aaaaaaaaaaaaaaa")
-        print("✅ End-effector RPY to match 45°-rotated plane normal:", np.rad2deg(self.fixed_plane_orientation_rpy))
+        # print(f"aaaaaaaaaaaa {self.fixed_plane_orientation_rpy} aaaaaaaaaaaaaaa")
+        # print("✅ End-effector RPY to match 45°-rotated plane normal:", np.rad2deg(self.fixed_plane_orientation_rpy))
 
         # Use same logic as for orientation
         z_axis = R.from_euler('y', 45, degrees=True).apply([0.0, 0.0, 1.0])
-        y_axis = np.array([0.0, 1.0, 0.0])
+        y_axis = np.array([0.0, -1.0, 0.0])
         x_axis = np.cross(y_axis, z_axis)
 
         # Orthonormalize
@@ -7399,10 +7489,10 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
             output_dae_path,
             manual_offset=offset
         )
-        print(f"this is the orientation of the end_effector:" ,self.fixed_plane_orientation_rpy)
-        self.trajectory_points_list = self.create_and_project_points_onto_aggelos_plane(self.trajectory_points_list)
-        projected = self.trajectory_points_list = self.create_and_project_points_onto_aggelos_plane(self.trajectory_points_list) 
-        # for i in range(len(projected)):
+        # print(f"this is the orientation of the end_effector:" ,self.fixed_plane_orientation_rpy)
+        # self.trajectory_points_list = self.create_and_project_points_onto_aggelos_plane_N_2_3(self.trajectory_points_list)
+        # projected = self.trajectory_points_list = self.create_and_project_points_onto_aggelos_plane_N_2_3(self.trajectory_points_list) 
+        # # for i in range(len(projected)):
         #     original = self.trajectory_points_list[i][0]
         #     projected_pos = projected[i][0]
         #     print(f"🔵 Original:  {original}")
@@ -7421,14 +7511,91 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
 
         # print(f"aaaaaaaaaaaaaaa", self.trajectory_points_list[0][1])      
         self.cross_only = self.robottrajectory_instance.cross_trajectory
-        self.convex_only = self.robottrajectory_instance.convex_trajectory
-        self.robottrajectory_instance.split_cross_only_by_y_and_z(self.robottrajectory_instance.cross_trajectory)
-        self.cross_along_y = self.robottrajectory_instance.cross_along_y
-        self.cross_along_z = self.robottrajectory_instance.cross_along_z
-        print(f"Size of cross_y = :" , len(self.cross_along_y))
-        print(f"Size of cross_z = :" , len(self.cross_along_z))
-        print(f"cross_z = :" , self.cross_along_z)
+        # self.cross_only= np.array([np.array(sublist[0]) for sublist in self.cross_only])
+        # self.cross_only  = self.create_and_project_points_onto_aggelos_plane_N_2_3(np.array(self.cross_only))
+       
         
+        self.convex_only = self.robottrajectory_instance.convex_trajectory
+        # print(f"Size of cross_only = :" , len(self.cross_only))
+        # print(f"Shape of convex only before projection before instnce",self.convex_only.shape())
+        # print(f"First element before before ",self.convex_only[0])
+        
+        self.robottrajectory_instance.split_cross_only_by_y_and_x(self.robottrajectory_instance.cross_trajectory)
+        self.cross_along_y = self.robottrajectory_instance.cross_along_y
+        self.cross_along_x = self.robottrajectory_instance.cross_along_x
+
+        # print(f"FFirst element before  projection  after instance",self.cross_along_x[0])
+        
+        self.convex_only = self.robottrajectory_instance.convex_trajectory
+        
+        # print(f"Shape of convex only before projection after instnce",self.convex_only.shape())
+        
+        
+        self.convex_only = self.create_and_project_points_onto_aggelos_plane_N_3(self.convex_only)
+        self.cross_along_x = self.create_and_project_points_onto_aggelos_plane_N_3(self.cross_along_x)
+        self.cross_along_y = self.create_and_project_points_onto_aggelos_plane_N_3(self.cross_along_y)
+
+        print("after projection of the cross_trajectory printing cross_only", (np.array(self.cross_only)))
+        # print("after projection of the cross_trajectory to compare", (np.array(self.robottrajectory_instance.cross_trajectory)))
+        
+        # print("This is convex_only before  sublist[0] :," ,np.array(self.convex_only) )
+
+        self.convex_only= np.array([np.array(sublist[0]) for sublist in self.convex_only])
+        # Split by median Z
+        convex_z_values = self.convex_only[:, 2]
+        convex_z_median = np.median(convex_z_values)
+
+        convex_lower_points = self.convex_only[convex_z_values <= convex_z_median]
+        convex_upper_points = self.convex_only[convex_z_values > convex_z_median]
+
+        # Sort lower ascending Y
+        convex_lower_sorted = convex_lower_points[np.argsort(convex_lower_points[:, 1])]
+
+        # Sort upper descending Y
+        convex_upper_sorted = convex_upper_points[np.argsort(-convex_upper_points[:, 1])]
+
+        # Combine them
+        self.convex_only = np.vstack((convex_lower_sorted, convex_upper_sorted))
+        print(f"convex_onlny after smart sorting" , np.array(self.convex_only))
+        # print("This is convex_only after sublist[0] :," ,np.array(self.convex_only) )
+
+        # print("This is length  convex_only before unique  :," ,self.convex_only.size )
+        # self.convex_only = np.unique(self.convex_only,axis = 0)
+
+        
+        # print("This is length    convex_only after unique  :," ,self.convex_only.size )
+        # print(f"Shape of convex only after projection after instnce",self.convex_only.shape())
+        # print(f"FFirst 10 element after projection  after instance",self.convex_only[0:10])
+
+        # self.convex_only = self.convex_only[np.argsort(self.convex_only[:, 1])]
+        # print("This is convex_only after sortign along y  :," ,np.array(self.convex_only) )
+
+        # print(f"Size of cross_y = :" , len(self.cross_along_y))
+        # print(f"Size of cross_x = :" , len(self.cross_along_x))
+        # print(f"cross_x = :" , self.cross_along_x)
+        # print(f"cross_y = :" , self.cross_along_y)
+        # print(f"shape cross_x = :" , self.cross_along_x.shape)
+        # print(f" shape cross_y = :" , self.cross_along_y.shape)
+        
+        # self.cross_along_y  = self.create_and_project_points_onto_aggelos_plane_N_3(self.cross_along_y)
+        # self.cross_along_x =self.create_and_project_points_onto_aggelos_plane_N_3(self.cross_along_x)
+
+        
+
+        # print("cross_x" , np.array(self.cross_along_x))
+        # print("cross_y" , np.array(self.cross_along_y))
+        # print("convex" , np.array(self.convex_only))
+        # print(f"cross along y",np.array(self.cross_along_y))
+        
+        # print(f"cross along x",np.array(self.cross_along_x))
+        # print(f"FFirst element after  projection  after instance",np.array(self.cross_along_x))
+        # print(f"FFirst element after  projection  after instance",np.array(self.cross_along_y))
+        # print(f"Size of cross_y after = :" , len(self.cross_along_y))
+        # print(f"Size of cross_x after = :" , len(self.cross_along_x))
+        # # print(f"cross_x = after:" , self.cross_along_x)
+        # # print(f"cross_y = after:" , self.cross_along_y)
+        
+     
         # cross_y_vals = [pos[0][1] for pos in self.cross_only]
         # convex_y_vals = [pos[0][1] for pos in self.convex_only]
         # traj_y_vals = [pos[0][1] for pos in self.trajectory_points_list]
@@ -7444,16 +7611,128 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
             print("❌ Trajectory points list is missing.")
             return
 
-        # print(f"✅ Trajectory points loaded: {len(self.trajectory_points_list)}")
+        # print(f"✅ Trajectory points loaded: {len(self.trajectory_points_list)}")# 
+        # 
+        # 
+        # 
+        # 
+        # 
 
+
+
+
+
+  # -------------------_dot-based continuous interpolation: q_interp = q_old + q_dot * delta_t.----------#
+        
+        # for i in range(starting_point, N_y - 1):
+        #     p_current = np.array(self.cross_along_y[i])
+        #     p_next = np.array(self.cross_along_y[i + 1])
+        #     print(f"This is the p_current for step ,{i}", p_current)
+
+        #     p_dot = (p_next - p_current) / dt
+        #     pe_dot = R_plane @ p_dot
+        #     ve = np.concatenate((pe_dot, np.zeros(3)), axis=0)
+
+        #     q_old = self.robot_joints_control_law_output[-1]
+        #     max_attempts = 10
+        #     scale = 0.5
+        #     success_found = False
+
+        #     for attempt in range(max_attempts):
+        #         scaled_ve = ve * scale
+        #         q_dot, valid = kin.compute_inverse_differential_kinematics(
+        #             self.built_robotic_manipulator, q_old, scaled_ve, "world"
+        #         )
+        #         q_new = q_old + q_dot * dt
+
+        #         q_min, q_max = self.built_robotic_manipulator.qlim
+        #         within_limits = np.all((q_new >= q_min - 1e-1) & (q_new <= q_max + 1e-1))
+
+        #         if valid and within_limits:
+        #             success_found = True
+        #             break  # ✅ Found a valid diff IK solution
+        #         elif not within_limits:
+        #             print(f"❌ Invalid motion at step {i}. Joint limits exceeded")
+        #             flip_indices = [idx for idx, (qi, qmin_i, qmax_i) in enumerate(zip(q_new, q_min, q_max))
+        #                             if (idx in [0, 3, 4]) and (qi < qmin_i - 1e-1 or qi > qmax_i + 1e-1)]
+        #             if flip_indices:
+        #                 print(f"🔁 Flipping joints {flip_indices} and retrying...")
+        #                 q_flipped = np.copy(q_old)
+        #                 for idx in flip_indices:
+        #                     q_flipped[idx] = np.clip(-q_flipped[idx], q_min[idx], q_max[idx])
+        #                 scaled_ve = ve * 0.5
+        #                 q_dot, valid = kin.compute_inverse_differential_kinematics(
+        #                     self.built_robotic_manipulator, q_flipped, scaled_ve, "world"
+        #                 )
+        #                 if valid:
+        #                     q_new = q_flipped + q_dot * dt
+        #                     self.built_robotic_manipulator.q = q_new
+        #                     self.control_joints_variables = q_new
+        #                     self.robot_joints_control_law_output.append(q_new)
+        #                     success_found = True
+        #                     break
+        #                 else:
+        #                     print("❌ Flipped joint config failed. Falling back...")
+        #         scale *= 0.5  # Try smaller scaling of velocity
+
+        #     if success_found:
+        #         log_path = "/mnt/c/Users/aggel/Desktop/your_log_file.txt"
+        #         segment_length = np.linalg.norm(p_next - p_current)
+        #         num_divs = max(1, int(segment_length / move_dt))
+
+        #         for j in range(num_divs):
+        #             delta_t = (j + 1) * move_dt
+        #             q_interp = q_old + q_dot * delta_t  # 🚀 Continuous q_dot-based interpolation
+
+        #             self.built_robotic_manipulator.q = q_interp
+        #             self.robot_joints_control_law_output.append(q_interp)
+        #             self.control_joints_variables = q_interp
+
+        #             T_fk = self.built_robotic_manipulator.fkine(q_interp)
+        #             position = T_fk.t
+        #             orientation_rpy = T_fk.rpy()
+        #             interp_pos = (1 - (j + 1)/num_divs) * p_current + ((j + 1)/num_divs) * p_next
+
+        #             log_line = f"📍 Interpolated Step {i}.{j}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
+        #             log_line2 = f"📍 Attempted Interpolated Step {i}.{j}: Position = {np.round(interp_pos, 5)}\n"
+        #             print(log_line.strip())
+        #             print(log_line2.strip())
+
+        #             with open(log_path, "a") as log_file:
+        #                 log_file.write(log_line2)
+        #                 log_file.write(log_line)
+
+        #             time.sleep(0.05)  # Optional pause
+
+        #         q_old = q_interp  # Update for smooth continuation
+        #     else:
+        #         print(f"❌ Differential IK failed at step {i}, trying fallback IK")
+        #         T_fallback = self.get_transformation_matrix(p_next, self.fixed_plane_orientation_rpy)
+        #         fallback_q, success = kin.compute_inverse_kinematics(
+        #             self.built_robotic_manipulator, T_fallback, self.invkine_tolerance
+        #         )
+        #         if success:
+        #             print("✅ Fallback IK succeeded.")
+        #             self.built_robotic_manipulator.q = fallback_q
+        #             self.control_joints_variables = fallback_q
+        #             self.update_control_variables_indicators()
+        #             time.sleep(0.1)
+        #             self.robot_joints_control_law_output.append(fallback_q)
+        #         else:
+        #             print("❌ Fallback IK also failed. Skipping step.")
+        # 
+# ----------------------cross_along_y DONT ERASE THIS -------------------#
         # --- Full IK for Initial Pose ---
         starting_point = 0
         initial_position= self.cross_along_y[starting_point]
+        # print(initial_position)
+        # print(f"cross_along_y fist point is ", self.cross_along_y[starting_point])
+        # print(f"initial positionn  is ", initial_position)
+        # print(f"First trajectorypointslist point  is ", self.trajectory_points_list[starting_point])
         orientation = self.fixed_plane_orientation_rpy
-
         initial_pose_found = False
 
-        for idx, (initial_position) in enumerate(self.trajectory_points_list):
+        for idx, (initial_position) in enumerate(self.cross_along_y):
             print(f"🚀 Trying IK for trajectory point {idx}: Position = {initial_position}, Orientation = {self.fixed_plane_orientation_rpy}")
             # if idx == 0:
             #     print(f"✅ First Y = {initial_position[1]} — should be NEGATIVE if correct.")
@@ -7461,7 +7740,7 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
             
             T = self.get_transformation_matrix(initial_position, self.fixed_plane_orientation_rpy)
             # print("🔸 Initial T:\n", T)
-
+            # print(f"tolerance is: ," ,self.invkine_tolerance)
             joint_angles, success = kin.compute_inverse_kinematics(
                 self.built_robotic_manipulator,
                 T,
@@ -7477,7 +7756,14 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                 print("💡 Raw IK Joint Angles (rad):", joint_angles)
                 self.forward_kinematics_variables = joint_angles
                 self.copy_fkine_to_control_values()
+                self.send_command_to_all_motors()
+                self.update_control_variables_indicators()
                 initial_pose_found = True
+                response0 = input("Has the Robot reached the initial position ?  Should we continue to the next part? (y/n): ")
+                if response0.strip().lower() != 'y':
+                    print("⏹️ Execution stopped by user.")
+                    exit(0)
+                
                 break
             else:
                 print(f"❌ IK Solver failed at point {idx}")
@@ -7489,12 +7775,13 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
         dt = self.solver_time_step_dt
         move_dt = self.move_robot_time_step_dt
         R_plane = self.obst_plane_wrt_world_transformation_matrix[0:3, 0:3]
-        print(f'first Rplane' ,R_plane)
+        
+        # print(f'first Rplane' ,R_plane)
         trajectory_success = True
         
         N_y= len(self.cross_along_y)
         # print(f"self.cross_along_y is :" ,self.cross_along_y)
-        N_z = len(self.cross_along_z)
+        N_x = len(self.cross_along_x)
         # print(f"self.cross_along_z is :" ,self.cross_along_z)
         q0 = joint_angles
         self.robot_joints_control_law_output = [q0]
@@ -7514,36 +7801,44 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
         for i in range(starting_point , N_y - 1):
             p_current = np.array(self.cross_along_y[i])
             p_next = np.array(self.cross_along_y[i + 1])
-            p_dot = (p_next - p_current) / dt          
+            # print(f"This is the p_current for step ,{i}",p_current)
+            p_dot = (p_next - p_current) / dt 
+                     
             # pe_dot = R_plane @ np.array([p_dot[0], p_dot[1], 0.0])
-            pe_dot = R_plane @ p_dot
+            # pe_dot = R_plane @ p_dot
+            pe_dot = R_plane @ np.array([p_dot[0], p_dot[1], p_dot[2]])
             normal_vector = R.from_euler('y', 45, degrees=True).apply([0, 1, 0])  # normal of plane (Y-tilted)
             # Project p_dot onto plane by removing component along the normal
             p_dot_proj = p_dot - np.dot(p_dot, normal_vector) * normal_vector
             # print(f"  🧪 Projected p_dot_proj (in world frame): {np.round(p_dot_proj, 5)}")
-            if np.linalg.norm(p_dot_proj) > 1e-5:
-                pe_dot = R_plane @ p_dot_proj
-                note = "✅ Using projected velocity"
-            else:
-                pe_dot = R_plane @ p_dot
-                note = "⚠️ Using raw velocity (projection negligible)"
-
+            # if np.linalg.norm(p_dot_proj) > 1e-5:
+                
+            #     print("✅ Using projected velocity")
+            # else:
+            #     pe_dot = R_plane @ p_dot
+            #     print(f"⚠️ Using raw velocity (projection negligible)")
+            
+            pe_dot = R_plane @ p_dot
             # Construct velocity vector with 0 angular components
             ve = np.concatenate((pe_dot, np.zeros(3)),axis = 0)
             # ve = np.concatenate((pe_dot, np.zeros(3)), axis=0)
-            ve *= 0.5
+            # ve *= 0.5
 
             q_old = self.robot_joints_control_law_output[-1]
 
             max_attempts = 10
             scale = 0.5
             success_found = False
-    
+
+            # --------------Dynamically compute the ve needed for step to step--------#
+            # ve_linear = (p_next - p_current) / dt
+            # ve_angular = np.zeros(3)  # Optional: you can set desired rotation rates here
+            # ve = np.concatenate((ve_linear, ve_angular))
 
             for attempt in range(max_attempts):
                 scaled_ve = ve * scale
                 q_dot, valid = kin.compute_inverse_differential_kinematics(
-                    self.built_robotic_manipulator, q_old, scaled_ve, "end-effector"
+                    self.built_robotic_manipulator, q_old, scaled_ve, "world"
                 )
                 q_new = q_old + q_dot * dt
 
@@ -7565,29 +7860,186 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                 if valid and within_limits:
                     success_found = True
                     break  # ✅ Done
+                
+                
                 # elif not within_limits:
                 #     print(f"❌ Invalid motion at step {i}. Joint limits exceeded ")
                 #     print("❌ Joint limits report:", limit_report)
-                   
-                #     # Check if joints 0, 3, or 4 exceeded limits
+                #     self.robotic_manipulator_control_mode = self.robotic_manipulator_control_modes_list[0]
+                #     self.set_joints_variables_to_zero()
+                #     response0 = input(" ?? Does the Robot have 0 angle Configurration? Should we continue to the next part? (y/n): ")
+                #     if response0.strip().lower() != 'y':
+                #         print("⏹️ Execution stopped by user.")
+                #         exit(0) 
+                    
                 #     flip_indices = [idx for idx, (qi, qmin_i, qmax_i) in enumerate(zip(q_new, q_min, q_max))
-                #                     if (idx in [0, 3,5]) and (qi < qmin_i - 1e-1 or qi > qmax_i + 1e-1)]
+                #                     if (idx in [0, 3, 5]) and (qi < qmin_i - 1e-1 or qi > qmax_i + 1e-1)]
+
                 #     if flip_indices:
-                #         print(f"🔁 Flipping joints {flip_indices} and retrying...")
+                #         print(f"🔁 Flipping joints {flip_indices} in q_old and retrying motion to the same p_next.")
 
-                #         # Flip those joints
-                #         q_flipped = np.copy(q_new)
+                #         q_flipped = np.copy(q_old)
                 #         for idx in flip_indices:
-                #             q_flipped[idx] = -q_flipped[idx]
-                #         print(q_flipped)
+                #             flipped_val = -q_flipped[idx]
+                #             q_flipped[idx] = np.clip(flipped_val, q_min[idx], q_max[idx])
 
-                #         # Retry motion with flipped joints
-                #         self.built_robotic_manipulator.q = q_flipped
-                #         self.control_joints_variables = q_flipped
-                #         # self.send_command_to_all_motors()
-                #         time.sleep(0.1)
-                #         self.robot_joints_control_law_output.append(q_flipped)
-                #         continue
+                #         # Reuse the same velocity toward p_next
+                #         p_dot = (p_next - p_current) / dt
+                #         pe_dot = R_plane @ p_dot
+
+                #         ve = np.concatenate((pe_dot, np.zeros(3))) * 0.5
+
+                #         # Retry differential IK from flipped joint config
+                #         q_dot, valid = kin.compute_inverse_differential_kinematics(
+                #             self.built_robotic_manipulator, q_flipped, ve, "world"
+                #         )
+
+                #         # if valid:
+                #         #     q_new = q_flipped + q_dot * dt
+                #         #     print("✅ Recovered motion via flipped joint configuration.")
+                #         #     self.built_robotic_manipulator.q = q_new
+                #         #     self.control_joints_variables = q_new
+                #         #     self.send_command_to_all_motors()
+                #         #     self.robot_joints_control_law_output.append(q_new)
+                #         #     continue
+                #         # else:
+                #         #     print("❌ Flipped joint config failed. Falling back to standard IK.")
+                #         if valid:
+                #             print("✅ Recovered motion via flipped joint configuration.")
+                            
+                #             # Calculate interpolation using continuous q_dot logic
+                #             segment_length = np.linalg.norm(p_next - p_current)
+                #             num_divs = int(segment_length / move_dt)  # or proportional to dt
+                            
+                #             for j in range(num_divs):
+                #                 delta_t = (j + 1) * move_dt
+                #                 q_interp = q_flipped + q_dot * delta_t
+                                
+                #                 self.built_robotic_manipulator.q = q_interp
+                #                 self.control_joints_variables = q_interp
+                #                 self.robot_joints_control_law_output.append(q_interp)
+
+                #                 # ✅ Forward kinematics to log actual position
+                #                 T_fk = self.built_robotic_manipulator.fkine(q_interp)
+                #                 position = T_fk.t
+                #                 orientation_rpy = T_fk.rpy()
+                #                 interp_pos = (1 - (j + 1) / num_divs) * p_current + ((j + 1) / num_divs) * p_next
+                                
+                #                 log_line = f"📍 Recovered Interpolated Step {i}.{j}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
+                #                 log_line2 = f"📍 Recovered Attempted Step {i}.{j}: Position = {np.round(interp_pos, 5)}\n"
+
+                #                 with open(log_path, "a") as log_file:
+                #                     log_file.write(log_line2)
+                #                     log_file.write(log_line)
+
+                #                 self.send_command_to_all_motors()
+                #                 self.update_control_variables_indicators()
+                #                 time.sleep(0.5)
+                            
+                #             q_old = q_interp  # Update q_old for the next main loop
+                #             continue
+                #         else:
+                #             print("❌ Flipped joint config failed. Falling back to standard IK.")
+
+                # elif not within_limits:
+                #     print(f"❌ Invalid motion at step {i}. Joint limits exceeded ")
+                #     print("❌ Joint limits report:", limit_report)
+                #     self.robotic_manipulator_control_mode = self.robotic_manipulator_control_modes_list[0]
+                #     self.set_joints_variables_to_zero()
+                #     response0 = input(" ?? Does the Robot have 0 angle Configurration? Should we continue to the next part? (y/n): ")
+                #     if response0.strip().lower() != 'y':
+                #         print("⏹️ Execution stopped by user.")
+                #         exit(0)
+
+                #     # Use helper function to flip violating joints in [0,3,5]
+                #     allowed_flip_indices = [0, 3, 5]
+                #     q_flipped, flip_indices = self.flip_exceeding_joints(q_old, q_new, q_min, q_max, allowed_flip_indices)
+
+                #     if flip_indices:
+                #         print(f"🔁 Retrying with flipped joints {flip_indices}")
+
+                #         p_dot = (p_next - p_current) / dt
+                #         pe_dot = R_plane @ p_dot
+                #         ve = np.concatenate((pe_dot, np.zeros(3))) * 0.5
+
+                #         q_dot, valid = kin.compute_inverse_differential_kinematics(
+                #             self.built_robotic_manipulator, q_flipped, ve, "world"
+                #         )
+
+                #         if valid:
+                #             print("✅ Recovered motion via flipped joint configuration.")
+                #             segment_length = np.linalg.norm(p_next - p_current)
+                #             num_divs = int(segment_length / move_dt)
+
+                #             for j in range(num_divs):
+                #                 delta_t = (j + 1) * move_dt
+                #                 q_interp = q_flipped + q_dot * delta_t
+
+                #                 self.built_robotic_manipulator.q = q_interp
+                #                 self.control_joints_variables = q_interp
+                #                 self.robot_joints_control_law_output.append(q_interp)
+
+                #                 T_fk = self.built_robotic_manipulator.fkine(q_interp)
+                #                 position = T_fk.t
+                #                 orientation_rpy = T_fk.rpy()
+                #                 interp_pos = (1 - (j + 1) / num_divs) * p_current + ((j + 1) / num_divs) * p_next
+
+                #                 log_line = f"📍 Recovered Interpolated Step {i}.{j}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
+                #                 log_line2 = f"📍 Recovered Attempted Step {i}.{j}: Position = {np.round(interp_pos, 5)}\n"
+
+                #                 with open(log_path, "a") as log_file:
+                #                     log_file.write(log_line2)
+                #                     log_file.write(log_line)
+
+                #                 self.send_command_to_all_motors()
+                #                 self.update_control_variables_indicators()
+                #                 time.sleep(0.5)
+
+                #             q_old = q_interp  # Update q_old for the next main loop
+                #             continue
+                #         else:
+                #             print("❌ Flipped joint config failed. Falling back to standard IK.")
+                elif not within_limits:
+                    print(f"❌ Invalid motion at step {i}. Joint limits exceeded ")
+                    print("❌ Joint limits report:", limit_report)
+                    self.robotic_manipulator_control_mode = self.robotic_manipulator_control_modes_list[0]
+                    self.set_joints_variables_to_zero()
+                    response0 = input("Has the Robot reached the zero configuration ?  Should we continue to the next part? (y/n): ")
+                    if response0.strip().lower() != 'y':
+                        print("⏹️ Execution stopped by user.")
+                        exit(0)
+                    # response0 = input(" ?? Does the Robot have 0 angle Configurration? Should we continue to the next part? (y/n): ")
+                    # if response0.strip().lower() != 'y':
+                    #     print("⏹️ Execution stopped by user.")
+                    #     exit(0)
+
+                    allowed_flip_indices = [0, 3, 5]
+                    q_flipped, flip_indices = self.flip_exceeding_joints(q_old, q_new, q_min, q_max, allowed_flip_indices)
+                    # response0 = input(" ?? Does the Robot have 0 angle Configurration? Should we continue to the next part? (y/n): ")
+                    # if response0.strip().lower() != 'y':
+                    #     print("⏹️ Execution stopped by user.")
+                    #     exit(0)
+                    if flip_indices:
+                        print(f"🔁 Retrying with flipped joints {flip_indices}")
+
+                        self.built_robotic_manipulator.q = q_flipped
+                        self.control_joints_variables = q_flipped
+                        self.send_command_to_all_motors()
+                        self.update_control_variables_indicators()
+                        time.sleep(0.1)
+                        self.robot_joints_control_law_output.append(q_flipped)
+                        response0 = input("Has the Robot reached the position with flipped joints  ?  Should we continue to the next part? (y/n): ")
+                        if response0.strip().lower() != 'y':
+                            print("⏹️ Execution stopped by user.")
+                            exit(0)
+                        continue
+                    else:
+                        print("❌ Flipping did not resolve the issue. Falling back to standard IK.")
+                # elif not valid:
+                #     print(f"❌ Invalid motion at step {i}. Not valid")
+                #     # print("❌ Joint limits report:", limit_report)
+                #     # trajectory_success = False
+                #     # break
                 #     T_fallback = self.get_transformation_matrix(p_next, self.fixed_plane_orientation_rpy)
                 #     fallback_q, success = kin.compute_inverse_kinematics(self.built_robotic_manipulator, T_fallback, self.invkine_tolerance)
 
@@ -7595,7 +8047,7 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                 #         print("✅ Fallback IK succeeded. Sending command.")
                 #         self.built_robotic_manipulator.q = fallback_q
                 #         self.control_joints_variables = fallback_q
-                #         # self.send_command_to_all_motors()
+                #         self.send_command_to_all_motors()
                 #         self.update_control_variables_indicators()
                 #         time.sleep(0.1)
                 #         self.robot_joints_control_law_output.append(fallback_q)
@@ -7604,53 +8056,9 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
 
                 #     continue
                 
-                elif not within_limits:
-                    print(f"❌ Invalid motion at step {i}. Joint limits exceeded ")
-                    print("❌ Joint limits report:", limit_report)
 
-                    flip_indices = [idx for idx, (qi, qmin_i, qmax_i) in enumerate(zip(q_new, q_min, q_max))
-                                    if (idx in [0, 3, 4]) and (qi < qmin_i - 1e-1 or qi > qmax_i + 1e-1)]
-
-                    if flip_indices:
-                        print(f"🔁 Flipping joints {flip_indices} in q_old and retrying motion to the same p_next.")
-
-                        q_flipped = np.copy(q_old)
-                        for idx in flip_indices:
-                            flipped_val = -q_flipped[idx]
-                            q_flipped[idx] = np.clip(flipped_val, q_min[idx], q_max[idx])
-
-                        # Reuse the same velocity toward p_next
-                        p_dot = (p_next - p_current) / dt
-                        if np.linalg.norm(p_dot) > 1e-5:
-                            p_dot_proj = p_dot - np.dot(p_dot, normal_vector) * normal_vector
-                            pe_dot = R_plane @ p_dot_proj
-                        else:
-                            pe_dot = R_plane @ p_dot
-
-                        ve = np.concatenate((pe_dot, np.zeros(3))) * 0.5
-
-                        # Retry differential IK from flipped joint config
-                        q_dot, valid = kin.compute_inverse_differential_kinematics(
-                            self.built_robotic_manipulator, q_flipped, ve, "end-effector"
-                        )
-
-                        if valid:
-                            q_new = q_flipped + q_dot * dt
-                            print("✅ Recovered motion via flipped joint configuration.")
-                            self.built_robotic_manipulator.q = q_new
-                            self.control_joints_variables = q_new
-                            # self.send_command_to_all_motors()
-                            self.robot_joints_control_law_output.append(q_new)
-                            continue
-                        else:
-                            print("❌ Flipped joint config failed. Falling back to standard IK.")
-
-                
                 elif not valid:
                     print(f"❌ Invalid motion at step {i}. Not valid")
-                    # print("❌ Joint limits report:", limit_report)
-                    # trajectory_success = False
-                    # break
                     T_fallback = self.get_transformation_matrix(p_next, self.fixed_plane_orientation_rpy)
                     fallback_q, success = kin.compute_inverse_kinematics(self.built_robotic_manipulator, T_fallback, self.invkine_tolerance)
 
@@ -7658,62 +8066,32 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                         print("✅ Fallback IK succeeded. Sending command.")
                         self.built_robotic_manipulator.q = fallback_q
                         self.control_joints_variables = fallback_q
-                        # self.send_command_to_all_motors()
+                        self.send_command_to_all_motors()
                         self.update_control_variables_indicators()
                         time.sleep(0.1)
                         self.robot_joints_control_law_output.append(fallback_q)
+
+                        # 🔥 Update q_old and break the attempt loop
+                        q_old = fallback_q
+                        break  # Exit for attempt loop
+
                     else:
                         print("❌ Fallback IK also failed. Skipping step.")
-
-                    continue
+                    # Move to next main iteration
+                    continue  # Optional, or you can 'continue' to skip attempts
 
                 scale *= 0.5  # Try smaller
 
             if success_found:
                 log_path = "/mnt/c/Users/aggel/Desktop/your_log_file.txt"
-                num_divs = int(dt / move_dt)
-                # for j in range(num_divs):
-                #     # # q_interp = q_old + (j + 1) * (q_dot * dt) / num_divs
-                #     # q_interp = q_old + (j + 1) * (q_new - q_old) / num_divs
-                #     alpha = (j + 1) / num_divs
-                #     q_interp = (1 - alpha) * q_old + alpha * q_new
-
-
-                #     # Print interpolated joint values and corresponding target position
-                #     interp_pos = p_current + (j + 1) * (p_next - p_current) / num_divs
-                #     # print(f"📍 Attempted Interpolated Step {i}.{j}: Position = {np.round(interp_pos, 5)}")
-                #     print(f"    → Interpolated Joints = {np.round(q_interp, 5)}")
-                #         # ✅ Set the robot's current joint state
-                #     self.built_robotic_manipulator.q = q_interp
-
-                    
-                #     self.robot_joints_control_law_output.append(q_interp)
-                #     T_fk = self.built_robotic_manipulator.fkine(q_interp)
-                #     position = T_fk.t
-                #     orientation_rpy = T_fk.rpy()  # In radians
-                #     # print(f"📍 Interpolated Step {i}.{j}: Position = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}")
-                #     log_line = f"📍 Interpolated Step {i}.{j}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
-                #     log_line2 = f"📍 Attempted Interpolated Step {i}.{j}: Position = {np.round(interp_pos, 5)}\n"
-                #     # Print to console
-                #     print(log_line.strip())
-                #     print(log_line2.strip())
-                #     # Append to log file
-                #     with open(log_path, "a") as log_file:
-                #         log_file.write(log_line2)
-                #         log_file.write(log_line)
-                #     self.control_joints_variables = q_interp
-                #     # self.send_command_to_all_motors()
-                #     time.sleep(0.5)
+                num_divs = int(dt / move_dt)              
                 step_counter = 0
+                segment_length = np.linalg.norm(p_next - p_current)
+                num_divs = int(segment_length / move_dt)  # or proportional to dt
+                num_divs = max(1, int(segment_length / move_dt))
                 for j in range(num_divs):
-                    alpha = (j + 1) / num_divs
-                    q_interp = (1 - alpha) * q_old + alpha * q_new
-                    # interp_pos = (1 - alpha) * p_current + alpha * p_next
-                    # T_target = self.get_transformation_matrix(interp_pos, self.fixed_plane_orientation_rpy)
-
-                    # q_interp, success = kin.compute_inverse_kinematics(
-                    #     self.built_robotic_manipulator, T_target, self.invkine_tolerance
-                    # )
+                    delta_t = (j + 1) * move_dt
+                    q_interp = q_old + q_dot * delta_t  # 🚀 Continuous q_dot-based interpolation
 
                     if success:
                         self.built_robotic_manipulator.q = q_interp
@@ -7725,7 +8103,7 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                         position = T_fk.t
                         orientation_rpy = T_fk.rpy()
                         # Compute the expected position via interpolation
-                        interp_pos = (1 - alpha) * p_current + alpha * p_next
+                        interp_pos = (1 - (j + 1)/num_divs) * p_current + ((j + 1)/num_divs) * p_next
                         log_line = f"📍 Interpolated Step {i}.{j}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
                         log_line2 = f"📍 Attempted Interpolated Step {i}.{j}: Position = {np.round(interp_pos, 5)}\n"
 
@@ -7735,7 +8113,7 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                         with open(log_path, "a") as log_file:
                             log_file.write(log_line2)
                             log_file.write(log_line)
-                        # self.send_command_to_all_motors()
+                        self.send_command_to_all_motors()
                         self.update_control_variables_indicators()
                         
                         
@@ -7750,6 +8128,8 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                     step_counter += 1         
                 # q_old = q_new  # ← ADD THIS
             
+                # self.robot_joints_control_law_output[-1] = q_interp
+
             else:
                 print(f"❌222 Invalid motion at step {i}. Joint limits exceeded or Jacobian issue.")
                 print("❌ 222Joint limits report:", limit_report)
@@ -7757,6 +8137,8 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                 # break
                 # 🔁 Try fallback: direct IK to next point
                 T_fallback = self.get_transformation_matrix(p_next, self.fixed_plane_orientation_rpy)
+                
+                # T_fallback = self.built_robotic_manipulator.fkine(q_flipped)
                 fallback_q, success = kin.compute_inverse_kinematics(
                     self.built_robotic_manipulator,
                     T_fallback,
@@ -7768,6 +8150,7 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                     self.built_robotic_manipulator.q = fallback_q
                     self.control_joints_variables = fallback_q
                     self.send_command_to_all_motors()
+                    self.update_control_variables_indicators()
                     time.sleep(0.1)
                     self.robot_joints_control_law_output.append(fallback_q)
                     T_fk = self.built_robotic_manipulator.fkine(fallback_q)
@@ -7779,23 +8162,26 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                     print("❌ Fallback IK also failed. Skipping step.")
 
                 continue  # ✅ Do NOT break; keep going to next point
-        self.robotic_manipulator_control_mode == self.robotic_manipulator_control_modes_list[1]
+                    
+        self.robotic_manipulator_control_mode = self.robotic_manipulator_control_modes_list[0]
         self.set_joints_variables_to_zero()
-        response = input("📍 trajectory along the y axis of the cross has been completed. Should we continue to the next part? (y/n): ")
+        response = input("📍 Trajectory along the y axis of the cross has been completed. Should we continue to the next part? (y/n): ")
         if response.strip().lower() != 'y':
             print("⏹️ Execution stopped by user.")
             exit(0) 
 
 
 
+# ----------------------cross_along_x DONT ERASE THIS -------------------#
 
         # --- Full IK for Initial Pose ---
-        starting_point = 0
-        initial_position= self.cross_along_z[starting_point]
+        starting_point =0
+        initial_position= self.cross_along_x[starting_point]
         orientation = self.fixed_plane_orientation_rpy
         initial_pose_found = False
 
-        for idx, (initial_position) in enumerate(self.trajectory_points_list,start = len(self.cross_along_y)-1):
+
+        for idx, (initial_position) in enumerate(self.cross_along_x):
             print(f"🚀 Trying IK for trajectory point {idx}: Position = {initial_position}, Orientation = {self.fixed_plane_orientation_rpy}")
             # if idx == 0:
             #     print(f"✅ First Y = {initial_position[1]} — should be NEGATIVE if correct.")    
@@ -7817,6 +8203,12 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                 self.forward_kinematics_variables = joint_angles
                 self.copy_fkine_to_control_values()
                 initial_pose_found = True
+                self.send_command_to_all_motors()
+                self.update_control_variables_indicators()
+                response0 = input("Has the Robot reached the initial position ?  Should we continue to the next part? (y/n): ")
+                if response0.strip().lower() != 'y':
+                    print("⏹️ Execution stopped by user.")
+                    exit(0)
                 break
             else:
                 print(f"❌ IK Solver failed at point {idx}")
@@ -7835,39 +8227,41 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
         q0 = joint_angles
         self.robot_joints_control_law_output = [q0]
         step_counter = 0  # Global interpolation step counter
-        for i in range(starting_point , N_z - 1):
-            p_current = np.array(self.cross_along_z[i])
-            p_next = np.array(self.cross_along_z[i + 1])
+        for i in range(starting_point , N_x - 1):
+            p_current = np.array(self.cross_along_x[i])
+            p_next = np.array(self.cross_along_x[i + 1])
             p_dot = (p_next - p_current) / dt          
             # pe_dot = R_plane @ np.array([p_dot[0], p_dot[1], 0.0])
-            pe_dot = R_plane @ p_dot
+            pe_dot = R_plane @ np.array([p_dot[0], p_dot[1], p_dot[2]])
             normal_vector = R.from_euler('y', 45, degrees=True).apply([0, 1, 0])  # normal of plane (Y-tilted)
             # Project p_dot onto plane by removing component along the normal
             p_dot_proj = p_dot - np.dot(p_dot, normal_vector) * normal_vector
             # print(f"  🧪 Projected p_dot_proj (in world frame): {np.round(p_dot_proj, 5)}")
-            if np.linalg.norm(p_dot_proj) > 1e-5:
-                pe_dot = R_plane @ p_dot_proj
-                note = "✅ Using projected velocity"
-            else:
-                pe_dot = R_plane @ p_dot
-                note = "⚠️ Using raw velocity (projection negligible)"
-
+            # if np.linalg.norm(p_dot_proj) > 1e-5:
+            #     pe_dot = R_plane @ p_dot_proj
+            #     note = "✅ Using projected velocity"
+            # else:
+            #     pe_dot = R_plane @ p_dot
+            #     note = "⚠️ Using raw velocity (projection negligible)"
+            pe_dot = R_plane @ p_dot
             # Construct velocity vector with 0 angular components
             ve = np.concatenate((pe_dot, np.zeros(3)),axis = 0)
             # ve = np.concatenate((pe_dot, np.zeros(3)), axis=0)
-            ve *= 0.5
+            
 
             q_old = self.robot_joints_control_law_output[-1]
 
             max_attempts = 10
-            scale = 0.5
+            scale = 0.7
             success_found = False
-    
+            ve_linear = (p_next - p_current) / dt
+            ve_angular = np.zeros(3)  # Optional: you can set desired rotation rates here
+            ve = np.concatenate((ve_linear, ve_angular))
 
             for attempt in range(max_attempts):
                 scaled_ve = ve * scale
                 q_dot, valid = kin.compute_inverse_differential_kinematics(
-                    self.built_robotic_manipulator, q_old, scaled_ve, "end-effector"
+                    self.built_robotic_manipulator, q_old, ve, "world"
                 )
                 q_new = q_old + q_dot * dt
 
@@ -7928,53 +8322,71 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
 
                 #     continue
                 
+                # elif not within_limits:
+                #     print(f"❌ Invalid motion at step {i}. Joint limits exceeded ")
+                #     print("❌ Joint limits report:", limit_report)
+
+                #     flip_indices = [idx for idx, (qi, qmin_i, qmax_i) in enumerate(zip(q_new, q_min, q_max))
+                #                     if (idx in [0, 3, 4]) and (qi < qmin_i - 1e-1 or qi > qmax_i + 1e-1)]
+
+                #     if flip_indices:
+                #         print(f"🔁 Flipping joints {flip_indices} in q_old and retrying motion to the same p_next.")
+
+                #         q_flipped = np.copy(q_old)
+                #         for idx in flip_indices:
+                #             flipped_val = -q_flipped[idx]
+                #             q_flipped[idx] = np.clip(flipped_val, q_min[idx], q_max[idx])
+
+                #         # Reuse the same velocity toward p_next
+                #         p_dot = (p_next - p_current) / dt
+                #         pe_dot = R_plane @ p_dot
+
+                #         ve = np.concatenate((pe_dot, np.zeros(3))) * 0.5
+
+                #         # Retry differential IK from flipped joint config
+                #         q_dot, valid = kin.compute_inverse_differential_kinematics(
+                #             self.built_robotic_manipulator, q_flipped, ve, "world"
+                #         )
+
+                #         if valid:
+                #             q_new = q_flipped + q_dot * dt
+                #             print("✅ Recovered motion via flipped joint configuration.")
+                #             self.built_robotic_manipulator.q = q_new
+                #             self.control_joints_variables = q_new
+                #             self.send_command_to_all_motors()
+                #             self.robot_joints_control_law_output.append(q_new)
+                #             continue
+                #         else:
+                #             print("❌ Flipped joint config failed. Falling back to standard IK.")
+
                 elif not within_limits:
                     print(f"❌ Invalid motion at step {i}. Joint limits exceeded ")
                     print("❌ Joint limits report:", limit_report)
+                    self.robotic_manipulator_control_mode = self.robotic_manipulator_control_modes_list[0]
+                    self.set_joints_variables_to_zero()
+                    response0 = input(" ?? Does the Robot have 0 angle Configuration? Should we continue to the next part? (y/n): ")
+                    if response0.strip().lower() != 'y':
+                        print("⏹️ Execution stopped by user.")
+                        exit(0)
 
-                    flip_indices = [idx for idx, (qi, qmin_i, qmax_i) in enumerate(zip(q_new, q_min, q_max))
-                                    if (idx in [0, 3, 4]) and (qi < qmin_i - 1e-1 or qi > qmax_i + 1e-1)]
+                    allowed_flip_indices = [0, 3, 5]
+                    q_flipped, flip_indices = self.flip_exceeding_joints(q_old, q_new, q_min, q_max, allowed_flip_indices)
 
                     if flip_indices:
-                        print(f"🔁 Flipping joints {flip_indices} in q_old and retrying motion to the same p_next.")
+                        print(f"🔁 Retrying with flipped joints {flip_indices}")
 
-                        q_flipped = np.copy(q_old)
-                        for idx in flip_indices:
-                            flipped_val = -q_flipped[idx]
-                            q_flipped[idx] = np.clip(flipped_val, q_min[idx], q_max[idx])
-
-                        # Reuse the same velocity toward p_next
-                        p_dot = (p_next - p_current) / dt
-                        if np.linalg.norm(p_dot) > 1e-5:
-                            p_dot_proj = p_dot - np.dot(p_dot, normal_vector) * normal_vector
-                            pe_dot = R_plane @ p_dot_proj
-                        else:
-                            pe_dot = R_plane @ p_dot
-
-                        ve = np.concatenate((pe_dot, np.zeros(3))) * 0.5
-
-                        # Retry differential IK from flipped joint config
-                        q_dot, valid = kin.compute_inverse_differential_kinematics(
-                            self.built_robotic_manipulator, q_flipped, ve, "end-effector"
-                        )
-
-                        if valid:
-                            q_new = q_flipped + q_dot * dt
-                            print("✅ Recovered motion via flipped joint configuration.")
-                            self.built_robotic_manipulator.q = q_new
-                            self.control_joints_variables = q_new
-                            # self.send_command_to_all_motors()
-                            self.robot_joints_control_law_output.append(q_new)
-                            continue
-                        else:
-                            print("❌ Flipped joint config failed. Falling back to standard IK.")
-
-                
+                        self.built_robotic_manipulator.q = q_flipped
+                        self.control_joints_variables = q_flipped
+                        self.send_command_to_all_motors()
+                        self.update_control_variables_indicators()
+                        time.sleep(0.1)
+                        self.robot_joints_control_law_output.append(q_flipped)
+                        continue
+                    else:
+                        print("❌ Flipping did not resolve the issue. Falling back to standard IK.")
+             
                 elif not valid:
                     print(f"❌ Invalid motion at step {i}. Not valid")
-                    # print("❌ Joint limits report:", limit_report)
-                    # trajectory_success = False
-                    # break
                     T_fallback = self.get_transformation_matrix(p_next, self.fixed_plane_orientation_rpy)
                     fallback_q, success = kin.compute_inverse_kinematics(self.built_robotic_manipulator, T_fallback, self.invkine_tolerance)
 
@@ -7982,14 +8394,21 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                         print("✅ Fallback IK succeeded. Sending command.")
                         self.built_robotic_manipulator.q = fallback_q
                         self.control_joints_variables = fallback_q
-                        # self.send_command_to_all_motors()
+                        self.send_command_to_all_motors()
                         self.update_control_variables_indicators()
                         time.sleep(0.1)
                         self.robot_joints_control_law_output.append(fallback_q)
+
+                        # 🔥 Update q_old and break the attempt loop
+                        q_old = fallback_q
+                        break  # Exit for attempt loop
+
                     else:
                         print("❌ Fallback IK also failed. Skipping step.")
+                    # Move to next main iteration
+                    continue  # Optional, or you can 'continue' to skip attempts
 
-                    continue
+             
 
                 scale *= 0.5  # Try smaller
 
@@ -8028,16 +8447,14 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                 #     self.control_joints_variables = q_interp
                 #     # self.send_command_to_all_motors()
                 #     time.sleep(0.5)
+                num_divs = int(dt / move_dt) 
                 step_counter = 0
+                segment_length = np.linalg.norm(p_next - p_current)
+                num_divs = int(segment_length / move_dt)  # or proportional to dt
+                num_divs = max(1, int(segment_length / move_dt))
                 for j in range(num_divs):
-                    alpha = (j + 1) / num_divs
-                    q_interp = (1 - alpha) * q_old + alpha * q_new
-                    # interp_pos = (1 - alpha) * p_current + alpha * p_next
-                    # T_target = self.get_transformation_matrix(interp_pos, self.fixed_plane_orientation_rpy)
-
-                    # q_interp, success = kin.compute_inverse_kinematics(
-                    #     self.built_robotic_manipulator, T_target, self.invkine_tolerance
-                    # )
+                    delta_t = (j + 1) * move_dt
+                    q_interp = q_old + q_dot * delta_t  # 🚀 Continuous q_dot-based interpolation
 
                     if success:
                         self.built_robotic_manipulator.q = q_interp
@@ -8049,7 +8466,7 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                         position = T_fk.t
                         orientation_rpy = T_fk.rpy()
                         # Compute the expected position via interpolation
-                        interp_pos = (1 - alpha) * p_current + alpha * p_next
+                        interp_pos = (1 - (j + 1)/num_divs) * p_current + ((j + 1)/num_divs) * p_next
                         log_line = f"📍 Interpolated Step {i}.{j}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
                         log_line2 = f"📍 Attempted Interpolated Step {i}.{j}: Position = {np.round(interp_pos, 5)}\n"
 
@@ -8059,7 +8476,7 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                         with open(log_path, "a") as log_file:
                             log_file.write(log_line2)
                             log_file.write(log_line)
-                        # self.send_command_to_all_motors()
+                        self.send_command_to_all_motors()
                         self.update_control_variables_indicators()
                         
                         
@@ -8073,7 +8490,6 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                     time.sleep(0.5)
                     step_counter += 1         
                 # q_old = q_new  # ← ADD THIS
-            
             else:
                 print(f"❌222 Invalid motion at step {i}. Joint limits exceeded or Jacobian issue.")
                 print("❌ 222Joint limits report:", limit_report)
@@ -8092,6 +8508,7 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                     self.built_robotic_manipulator.q = fallback_q
                     self.control_joints_variables = fallback_q
                     self.send_command_to_all_motors()
+                    self.update_control_variables_indicators()
                     time.sleep(0.1)
                     self.robot_joints_control_law_output.append(fallback_q)
                     T_fk = self.built_robotic_manipulator.fkine(fallback_q)
@@ -8103,38 +8520,49 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                     print("❌ Fallback IK also failed. Skipping step.")
 
                 continue  # ✅ Do NOT break; keep going to next point
-        self.robotic_manipulator_control_mode == self.robotic_manipulator_control_modes_list[1]
+        
+        self.robotic_manipulator_control_mode = self.robotic_manipulator_control_modes_list[0]
         self.set_joints_variables_to_zero()
-        response = input("📍 trajectory along the y axis of the cross has been completed. Should we continue to the next part? (y/n): ")
+        response = input("📍 Trajectory along the X axis of the cross has been completed. Should we continue to the next part? (y/n): ")
         if response.strip().lower() != 'y':
             print("⏹️ Execution stopped by user.")
             exit(0) 
-        # time.sleep(30)
-        # if np.allclose(R_plane, np.eye(3)):
-        #     print("⚠️ Using identity rotation matrix — velocity is interpreted in WORLD frame.")
-        # else:
-        #     print("✅ Using custom plane rotation matrix.")
+       
+       
+       
+        # -------------------------------------------------------------#
+         # -------------------------------------------------------------#
+          # -------------------------------------------------------------#
+           # -------------------------------------------------------------#
+            # -------------------------------------------------------------#
+       
+        
+        
+        
+        
+        
+        
+        # -------------------------------------------------------------#
+        # -------------------------------------------------------------#
+        # -------------------------------------------------------------#
+        # -------------------------------------------------------------#
 
-        # print(f"🔧 p_dot (raw velocity): {np.round(p_dot, 5)}")
-        # print(f"🔧 pe_dot (rotated velocity): {np.round(pe_dot, 5)}")
-        # print(f"🔧 ve (full spatial velocity): {np.round(ve, 5)}")
-        # print(f"🔧 Jacobian frame: WORLD")
-                
-        # -------------------------------------------------------------#
-        # -------------------------------------------------------------#
-        # -------------------------------------------------------------#
-        # -------------------------------------------------------------#
-        # -------------------------------------------------------------#
-        
-        
-        
+
+
+
+
+
+
+
+        # # ----------------------CONVEX_TRAJECTORY SPLIT BY UPPER SORTED ATTEMPT DONT ERASE THIS -------------------#
+       
         # Re-init IK and repeat for convex_only
         initial_pose_found = False
         starting_point = 0
-        initial_position, orientation = self.convex_only[starting_point]
+        initial_position = self.convex_only[starting_point]
         orientation = self.fixed_plane_orientation_rpy
 
-        for idx, (initial_position, orientation) in enumerate(self.convex_only):
+        for idx, (initial_position) in enumerate(convex_upper_sorted):
             print(f"🚀 Trying IK for convex point {idx}: Position = {initial_position}, Orientation = {self.fixed_plane_orientation_rpy}")
 
             T = self.get_transformation_matrix(initial_position, self.fixed_plane_orientation_rpy)
@@ -8155,6 +8583,12 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                 self.forward_kinematics_variables = joint_angles
                 self.copy_fkine_to_control_values()
                 initial_pose_found = True
+                self.send_command_to_all_motors()
+                self.update_control_variables_indicators()
+                response0 = input("Has the Robot reached the initial position ?  Should we continue to the next part? (y/n): ")
+                if response0.strip().lower() != 'y':
+                    print("⏹️ Execution stopped by user.")
+                    exit(0)
                 break
             else:
                 print(f"❌ IK Solver failed at convex point {idx}")
@@ -8163,46 +8597,54 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
             return
 
         
-        # --- Differential IK for First 10 Points ---
-        dt = self.solver_time_step_dt*2
+        # --- Differential IK for  Points ---
+        dt = self.solver_time_step_dt
         move_dt = self.move_robot_time_step_dt
         R_plane = self.obst_plane_wrt_world_transformation_matrix[0:3, 0:3]
         trajectory_success = True
-        N2 = len(self.convex_only )
+        N_upper= len(convex_upper_sorted)
         q0 = joint_angles
         self.robot_joints_control_law_output = [q0]
-        for i in range(N2 - 1):
-            p_current = np.array(self.convex_only[i][0])
-            p_next = np.array(self.convex_only[i + 1][0])
+        starting_point = 0
+        step_counter = 0
+    
+        for i in range(starting_point , N_upper - 1):
+            
+            p_current = np.array(convex_upper_sorted[i])
+            p_next = np.array(convex_upper_sorted[i + 1])
 
             p_dot = (p_next - p_current) / dt
+            # print("p_dot:", p_dot)
+            # print("p_dot type:", type(p_dot))
+            # # R_plane = self.obst_plane_wrt_world_transformation_matrix[0:3, 0:3]
+            # print(f'Convex_only Rplane' ,R_plane)
             # pe_dot = R_plane @ np.array([p_dot[0], p_dot[1], 0.0]) LINEAR 
-            pe_dot = R_plane @ p_dot #Non linear
+            pe_dot = R_plane @ np.array([p_dot[0], p_dot[1],p_dot[2]]) #Non linea
             normal_vector = R.from_euler('y', 45, degrees=True).apply([0, 1, 0])  # normal of plane (Y-tilted)
             # Project p_dot onto plane by removing component along the normal
             p_dot_proj = p_dot - np.dot(p_dot, normal_vector) * normal_vector
             # Construct velocity vector with 0 angular components
-            if np.linalg.norm(p_dot_proj) > 1e-5:
-                pe_dot = R_plane @ p_dot_proj
-                note = "✅ Using projected velocity"
-            else:
-                pe_dot = R_plane @ p_dot
-                note = "⚠️ Using raw velocity (projection negligible)"
-
-            ve = np.concatenate((pe_dot, np.zeros(3)))
+            pe_dot = R_plane @ p_dot
+            ve = np.concatenate((pe_dot, np.zeros(3)),axis = 0)
             # ve = np.concatenate((pe_dot, np.zeros(3)), axis=0)
-            ve *= 0.5
+            # ve *= 0.5
 
             q_old = self.robot_joints_control_law_output[-1]
 
             max_attempts = 10
-            scale = 0.5
+            scale = 0.7
             success_found = False
-           
+            ve_linear = (p_next - p_current) / dt
+            ve_linear_x =(p_next[0] - p_current[0]) / dt
+            ve_linear_y =(p_next[1] - p_current[1]) / dt
+            ve_linear_z =(p_next[2] - p_current[2]) / dt
+            ve_linear  = np.array([ve_linear_x*1.4, ve_linear_y*1.3, ve_linear_z*1.4]) #UPPPERRRR#####
+            ve_angular = np.zeros(3)  # Optional: you can set desired rotation rates here
+            ve = np.concatenate((ve_linear, ve_angular))
             for attempt in range(max_attempts):
                 scaled_ve = ve * scale
                 q_dot, valid = kin.compute_inverse_differential_kinematics(
-                    self.built_robotic_manipulator, q_old, scaled_ve, "end-effectoe"
+                    self.built_robotic_manipulator, q_old, scaled_ve, "world"
                 )
                 q_new = q_old + q_dot * dt
 
@@ -8224,29 +8666,73 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                 if valid and within_limits:
                     success_found = True
                     break  # ✅ Done
+                # elif not within_limits:
+                #     print(f"❌ Invalid motion at step {i}. Joint limits exceeded ")
+                #     print("❌ Joint limits report:", limit_report)
+
+                #     flip_indices = [idx for idx, (qi, qmin_i, qmax_i) in enumerate(zip(q_new, q_min, q_max))
+                #                     if (idx in [0, 3, 4]) and (qi < qmin_i - 1e-1 or qi > qmax_i + 1e-1)]
+
                 elif not within_limits:
                     print(f"❌ Invalid motion at step {i}. Joint limits exceeded ")
                     print("❌ Joint limits report:", limit_report)
-                    # trajectory_success = False
-                    # break
-                    T_fallback = self.get_transformation_matrix(p_next, self.fixed_plane_orientation_rpy)
-                    fallback_q, success = kin.compute_inverse_kinematics(self.built_robotic_manipulator, T_fallback, self.invkine_tolerance)
+                    self.robotic_manipulator_control_mode = self.robotic_manipulator_control_modes_list[0]
+                    self.set_joints_variables_to_zero()
+                    response0 = input(" ? Does the Robot have 0 angle Configurration? Should we continue to the next part? (y/n): ")
+                    if response0.strip().lower() != 'y':
+                        print("⏹️ Execution stopped by user.")
+                        exit(0)
 
-                    if success:
-                        print("✅ Fallback IK succeeded. Sending command.")
-                        self.built_robotic_manipulator.q = fallback_q
-                        self.control_joints_variables = fallback_q
+                    allowed_flip_indices = [0, 3, 5]
+                    q_flipped, flip_indices = self.flip_exceeding_joints(q_old, q_new, q_min, q_max, allowed_flip_indices)
+
+                    if flip_indices:
+                        # print(f"🔁 Flipping joints {flip_indices} in q_old and retrying motion to the same p_next.")
+
+                        # q_flipped = np.copy(q_old)
+                        # for idx in flip_indices:
+                        #     flipped_val = -q_flipped[idx]
+                        #     q_flipped[idx] = np.clip(flipped_val, q_min[idx], q_max[idx])
+
+                        # # Reuse the same velocity toward p_next
+                        # p_dot = (p_next - p_current) / dt
+                        # if np.linalg.norm(p_dot) > 1e-5:
+                        #     p_dot_proj = p_dot - np.dot(p_dot, normal_vector) * normal_vector
+                        #     pe_dot = R_plane @ p_dot_proj
+                        # else:
+                        #     pe_dot = R_plane @ p_dot
+
+                        # ve = np.concatenate((pe_dot, np.zeros(3))) * 0.5
+
+                        # # Retry differential IK from flipped joint config
+                        # q_dot, valid = kin.compute_inverse_differential_kinematics(
+                        #     self.built_robotic_manipulator, q_flipped, ve, "world"
+                        # )
+
+                        # if valid:
+                        #     q_new = q_flipped + q_dot * dt
+                        #     print("✅ Recovered motion via flipped joint configuration.")
+                        #     self.built_robotic_manipulator.q = q_new
+                        #     self.control_joints_variables = q_new
+                        #     self.send_command_to_all_motors()
+                        #     self.robot_joints_control_law_output.append(q_new)
+                        #     continue
+
+
+
+                        print(f"🔁 Retrying with flipped joints {flip_indices}")
+
+                        self.built_robotic_manipulator.q = q_flipped
+                        self.control_joints_variables = q_flipped
                         self.send_command_to_all_motors()
+                        self.update_control_variables_indicators()
                         time.sleep(0.1)
-                        self.robot_joints_control_law_output.append(fallback_q)
-                        T_fk = self.built_robotic_manipulator.fkine(fallback_q)
-                        print("⚠️ Fallback FK Position:", T_fk.t)
-                        print("⚠️ Fallback FK RPY:", T_fk.rpy())
-
+                        self.robot_joints_control_law_output.append(q_flipped)
+                        continue
                     else:
-                        print("❌ Fallback IK also failed. Skipping step.")
+                        print("❌ Flipped joint config failed. Falling back to standard IK.")
+                        # break  # Break out of for   
 
-                    continue
                 elif not valid:
                     print(f"❌ Invalid motion at step {i}. Not valid")
                     # print("❌ Joint limits report:", limit_report)
@@ -8256,19 +8742,35 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                     fallback_q, success = kin.compute_inverse_kinematics(self.built_robotic_manipulator, T_fallback, self.invkine_tolerance)
 
                     if success:
+                        # print("✅ Fallback IK succeeded. Sending command.")
+                        # self.built_robotic_manipulator.q = fallback_q
+                        # self.control_joints_variables = fallback_q
+                        # self.send_command_to_all_motors()
+                        # self.update_control_variables_indicators()
+                        # time.sleep(0.1)
+                        # self.robot_joints_control_law_output.append(fallback_q)
                         print("✅ Fallback IK succeeded. Sending command.")
                         self.built_robotic_manipulator.q = fallback_q
                         self.control_joints_variables = fallback_q
                         self.send_command_to_all_motors()
+                        self.update_control_variables_indicators()
                         time.sleep(0.1)
                         self.robot_joints_control_law_output.append(fallback_q)
+
+                        # 🔥 Update q_old and break the attempt loop
+                        q_old = fallback_q
+                        response0 = input("Has the Robot reached the fallback FK position ?  Should we continue to the next part? (y/n): ")
+                        if response0.strip().lower() != 'y':
+                            print("⏹️ Execution stopped by user.")
+                            exit(0)
+                        break
                     else:
                         print("❌ Fallback IK also failed. Skipping step.")
 
                     continue
 
                 scale *= 0.5  # Try smaller
-
+           
             if success_found:
                 log_path = "/mnt/c/Users/aggel/Desktop/your_log_file.txt"
                 num_divs = int(dt / move_dt)
@@ -8303,18 +8805,37 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                 #         time.sleep(0.5)
                 #         step_counter += 1
                 step_counter = 0
-                
+                segment_length = np.linalg.norm(p_next - p_current)
+                num_divs = int(segment_length / move_dt)  # or proportional to dt
+                num_divs = max(1, int(segment_length / move_dt))
                 for j in range(num_divs):
-                    alpha = (j + 1) / num_divs
-                    q_interp = (1 - alpha) * q_old + alpha * q_new
-                    # interp_pos = (1 - alpha) * p_current + alpha * p_next
+                    # alpha = (j + 1) / num_divs
+                    # q_interp = (1 - alpha) * q_old + alpha * q_new
+                    # # interp_pos = (1 - alpha) * p_current + alpha * p_next
                     # T_target = self.get_transformation_matrix(interp_pos, self.fixed_plane_orientation_rpy)
 
                     # q_interp, success = kin.compute_inverse_kinematics(
                     #     self.built_robotic_manipulator, T_target, self.invkine_tolerance
                     # )
+                    delta_t = (j + 1) * move_dt
+                    q_interp = q_old + q_dot * delta_t  # 🚀 Continuous q_dot-based interpolation
 
                     if success:
+                        # self.built_robotic_manipulator.q = q_interp
+                        # self.robot_joints_control_law_output.append(q_interp)
+                        # self.control_joints_variables = q_interp
+
+                        # # ✅ Forward kinematics to log actual position
+                        # T_fk = self.built_robotic_manipulator.fkine(q_interp)
+                        # position = T_fk.t
+                        # orientation_rpy = T_fk.rpy()
+                        # # Compute the expected position via interpolation
+                        # interp_pos = (1 - alpha) * p_current + alpha * p_next
+                        # log_line = f"📍 Interpolated Step {i}.{j}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
+                        # log_line2 = f"📍 Attempted Interpolated Step {i}.{j}: Position = {np.round(interp_pos, 5)}\n"
+
+                        # print(log_line.strip())
+                        # print(log_line2.strip())
                         self.built_robotic_manipulator.q = q_interp
                         self.robot_joints_control_law_output.append(q_interp)
                         self.control_joints_variables = q_interp
@@ -8324,7 +8845,7 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                         position = T_fk.t
                         orientation_rpy = T_fk.rpy()
                         # Compute the expected position via interpolation
-                        interp_pos = (1 - alpha) * p_current + alpha * p_next
+                        interp_pos = (1 - (j + 1)/num_divs) * p_current + ((j + 1)/num_divs) * p_next
                         log_line = f"📍 Interpolated Step {i}.{j}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
                         log_line2 = f"📍 Attempted Interpolated Step {i}.{j}: Position = {np.round(interp_pos, 5)}\n"
 
@@ -8335,8 +8856,8 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                             log_file.write(log_line2)
                             log_file.write(log_line)
                         self.send_command_to_all_motors()
+                        self.update_control_variables_indicators()
                         
-                    
                     else:
                         print(f"❌ Failed IK at interpolated step {step_counter}")
                         with open(log_path, "a") as log_file:
@@ -8365,20 +8886,992 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
                     print("✅ Fallback IK succeeded. Sending command.")
                     self.built_robotic_manipulator.q = fallback_q
                     self.control_joints_variables = fallback_q
-                    self.robot_joints_control_law_output.append(fallback_q)
+                    self.send_command_to_all_motors()
+                    self.update_control_variables_indicators()
                     time.sleep(0.1)
+                    self.robot_joints_control_law_output.append(fallback_q)
+                    T_fk = self.built_robotic_manipulator.fkine(fallback_q)
+                    print("⚠️ Fallback FK Position:", T_fk.t)
+                    print("⚠️ Fallback FK RPY:", T_fk.rpy())
                 else:
                     print("❌ Fallback IK also failed. Skipping step.")
-
+                continue
+        
+        
+        self.robotic_manipulator_control_mode = self.robotic_manipulator_control_modes_list[0]
         self.set_joints_variables_to_zero()
-        time.sleep(30)
+        response = input("📍 Trajectory along the upper part of the convex hull has been completed. Should we continue to the next part? (y/n): ")
+        if response.strip().lower() != 'y':
+            print("⏹️ Execution stopped by user.")
+            exit(0) 
+        time.sleep(2)
+
+
+# # ----------------------CONVEX_TRAJECTORY SPLIT BY LOWER SORTED ATTEMPT DONT ERASE THIS -------------------#
+       
+        # Re-init IK and repeat for convex_only
+        initial_pose_found = False
+        starting_point = 0
+        initial_position = convex_lower_sorted[starting_point]
+        orientation = self.fixed_plane_orientation_rpy
+
+        for idx, (initial_position) in enumerate(convex_lower_sorted):
+            print(f"🚀 Trying IK for convex point {idx}: Position = {initial_position}, Orientation = {self.fixed_plane_orientation_rpy}")
+
+            T = self.get_transformation_matrix(initial_position, self.fixed_plane_orientation_rpy)
+
+            joint_angles, success = kin.compute_inverse_kinematics(
+                self.built_robotic_manipulator,
+                T,
+                self.invkine_tolerance
+            )
+
+            if success:
+                print("✅ IK Solver succeeded at convex initial pose.")
+                print(f"🚀 Moving to Pose at point {idx} with Position: {initial_position}, Orientation: {self.fixed_plane_orientation_rpy}")
+                self.chosen_invkine_3d_position = list(initial_position)
+                self.chosen_invkine_orientation = self.fixed_plane_orientation_rpy
+                self.invkine_joints_configuration = joint_angles
+                print("💡 Raw IK Joint Angles (rad):", joint_angles)
+                self.forward_kinematics_variables = joint_angles
+                self.copy_fkine_to_control_values()
+                initial_pose_found = True
+                response0 = input("Has the Robot reached the initial position ?  Should we continue to the next part? (y/n): ")
+                if response0.strip().lower() != 'y':
+                    print("⏹️ Execution stopped by user.")
+                    exit(0)
+                break
+            else:
+                print(f"❌ IK Solver failed at convex point {idx}")
+        if not initial_pose_found:
+            print("❌ IK Solver failed for all convex points.")
+            return
+
+        
+        # --- Differential IK for  Points ---
+        dt = self.solver_time_step_dt
+        move_dt = self.move_robot_time_step_dt
+        R_plane = self.obst_plane_wrt_world_transformation_matrix[0:3, 0:3]
+        trajectory_success = True
+        N_lower= len(convex_lower_sorted)
+        q0 = joint_angles
+        self.robot_joints_control_law_output = [q0]
+        starting_point = 0
+        step_counter = 0
+    
+        for i in range(starting_point , N_lower - 1):
+            
+            p_current = np.array(convex_lower_sorted[i])
+            p_next = np.array(convex_lower_sorted[i + 1])
+
+            p_dot = (p_next - p_current) / dt
+            # print("p_dot:", p_dot)
+            # print("p_dot type:", type(p_dot))
+            # # R_plane = self.obst_plane_wrt_world_transformation_matrix[0:3, 0:3]
+            # print(f'Convex_only Rplane' ,R_plane)
+            # pe_dot = R_plane @ np.array([p_dot[0], p_dot[1], 0.0]) LINEAR 
+            pe_dot = R_plane @ np.array([p_dot[0], p_dot[1],p_dot[2]]) #Non linea
+            normal_vector = R.from_euler('y', 45, degrees=True).apply([0, 1, 0])  # normal of plane (Y-tilted)
+            # Project p_dot onto plane by removing component along the normal
+            p_dot_proj = p_dot - np.dot(p_dot, normal_vector) * normal_vector
+            # Construct velocity vector with 0 angular components
+            pe_dot = R_plane @ p_dot
+            ve = np.concatenate((pe_dot, np.zeros(3)),axis = 0)
+            # ve = np.concatenate((pe_dot, np.zeros(3)), axis=0)
+            # ve *= 0.5
+
+            q_old = self.robot_joints_control_law_output[-1]
+
+            max_attempts = 10
+            scale = 0.7
+            success_found = False
+            ve_linear = (p_next - p_current) / dt
+            ve_linear_x =(p_next[0] - p_current[0]) / dt
+            ve_linear_y =(p_next[1] - p_current[1]) / dt
+            ve_linear_z =(p_next[2] - p_current[2]) / dt
+            ve_linear  = np.array([ve_linear_x*1.1, ve_linear_y*1.3, ve_linear_z*1.3]) #lowwwerrrr
+            ve_angular = np.zeros(3)  # Optional: you can set desired rotation rates here
+            ve = np.concatenate((ve_linear, ve_angular))
+            for attempt in range(max_attempts):
+                scaled_ve = ve * scale
+                q_dot, valid = kin.compute_inverse_differential_kinematics(
+                    self.built_robotic_manipulator, q_old, scaled_ve, "world"
+                )
+                q_new = q_old + q_dot * dt
+
+
+                q_min, q_max = self.built_robotic_manipulator.qlim
+                limit_violations = []
+                within_limits = True
+
+                for idx, (qi, qmin_i, qmax_i) in enumerate(zip(q_new, q_min, q_max)):
+                    if qi < qmin_i - 1e-1:
+                        within_limits = False
+                        limit_violations.append(f"Joint {idx}: {qi:.5f} < min {qmin_i:.5f}")
+                    elif qi > qmax_i + 1e-1:
+                        within_limits = False
+                        limit_violations.append(f"Joint {idx}: {qi:.5f} > max {qmax_i:.5f}")
+
+                limit_report = " | ".join(limit_violations) if not within_limits else "✅ All joints within relaxed limits"
+
+                if valid and within_limits:
+                    success_found = True
+                    break  # ✅ Done
+                # elif not within_limits:
+                #     print(f"❌ Invalid motion at step {i}. Joint limits exceeded ")
+                #     print("❌ Joint limits report:", limit_report)
+
+                #     flip_indices = [idx for idx, (qi, qmin_i, qmax_i) in enumerate(zip(q_new, q_min, q_max))
+                #                     if (idx in [0, 3, 4]) and (qi < qmin_i - 1e-1 or qi > qmax_i + 1e-1)]
+
+                elif not within_limits:
+                    print(f"❌ Invalid motion at step {i}. Joint limits exceeded ")
+                    print("❌ Joint limits report:", limit_report)
+                    self.robotic_manipulator_control_mode = self.robotic_manipulator_control_modes_list[0]
+                    self.set_joints_variables_to_zero()
+                    response0 = input(" ?? Does the Robot have 0 angle Configurration? Should we continue to the next part? (y/n): ")
+                    if response0.strip().lower() != 'y':
+                        print("⏹️ Execution stopped by user.")
+                        exit(0)
+
+                    allowed_flip_indices = [0, 3, 5]
+                    q_flipped, flip_indices = self.flip_exceeding_joints(q_old, q_new, q_min, q_max, allowed_flip_indices)
+
+                    if flip_indices:
+                        # print(f"🔁 Flipping joints {flip_indices} in q_old and retrying motion to the same p_next.")
+
+                        # q_flipped = np.copy(q_old)
+                        # for idx in flip_indices:
+                        #     flipped_val = -q_flipped[idx]
+                        #     q_flipped[idx] = np.clip(flipped_val, q_min[idx], q_max[idx])
+
+                        # # Reuse the same velocity toward p_next
+                        # p_dot = (p_next - p_current) / dt
+                        # if np.linalg.norm(p_dot) > 1e-5:
+                        #     p_dot_proj = p_dot - np.dot(p_dot, normal_vector) * normal_vector
+                        #     pe_dot = R_plane @ p_dot_proj
+                        # else:
+                        #     pe_dot = R_plane @ p_dot
+
+                        # ve = np.concatenate((pe_dot, np.zeros(3))) * 0.5
+
+                        # # Retry differential IK from flipped joint config
+                        # q_dot, valid = kin.compute_inverse_differential_kinematics(
+                        #     self.built_robotic_manipulator, q_flipped, ve, "world"
+                        # )
+
+                        # if valid:
+                        #     q_new = q_flipped + q_dot * dt
+                        #     print("✅ Recovered motion via flipped joint configuration.")
+                        #     self.built_robotic_manipulator.q = q_new
+                        #     self.control_joints_variables = q_new
+                        #     self.send_command_to_all_motors()
+                        #     self.robot_joints_control_law_output.append(q_new)
+                        #     continue
+
+
+
+                        print(f"🔁 Retrying with flipped joints {flip_indices}")
+
+                        self.built_robotic_manipulator.q = q_flipped
+                        self.control_joints_variables = q_flipped
+                        self.send_command_to_all_motors()
+                        self.update_control_variables_indicators()
+                        time.sleep(0.1)
+                        self.robot_joints_control_law_output.append(q_flipped)
+                        continue
+                    else:
+                        print("❌ Flipped joint config failed. Falling back to standard IK.")
+                        # break  # Break out of for   
+
+                elif not valid:
+                    print(f"❌ Invalid motion at step {i}. Not valid")
+                    # print("❌ Joint limits report:", limit_report)
+                    # trajectory_success = False
+                    # break
+                    T_fallback = self.get_transformation_matrix(p_next, self.fixed_plane_orientation_rpy)
+                    fallback_q, success = kin.compute_inverse_kinematics(self.built_robotic_manipulator, T_fallback, self.invkine_tolerance)
+
+                    if success:
+                        # print("✅ Fallback IK succeeded. Sending command.")
+                        # self.built_robotic_manipulator.q = fallback_q
+                        # self.control_joints_variables = fallback_q
+                        # self.send_command_to_all_motors()
+                        # self.update_control_variables_indicators()
+                        # time.sleep(0.1)
+                        # self.robot_joints_control_law_output.append(fallback_q)
+                        print("✅ Fallback IK succeeded. Sending command.")
+                        self.built_robotic_manipulator.q = fallback_q
+                        self.control_joints_variables = fallback_q
+                        self.send_command_to_all_motors()
+                        self.update_control_variables_indicators()
+                        time.sleep(0.1)
+                        self.robot_joints_control_law_output.append(fallback_q)
+
+                        # 🔥 Update q_old and break the attempt loop
+                        q_old = fallback_q
+                        break
+                    else:
+                        print("❌ Fallback IK also failed. Skipping step.")
+
+                    continue
+
+                scale *= 0.5  # Try smaller
+           
+            if success_found:
+                log_path = "/mnt/c/Users/aggel/Desktop/your_log_file.txt"
+                num_divs = int(dt / move_dt)
+                # for j in range(num_divs):
+                #     alpha = (j + 1) / num_divs
+                #     interp_pos = (1 - alpha) * p_current + alpha * p_next
+                #     T_target = self.get_transformation_matrix(interp_pos, self.fixed_plane_orientation_rpy)
+
+                #     q_interp, success = kin.compute_inverse_kinematics(
+                #         self.built_robotic_manipulator, T_target, self.invkine_tolerance
+                #     )
+
+                #     if success:
+                #         self.built_robotic_manipulator.q = q_interp
+                #         self.robot_joints_control_law_output.append(q_interp)
+                #         self.control_joints_variables = q_interp
+
+                #         T_fk = self.built_robotic_manipulator.fkine(q_interp)
+                #         position = T_fk.t
+                #         orientation_rpy = T_fk.rpy()
+
+                #         log_line = f"📍 Interpolated Step {step_counter}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
+                #         log_line2 = f"📍 Attempted Interpolated Step {step_counter}: Position = {np.round(interp_pos, 5)}\n"
+
+                #         print(log_line.strip())
+                #         print(log_line2.strip())
+
+                #         with open(log_path, "a") as log_file:
+                #             log_file.write(log_line2)
+                #             log_file.write(log_line)
+
+                #         time.sleep(0.5)
+                #         step_counter += 1
+                step_counter = 0
+                segment_length = np.linalg.norm(p_next - p_current)
+                num_divs = int(segment_length / move_dt)  # or proportional to dt
+                num_divs = max(1, int(segment_length / move_dt))
+                for j in range(num_divs):
+                    # alpha = (j + 1) / num_divs
+                    # q_interp = (1 - alpha) * q_old + alpha * q_new
+                    # # interp_pos = (1 - alpha) * p_current + alpha * p_next
+                    # T_target = self.get_transformation_matrix(interp_pos, self.fixed_plane_orientation_rpy)
+
+                    # q_interp, success = kin.compute_inverse_kinematics(
+                    #     self.built_robotic_manipulator, T_target, self.invkine_tolerance
+                    # )
+                    delta_t = (j + 1) * move_dt
+                    q_interp = q_old + q_dot * delta_t  # 🚀 Continuous q_dot-based interpolation
+
+                    if success:
+                        # self.built_robotic_manipulator.q = q_interp
+                        # self.robot_joints_control_law_output.append(q_interp)
+                        # self.control_joints_variables = q_interp
+
+                        # # ✅ Forward kinematics to log actual position
+                        # T_fk = self.built_robotic_manipulator.fkine(q_interp)
+                        # position = T_fk.t
+                        # orientation_rpy = T_fk.rpy()
+                        # # Compute the expected position via interpolation
+                        # interp_pos = (1 - alpha) * p_current + alpha * p_next
+                        # log_line = f"📍 Interpolated Step {i}.{j}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
+                        # log_line2 = f"📍 Attempted Interpolated Step {i}.{j}: Position = {np.round(interp_pos, 5)}\n"
+
+                        # print(log_line.strip())
+                        # print(log_line2.strip())
+                        self.built_robotic_manipulator.q = q_interp
+                        self.robot_joints_control_law_output.append(q_interp)
+                        self.control_joints_variables = q_interp
+
+                        # ✅ Forward kinematics to log actual position
+                        T_fk = self.built_robotic_manipulator.fkine(q_interp)
+                        position = T_fk.t
+                        orientation_rpy = T_fk.rpy()
+                        # Compute the expected position via interpolation
+                        interp_pos = (1 - (j + 1)/num_divs) * p_current + ((j + 1)/num_divs) * p_next
+                        log_line = f"📍 Interpolated Step {i}.{j}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
+                        log_line2 = f"📍 Attempted Interpolated Step {i}.{j}: Position = {np.round(interp_pos, 5)}\n"
+
+                        print(log_line.strip())
+                        print(log_line2.strip())
+
+                        with open(log_path, "a") as log_file:
+                            log_file.write(log_line2)
+                            log_file.write(log_line)
+                        self.send_command_to_all_motors()
+                        self.update_control_variables_indicators()
+                        
+                    else:
+                        print(f"❌ Failed IK at interpolated step {step_counter}")
+                        with open(log_path, "a") as log_file:
+                            log_file.write(log_line2)
+                            log_file.write(f"❌ Failed IK at interpolated step {step_counter}\n")
+
+                    time.sleep(0.5)
+                    step_counter += 1         
+            
+            
+            
+                # q_old = q_new  # ← ADD THIS   
+            else:
+                print(f"❌222 Invalid motion at step {i}. Joint limits exceeded or Jacobian issue.")
+                print("❌ Joint limits report:", ' | '.join(limit_violations) if limit_violations else "Unknown issue")
+
+                # Try fallback to target position directly
+                T_fallback = self.get_transformation_matrix(p_next, self.fixed_plane_orientation_rpy)
+                fallback_q, success = kin.compute_inverse_kinematics(
+                    self.built_robotic_manipulator,
+                    T_fallback,
+                    self.invkine_tolerance
+                )
+
+                if success:
+                    print("✅ Fallback IK succeeded. Sending command.")
+                    self.built_robotic_manipulator.q = fallback_q
+                    self.control_joints_variables = fallback_q
+                    self.send_command_to_all_motors()
+                    self.update_control_variables_indicators()
+                    time.sleep(0.1)
+                    self.robot_joints_control_law_output.append(fallback_q)
+                    T_fk = self.built_robotic_manipulator.fkine(fallback_q)
+                    print("⚠️ Fallback FK Position:", T_fk.t)
+                    print("⚠️ Fallback FK RPY:", T_fk.rpy())
+                else:
+                    print("❌ Fallback IK also failed. Skipping step.")
+                continue
+       
+        
+        self.robotic_manipulator_control_mode = self.robotic_manipulator_control_modes_list[0]
+        self.set_joints_variables_to_zero()
+        response = input("📍 Trajectory along the whole object has been completed. Should we continue to the next part? (y/n): ")
+        if response.strip().lower() != 'y':
+            print("⏹️ Execution stopped by user.")
+            exit(0) 
+        time.sleep(2)
+        
+# # # ----------------------CONVEX_TRAJECTORY DONT ERASE THIS -------------------#
+       
+#         # Re-init IK and repeat for convex_only
+#         initial_pose_found = False
+#         starting_point = 0
+#         initial_position = self.convex_only[starting_point]
+#         orientation = self.fixed_plane_orientation_rpy
+
+#         for idx, (initial_position) in enumerate(self.convex_only):
+#             print(f"🚀 Trying IK for convex point {idx}: Position = {initial_position}, Orientation = {self.fixed_plane_orientation_rpy}")
+
+#             T = self.get_transformation_matrix(initial_position, self.fixed_plane_orientation_rpy)
+
+#             joint_angles, success = kin.compute_inverse_kinematics(
+#                 self.built_robotic_manipulator,
+#                 T,
+#                 self.invkine_tolerance
+#             )
+
+#             if success:
+#                 print("✅ IK Solver succeeded at convex initial pose.")
+#                 print(f"🚀 Moving to Pose at point {idx} with Position: {initial_position}, Orientation: {self.fixed_plane_orientation_rpy}")
+#                 self.chosen_invkine_3d_position = list(initial_position)
+#                 self.chosen_invkine_orientation = self.fixed_plane_orientation_rpy
+#                 self.invkine_joints_configuration = joint_angles
+#                 print("💡 Raw IK Joint Angles (rad):", joint_angles)
+#                 self.forward_kinematics_variables = joint_angles
+#                 self.copy_fkine_to_control_values()
+#                 initial_pose_found = True
+#                 break
+#             else:
+#                 print(f"❌ IK Solver failed at convex point {idx}")
+#         if not initial_pose_found:
+#             print("❌ IK Solver failed for all convex points.")
+#             return
+
+        
+#         # --- Differential IK for  Points ---
+#         dt = self.solver_time_step_dt
+#         move_dt = self.move_robot_time_step_dt
+#         R_plane = self.obst_plane_wrt_world_transformation_matrix[0:3, 0:3]
+#         trajectory_success = True
+#         N2 = len(self.convex_only )
+#         q0 = joint_angles
+#         self.robot_joints_control_law_output = [q0]
+#         starting_point = 0
+#         step_counter = 0
+    
+#         for i in range(starting_point , N2 - 1):
+            
+#             p_current = np.array(self.convex_only[i])
+#             p_next = np.array(self.convex_only[i + 1])
+
+#             p_dot = (p_next - p_current) / dt
+#             # print("p_dot:", p_dot)
+#             # print("p_dot type:", type(p_dot))
+#             # # R_plane = self.obst_plane_wrt_world_transformation_matrix[0:3, 0:3]
+#             # print(f'Convex_only Rplane' ,R_plane)
+#             # pe_dot = R_plane @ np.array([p_dot[0], p_dot[1], 0.0]) LINEAR 
+#             pe_dot = R_plane @ np.array([p_dot[0], p_dot[1],p_dot[2]]) #Non linea
+#             normal_vector = R.from_euler('y', 45, degrees=True).apply([0, 1, 0])  # normal of plane (Y-tilted)
+#             # Project p_dot onto plane by removing component along the normal
+#             p_dot_proj = p_dot - np.dot(p_dot, normal_vector) * normal_vector
+#             # Construct velocity vector with 0 angular components
+#             pe_dot = R_plane @ p_dot
+#             ve = np.concatenate((pe_dot, np.zeros(3)),axis = 0)
+#             # ve = np.concatenate((pe_dot, np.zeros(3)), axis=0)
+#             # ve *= 0.5
+
+#             q_old = self.robot_joints_control_law_output[-1]
+
+#             max_attempts = 10
+#             scale = 0.7
+#             success_found = False
+#             ve_linear = (p_next - p_current) / dt
+#             ve_linear_x =(p_next[0] - p_current[0]) / dt
+#             ve_linear_y =(p_next[1] - p_current[1]) / dt
+#             ve_linear_z =(p_next[2] - p_current[2]) / dt
+#             ve_linear  = np.array([ve_linear_x*1.1, ve_linear_y*1.2, ve_linear_z*1.3])
+#             ve_angular = np.zeros(3)  # Optional: you can set desired rotation rates here
+#             ve = np.concatenate((ve_linear, ve_angular))
+#             for attempt in range(max_attempts):
+#                 scaled_ve = ve * scale
+#                 q_dot, valid = kin.compute_inverse_differential_kinematics(
+#                     self.built_robotic_manipulator, q_old, scaled_ve, "world"
+#                 )
+#                 q_new = q_old + q_dot * dt
+
+
+#                 q_min, q_max = self.built_robotic_manipulator.qlim
+#                 limit_violations = []
+#                 within_limits = True
+
+#                 for idx, (qi, qmin_i, qmax_i) in enumerate(zip(q_new, q_min, q_max)):
+#                     if qi < qmin_i - 1e-1:
+#                         within_limits = False
+#                         limit_violations.append(f"Joint {idx}: {qi:.5f} < min {qmin_i:.5f}")
+#                     elif qi > qmax_i + 1e-1:
+#                         within_limits = False
+#                         limit_violations.append(f"Joint {idx}: {qi:.5f} > max {qmax_i:.5f}")
+
+#                 limit_report = " | ".join(limit_violations) if not within_limits else "✅ All joints within relaxed limits"
+
+#                 if valid and within_limits:
+#                     success_found = True
+#                     break  # ✅ Done
+#                 # elif not within_limits:
+#                 #     print(f"❌ Invalid motion at step {i}. Joint limits exceeded ")
+#                 #     print("❌ Joint limits report:", limit_report)
+
+#                 #     flip_indices = [idx for idx, (qi, qmin_i, qmax_i) in enumerate(zip(q_new, q_min, q_max))
+#                 #                     if (idx in [0, 3, 4]) and (qi < qmin_i - 1e-1 or qi > qmax_i + 1e-1)]
+
+#                 elif not within_limits:
+#                     print(f"❌ Invalid motion at step {i}. Joint limits exceeded ")
+#                     print("❌ Joint limits report:", limit_report)
+#                     self.robotic_manipulator_control_mode = self.robotic_manipulator_control_modes_list[0]
+#                     self.set_joints_variables_to_zero()
+#                     response0 = input(" ?? Does the Robot have 0 angle Configurration? Should we continue to the next part? (y/n): ")
+#                     if response0.strip().lower() != 'y':
+#                         print("⏹️ Execution stopped by user.")
+#                         exit(0)
+
+#                     allowed_flip_indices = [0, 3, 5]
+#                     q_flipped, flip_indices = self.flip_exceeding_joints(q_old, q_new, q_min, q_max, allowed_flip_indices)
+
+#                     if flip_indices:
+#                         # print(f"🔁 Flipping joints {flip_indices} in q_old and retrying motion to the same p_next.")
+
+#                         # q_flipped = np.copy(q_old)
+#                         # for idx in flip_indices:
+#                         #     flipped_val = -q_flipped[idx]
+#                         #     q_flipped[idx] = np.clip(flipped_val, q_min[idx], q_max[idx])
+
+#                         # # Reuse the same velocity toward p_next
+#                         # p_dot = (p_next - p_current) / dt
+#                         # if np.linalg.norm(p_dot) > 1e-5:
+#                         #     p_dot_proj = p_dot - np.dot(p_dot, normal_vector) * normal_vector
+#                         #     pe_dot = R_plane @ p_dot_proj
+#                         # else:
+#                         #     pe_dot = R_plane @ p_dot
+
+#                         # ve = np.concatenate((pe_dot, np.zeros(3))) * 0.5
+
+#                         # # Retry differential IK from flipped joint config
+#                         # q_dot, valid = kin.compute_inverse_differential_kinematics(
+#                         #     self.built_robotic_manipulator, q_flipped, ve, "world"
+#                         # )
+
+#                         # if valid:
+#                         #     q_new = q_flipped + q_dot * dt
+#                         #     print("✅ Recovered motion via flipped joint configuration.")
+#                         #     self.built_robotic_manipulator.q = q_new
+#                         #     self.control_joints_variables = q_new
+#                         #     self.send_command_to_all_motors()
+#                         #     self.robot_joints_control_law_output.append(q_new)
+#                         #     continue
+
+
+
+#                         print(f"🔁 Retrying with flipped joints {flip_indices}")
+
+#                         self.built_robotic_manipulator.q = q_flipped
+#                         self.control_joints_variables = q_flipped
+#                         # self.send_command_to_all_motors()
+#                         self.update_control_variables_indicators()
+#                         time.sleep(0.1)
+#                         self.robot_joints_control_law_output.append(q_flipped)
+#                         continue
+#                     else:
+#                         print("❌ Flipped joint config failed. Falling back to standard IK.")
+#                         # break  # Break out of for   
+
+#                 elif not valid:
+#                     print(f"❌ Invalid motion at step {i}. Not valid")
+#                     # print("❌ Joint limits report:", limit_report)
+#                     # trajectory_success = False
+#                     # break
+#                     T_fallback = self.get_transformation_matrix(p_next, self.fixed_plane_orientation_rpy)
+#                     fallback_q, success = kin.compute_inverse_kinematics(self.built_robotic_manipulator, T_fallback, self.invkine_tolerance)
+
+#                     if success:
+#                         # print("✅ Fallback IK succeeded. Sending command.")
+#                         # self.built_robotic_manipulator.q = fallback_q
+#                         # self.control_joints_variables = fallback_q
+#                         # self.send_command_to_all_motors()
+#                         # self.update_control_variables_indicators()
+#                         # time.sleep(0.1)
+#                         # self.robot_joints_control_law_output.append(fallback_q)
+#                         print("✅ Fallback IK succeeded. Sending command.")
+#                         self.built_robotic_manipulator.q = fallback_q
+#                         self.control_joints_variables = fallback_q
+#                         # self.send_command_to_all_motors()
+#                         self.update_control_variables_indicators()
+#                         time.sleep(0.1)
+#                         self.robot_joints_control_law_output.append(fallback_q)
+
+#                         # 🔥 Update q_old and break the attempt loop
+#                         q_old = fallback_q
+#                         break
+#                     else:
+#                         print("❌ Fallback IK also failed. Skipping step.")
+
+#                     continue
+
+#                 scale *= 0.5  # Try smaller
+           
+#             if success_found:
+#                 log_path = "/mnt/c/Users/aggel/Desktop/your_log_file.txt"
+#                 num_divs = int(dt / move_dt)
+#                 # for j in range(num_divs):
+#                 #     alpha = (j + 1) / num_divs
+#                 #     interp_pos = (1 - alpha) * p_current + alpha * p_next
+#                 #     T_target = self.get_transformation_matrix(interp_pos, self.fixed_plane_orientation_rpy)
+
+#                 #     q_interp, success = kin.compute_inverse_kinematics(
+#                 #         self.built_robotic_manipulator, T_target, self.invkine_tolerance
+#                 #     )
+
+#                 #     if success:
+#                 #         self.built_robotic_manipulator.q = q_interp
+#                 #         self.robot_joints_control_law_output.append(q_interp)
+#                 #         self.control_joints_variables = q_interp
+
+#                 #         T_fk = self.built_robotic_manipulator.fkine(q_interp)
+#                 #         position = T_fk.t
+#                 #         orientation_rpy = T_fk.rpy()
+
+#                 #         log_line = f"📍 Interpolated Step {step_counter}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
+#                 #         log_line2 = f"📍 Attempted Interpolated Step {step_counter}: Position = {np.round(interp_pos, 5)}\n"
+
+#                 #         print(log_line.strip())
+#                 #         print(log_line2.strip())
+
+#                 #         with open(log_path, "a") as log_file:
+#                 #             log_file.write(log_line2)
+#                 #             log_file.write(log_line)
+
+#                 #         time.sleep(0.5)
+#                 #         step_counter += 1
+#                 step_counter = 0
+#                 segment_length = np.linalg.norm(p_next - p_current)
+#                 num_divs = int(segment_length / move_dt)  # or proportional to dt
+#                 num_divs = max(1, int(segment_length / move_dt))
+#                 for j in range(num_divs):
+#                     # alpha = (j + 1) / num_divs
+#                     # q_interp = (1 - alpha) * q_old + alpha * q_new
+#                     # # interp_pos = (1 - alpha) * p_current + alpha * p_next
+#                     # T_target = self.get_transformation_matrix(interp_pos, self.fixed_plane_orientation_rpy)
+
+#                     # q_interp, success = kin.compute_inverse_kinematics(
+#                     #     self.built_robotic_manipulator, T_target, self.invkine_tolerance
+#                     # )
+#                     delta_t = (j + 1) * move_dt
+#                     q_interp = q_old + q_dot * delta_t  # 🚀 Continuous q_dot-based interpolation
+
+#                     if success:
+#                         # self.built_robotic_manipulator.q = q_interp
+#                         # self.robot_joints_control_law_output.append(q_interp)
+#                         # self.control_joints_variables = q_interp
+
+#                         # # ✅ Forward kinematics to log actual position
+#                         # T_fk = self.built_robotic_manipulator.fkine(q_interp)
+#                         # position = T_fk.t
+#                         # orientation_rpy = T_fk.rpy()
+#                         # # Compute the expected position via interpolation
+#                         # interp_pos = (1 - alpha) * p_current + alpha * p_next
+#                         # log_line = f"📍 Interpolated Step {i}.{j}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
+#                         # log_line2 = f"📍 Attempted Interpolated Step {i}.{j}: Position = {np.round(interp_pos, 5)}\n"
+
+#                         # print(log_line.strip())
+#                         # print(log_line2.strip())
+#                         self.built_robotic_manipulator.q = q_interp
+#                         self.robot_joints_control_law_output.append(q_interp)
+#                         self.control_joints_variables = q_interp
+
+#                         # ✅ Forward kinematics to log actual position
+#                         T_fk = self.built_robotic_manipulator.fkine(q_interp)
+#                         position = T_fk.t
+#                         orientation_rpy = T_fk.rpy()
+#                         # Compute the expected position via interpolation
+#                         interp_pos = (1 - (j + 1)/num_divs) * p_current + ((j + 1)/num_divs) * p_next
+#                         log_line = f"📍 Interpolated Step {i}.{j}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
+#                         log_line2 = f"📍 Attempted Interpolated Step {i}.{j}: Position = {np.round(interp_pos, 5)}\n"
+
+#                         print(log_line.strip())
+#                         print(log_line2.strip())
+
+#                         with open(log_path, "a") as log_file:
+#                             log_file.write(log_line2)
+#                             log_file.write(log_line)
+#                         # self.send_command_to_all_motors()
+#                         self.update_control_variables_indicators()
+                        
+#                     else:
+#                         print(f"❌ Failed IK at interpolated step {step_counter}")
+#                         with open(log_path, "a") as log_file:
+#                             log_file.write(log_line2)
+#                             log_file.write(f"❌ Failed IK at interpolated step {step_counter}\n")
+
+#                     time.sleep(0.5)
+#                     step_counter += 1         
+            
+            
+            
+#                 # q_old = q_new  # ← ADD THIS   
+#             else:
+#                 print(f"❌222 Invalid motion at step {i}. Joint limits exceeded or Jacobian issue.")
+#                 print("❌ Joint limits report:", ' | '.join(limit_violations) if limit_violations else "Unknown issue")
+
+#                 # Try fallback to target position directly
+#                 T_fallback = self.get_transformation_matrix(p_next, self.fixed_plane_orientation_rpy)
+#                 fallback_q, success = kin.compute_inverse_kinematics(
+#                     self.built_robotic_manipulator,
+#                     T_fallback,
+#                     self.invkine_tolerance
+#                 )
+
+#                 if success:
+#                     print("✅ Fallback IK succeeded. Sending command.")
+#                     self.built_robotic_manipulator.q = fallback_q
+#                     self.control_joints_variables = fallback_q
+#                     # self.send_command_to_all_motors()
+#                     self.update_control_variables_indicators()
+#                     time.sleep(0.1)
+#                     self.robot_joints_control_law_output.append(fallback_q)
+#                     T_fk = self.built_robotic_manipulator.fkine(fallback_q)
+#                     print("⚠️ Fallback FK Position:", T_fk.t)
+#                     print("⚠️ Fallback FK RPY:", T_fk.rpy())
+#                 else:
+#                     print("❌ Fallback IK also failed. Skipping step.")
+#                 continue
+       
+#         # for i in range(starting_point , N2 - 1):
+#         #     p_current = np.array(self.convex_only[i])
+#         #     p_next = np.array(self.convex_only[i + 1])
+
+#         #     p_dot = (p_next - p_current) / dt
+#         #     # print("p_dot:", p_dot)
+#         #     # print("p_dot type:", type(p_dot))
+#         #     # # R_plane = self.obst_plane_wrt_world_transformation_matrix[0:3, 0:3]
+#         #     # print(f'Convex_only Rplane' ,R_plane)
+#         #     # pe_dot = R_plane @ np.array([p_dot[0], p_dot[1], 0.0]) LINEAR 
+#         #     pe_dot = R_plane @ np.array([p_dot[0], p_dot[1],p_dot[2]]) #Non linea
+#         #     normal_vector = R.from_euler('y', 45, degrees=True).apply([0, 1, 0])  # normal of plane (Y-tilted)
+#         #     # Project p_dot onto plane by removing component along the normal
+#         #     p_dot_proj = p_dot - np.dot(p_dot, normal_vector) * normal_vector
+#         #     # Construct velocity vector with 0 angular components
+
+#         #     ve = np.concatenate((pe_dot, np.zeros(3)),axis = 0)
+#         #     # ve = np.concatenate((pe_dot, np.zeros(3)), axis=0)
+#         #     # ve *= 0.5
+
+#         #     q_old = self.robot_joints_control_law_output[-1]
+
+#         #     max_attempts = 10
+#         #     scale = 0.5
+#         #     success_found = False
+#         #     # ve_linear = (p_next - p_current) / dt
+#         #     ve_linear_x =(p_next[0] - p_current[0]) / dt
+#         #     ve_linear_y =(p_next[1] - p_current[1]) / dt
+#         #     ve_linear_z =(p_next[2] - p_current[2]) / dt
+#         #     ve_linear  = np.array([ve_linear_x, ve_linear_y, ve_linear_z])
+#         #     ve_angular = np.zeros(3)  # Optional: you can set desired rotation rates here
+#         #     ve = np.concatenate((ve_linear, ve_angular))
+#         #     for attempt in range(max_attempts):
+#         #         scaled_ve = ve * scale
+#         #         q_dot, valid = kin.compute_inverse_differential_kinematics(
+#         #             self.built_robotic_manipulator, q_old, scaled_ve, "world"
+#         #         )
+#         #         q_new = q_old + q_dot * dt
+
+
+#         #         q_min, q_max = self.built_robotic_manipulator.qlim
+#         #         limit_violations = []
+#         #         within_limits = True
+
+#         #         for idx, (qi, qmin_i, qmax_i) in enumerate(zip(q_new, q_min, q_max)):
+#         #             if qi < qmin_i - 1e-1:
+#         #                 within_limits = False
+#         #                 limit_violations.append(f"Joint {idx}: {qi:.5f} < min {qmin_i:.5f}")
+#         #             elif qi > qmax_i + 1e-1:
+#         #                 within_limits = False
+#         #                 limit_violations.append(f"Joint {idx}: {qi:.5f} > max {qmax_i:.5f}")
+
+#         #         limit_report = " | ".join(limit_violations) if not within_limits else "✅ All joints within relaxed limits"
+
+#         #         if valid and within_limits:
+#         #             success_found = True
+#         #             break  # ✅ Done
+#         #         # elif not within_limits:
+#         #         #     print(f"❌ Invalid motion at step {i}. Joint limits exceeded ")
+#         #         #     print("❌ Joint limits report:", limit_report)
+
+#         #         #     flip_indices = [idx for idx, (qi, qmin_i, qmax_i) in enumerate(zip(q_new, q_min, q_max))
+#         #         #                     if (idx in [0, 3, 4]) and (qi < qmin_i - 1e-1 or qi > qmax_i + 1e-1)]
+
+#         #         elif not within_limits:
+#         #             print(f"❌ Invalid motion at step {i}. Joint limits exceeded ")
+#         #             print("❌ Joint limits report:", limit_report)
+#         #             self.robotic_manipulator_control_mode = self.robotic_manipulator_control_modes_list[0]
+#         #             self.set_joints_variables_to_zero()
+#         #             response0 = input(" ?? Does the Robot have 0 angle Configurration? Should we continue to the next part? (y/n): ")
+#         #             if response0.strip().lower() != 'y':
+#         #                 print("⏹️ Execution stopped by user.")
+#         #                 exit(0)
+
+#         #             allowed_flip_indices = [0, 3, 5]
+#         #             q_flipped, flip_indices = self.flip_exceeding_joints(q_old, q_new, q_min, q_max, allowed_flip_indices)
+
+#         #             if flip_indices:
+#         #                 # print(f"🔁 Flipping joints {flip_indices} in q_old and retrying motion to the same p_next.")
+
+#         #                 # q_flipped = np.copy(q_old)
+#         #                 # for idx in flip_indices:
+#         #                 #     flipped_val = -q_flipped[idx]
+#         #                 #     q_flipped[idx] = np.clip(flipped_val, q_min[idx], q_max[idx])
+
+#         #                 # # Reuse the same velocity toward p_next
+#         #                 # p_dot = (p_next - p_current) / dt
+#         #                 # if np.linalg.norm(p_dot) > 1e-5:
+#         #                 #     p_dot_proj = p_dot - np.dot(p_dot, normal_vector) * normal_vector
+#         #                 #     pe_dot = R_plane @ p_dot_proj
+#         #                 # else:
+#         #                 #     pe_dot = R_plane @ p_dot
+
+#         #                 # ve = np.concatenate((pe_dot, np.zeros(3))) * 0.5
+
+#         #                 # # Retry differential IK from flipped joint config
+#         #                 # q_dot, valid = kin.compute_inverse_differential_kinematics(
+#         #                 #     self.built_robotic_manipulator, q_flipped, ve, "world"
+#         #                 # )
+
+#         #                 # if valid:
+#         #                 #     q_new = q_flipped + q_dot * dt
+#         #                 #     print("✅ Recovered motion via flipped joint configuration.")
+#         #                 #     self.built_robotic_manipulator.q = q_new
+#         #                 #     self.control_joints_variables = q_new
+#         #                 #     self.send_command_to_all_motors()
+#         #                 #     self.robot_joints_control_law_output.append(q_new)
+#         #                 #     continue
+#         #                 print(f"🔁 Retrying with flipped joints {flip_indices}")
+
+#         #                 self.built_robotic_manipulator.q = q_flipped
+#         #                 self.control_joints_variables = q_flipped
+#         #                 # self.send_command_to_all_motors()
+#         #                 self.update_control_variables_indicators()
+#         #                 time.sleep(0.1)
+#         #                 self.robot_joints_control_law_output.append(q_flipped)
+#         #                 continue
+#         #             else:
+#         #                 print("❌ Flipped joint config failed. Falling back to standard IK.")
+
+#         #         elif not valid:
+#         #             print(f"❌ Invalid motion at step {i}. Not valid")
+#         #             # print("❌ Joint limits report:", limit_report)
+#         #             # trajectory_success = False
+#         #             # break
+#         #             T_fallback = self.get_transformation_matrix(p_next, self.fixed_plane_orientation_rpy)
+#         #             fallback_q, success = kin.compute_inverse_kinematics(self.built_robotic_manipulator, T_fallback, self.invkine_tolerance)
+
+#         #             if success:
+#         #                 # print("✅ Fallback IK succeeded. Sending command.")
+#         #                 # self.built_robotic_manipulator.q = fallback_q
+#         #                 # self.control_joints_variables = fallback_q
+#         #                 # self.send_command_to_all_motors()
+#         #                 # self.update_control_variables_indicators()
+#         #                 # time.sleep(0.1)
+#         #                 # self.robot_joints_control_law_output.append(fallback_q)
+#         #                 print("✅ Fallback IK succeeded. Sending command.")
+#         #                 self.built_robotic_manipulator.q = fallback_q
+#         #                 self.control_joints_variables = fallback_q
+#         #                 # self.send_command_to_all_motors()
+#         #                 self.update_control_variables_indicators()
+#         #                 time.sleep(0.1)
+#         #                 self.robot_joints_control_law_output.append(fallback_q)
+
+#         #                 # 🔥 Update q_old and break the attempt loop
+#         #                 q_old = fallback_q
+#         #             else:
+#         #                 print("❌ Fallback IK also failed. Skipping step.")
+
+#         #             continue
+
+#         #         scale *= 0.5  # Try smaller
+
+#         #     if success_found:
+#         #         log_path = "/mnt/c/Users/aggel/Desktop/your_log_file.txt"
+#         #         num_divs = int(dt / move_dt)
+#         #         # for j in range(num_divs):
+#         #         #     alpha = (j + 1) / num_divs
+#         #         #     interp_pos = (1 - alpha) * p_current + alpha * p_next
+#         #         #     T_target = self.get_transformation_matrix(interp_pos, self.fixed_plane_orientation_rpy)
+
+#         #         #     q_interp, success = kin.compute_inverse_kinematics(
+#         #         #         self.built_robotic_manipulator, T_target, self.invkine_tolerance
+#         #         #     )
+
+#         #         #     if success:
+#         #         #         self.built_robotic_manipulator.q = q_interp
+#         #         #         self.robot_joints_control_law_output.append(q_interp)
+#         #         #         self.control_joints_variables = q_interp
+
+#         #         #         T_fk = self.built_robotic_manipulator.fkine(q_interp)
+#         #         #         position = T_fk.t
+#         #         #         orientation_rpy = T_fk.rpy()
+
+#         #         #         log_line = f"📍 Interpolated Step {step_counter}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
+#         #         #         log_line2 = f"📍 Attempted Interpolated Step {step_counter}: Position = {np.round(interp_pos, 5)}\n"
+
+#         #         #         print(log_line.strip())
+#         #         #         print(log_line2.strip())
+
+#         #         #         with open(log_path, "a") as log_file:
+#         #         #             log_file.write(log_line2)
+#         #         #             log_file.write(log_line)
+
+#         #         #         time.sleep(0.5)
+#         #         #         step_counter += 1
+#         #         step_counter = 0
+#         #         segment_length = np.linalg.norm(p_next - p_current)
+#         #         num_divs = int(segment_length / move_dt)  # or proportional to dt
+                
+#         #         for j in range(num_divs):
+#         #             # alpha = (j + 1) / num_divs
+#         #             # q_interp = (1 - alpha) * q_old + alpha * q_new
+#         #             # # interp_pos = (1 - alpha) * p_current + alpha * p_next
+#         #             # T_target = self.get_transformation_matrix(interp_pos, self.fixed_plane_orientation_rpy)
+
+#         #             # q_interp, success = kin.compute_inverse_kinematics(
+#         #             #     self.built_robotic_manipulator, T_target, self.invkine_tolerance
+#         #             # )
+#         #             delta_t = (j + 1) * move_dt
+#         #             q_interp = q_old + q_dot * delta_t  # 🚀 Continuous q_dot-based interpolation
+
+#         #             if success:
+#         #                 # self.built_robotic_manipulator.q = q_interp
+#         #                 # self.robot_joints_control_law_output.append(q_interp)
+#         #                 # self.control_joints_variables = q_interp
+
+#         #                 # # ✅ Forward kinematics to log actual position
+#         #                 # T_fk = self.built_robotic_manipulator.fkine(q_interp)
+#         #                 # position = T_fk.t
+#         #                 # orientation_rpy = T_fk.rpy()
+#         #                 # # Compute the expected position via interpolation
+#         #                 # interp_pos = (1 - alpha) * p_current + alpha * p_next
+#         #                 # log_line = f"📍 Interpolated Step {i}.{j}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
+#         #                 # log_line2 = f"📍 Attempted Interpolated Step {i}.{j}: Position = {np.round(interp_pos, 5)}\n"
+
+#         #                 # print(log_line.strip())
+#         #                 # print(log_line2.strip())
+#         #                 self.built_robotic_manipulator.q = q_interp
+#         #                 self.robot_joints_control_law_output.append(q_interp)
+#         #                 self.control_joints_variables = q_interp
+
+#         #                 # ✅ Forward kinematics to log actual position
+#         #                 T_fk = self.built_robotic_manipulator.fkine(q_interp)
+#         #                 position = T_fk.t
+#         #                 orientation_rpy = T_fk.rpy()
+#         #                 # Compute the expected position via interpolation
+#         #                 interp_pos = (1 - (j + 1)/num_divs) * p_current + ((j + 1)/num_divs) * p_next
+#         #                 log_line = f"📍 Interpolated Step {i}.{j}: Positiona = {np.round(position, 5)}, Orientation (RPY rad) = {np.round(orientation_rpy, 5)}\n"
+#         #                 log_line2 = f"📍 Attempted Interpolated Step {i}.{j}: Position = {np.round(interp_pos, 5)}\n"
+
+#         #                 print(log_line.strip())
+#         #                 print(log_line2.strip())
+
+#         #                 with open(log_path, "a") as log_file:
+#         #                     log_file.write(log_line2)
+#         #                     log_file.write(log_line)
+#         #                 # self.send_command_to_all_motors()
+#         #                 self.update_control_variables_indicators()
+                        
+#         #             else:
+#         #                 print(f"❌ Failed IK at interpolated step {step_counter}")
+#         #                 with open(log_path, "a") as log_file:
+#         #                     log_file.write(log_line2)
+#         #                     log_file.write(f"❌ Failed IK at interpolated step {step_counter}\n")
+
+#         #             time.sleep(0.5)
+#         #             step_counter += 1         
+            
+            
+            
+#         #         # q_old = q_new  # ← ADD THIS   
+#         #     else:
+#         #         print(f"❌222 Invalid motion at step {i}. Joint limits exceeded or Jacobian issue.")
+#         #         print("❌ Joint limits report:", ' | '.join(limit_violations) if limit_violations else "Unknown issue")
+
+#         #         # Try fallback to target position directly
+#         #         T_fallback = self.get_transformation_matrix(p_next, self.fixed_plane_orientation_rpy)
+#         #         fallback_q, success = kin.compute_inverse_kinematics(
+#         #             self.built_robotic_manipulator,
+#         #             T_fallback,
+#         #             self.invkine_tolerance
+#         #         )
+
+#         #         if success:
+#         #             print("✅ Fallback IK succeeded. Sending command.")
+#         #             self.built_robotic_manipulator.q = fallback_q
+#         #             self.control_joints_variables = fallback_q
+#         #             # self.send_command_to_all_motors()
+#         #             self.update_control_variables_indicators()
+#         #             time.sleep(0.1)
+#         #             self.robot_joints_control_law_output.append(fallback_q)
+#         #             T_fk = self.built_robotic_manipulator.fkine(fallback_q)
+#         #             print("⚠️ Fallback FK Position:", T_fk.t)
+#         #             print("⚠️ Fallback FK RPY:", T_fk.rpy())
+#         #         else:
+#         #             print("❌ Fallback IK also failed. Skipping step.")
+#         #         continue
+       
+#         # self.set_joints_variables_to_zero()
+#         time.sleep(2)
 
         # summary.append((offset.tolist(), trajectory_success))
         print("\n📋 Offset Test Summary:")
         for offset, success in summary:
             print(f"Offset {offset} → {'✅ SUCCESS' if success else '❌ FAILED'}")
-
-
 
         # --- Finish ---
         if trajectory_success:
@@ -8388,6 +9881,7 @@ Enter the final x coordinate of the robot's end-effector on the 2D workspace pla
         else:
             print("❌ Trajectory generation failed. Resetting.")
 
+   
 
 # the main function of the program
 if __name__ == "__main__":
